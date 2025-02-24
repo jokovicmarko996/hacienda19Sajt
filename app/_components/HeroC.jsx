@@ -38,7 +38,7 @@ export default function HeroC() {
           <AnimatedText
             text="Hacienda"
             // className="text-7xl lg:text-8xl font-caveat font-dancing-script"
-            className="text-7xl lg:text-[154px] font-caveat"
+            className="text-7xl lg:text-[154px] font-caveat text-white"
             // style={{ fontFamily: caveat.style.fontFamily }}
           />
         </div>
