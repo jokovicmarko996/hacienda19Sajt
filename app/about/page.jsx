@@ -1,7 +1,7 @@
 "use client";
 
 import HerroPattern from "../_components/Hero";
-import bg from "../../public/hero/pergola3.png";
+import bg from "../../public/hero/pergola11.png";
 import AboutPageTextAnimation from "../_components/AboutPageTextAnimation";
 
 const page = () => {
