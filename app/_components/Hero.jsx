@@ -1,8 +1,7 @@
 import { Caveat } from "next/font/google";
 import Image from "next/image";
-import AnimatedText from "./animatedText";
-import ImageStack from "./ImageStack";
 import AnimatedBottomHeading from "./AnimatedBottomHeading";
+
 
 // ovaj moze da se koristi kao maketa za druge stranice
 
@@ -27,42 +26,20 @@ export default function HerroPattern({ image }) {
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* <h1 className="text-4xl lg:text-8xl text-primary-50 mb-10 tracking-tight font-normal">
-            Hacienda
-          </h1> */}
 
-          {/* <AnimatedText
-            text="Hacienda"
-            // className="text-7xl lg:text-8xl font-caveat font-dancing-script"
-            className="text-7xl lg:text-8xl font-caveat"
-            // style={{ fontFamily: caveat.style.fontFamily }}
-          /> */}
         </div>
-        {/* <div>
-          <AnimatedBottomHeading text={"PRECIZNOST U SVAKOM DETALJU"} />
-        </div> */}
-        {/* Hero Content (Optional) */}
 
-        {/* <div className="absolute bottom-0 left-0 right-0 flex flex-col justify-between items-center bg-transparent p-6">
-          <h2 className="text-white text-5xl font-bold font-caveat self-end ">
-            Preciznost
-          </h2>
-          <h2 className="text-white text-5xl font-bold font-caveat self-center ">
-            u svakom
-          </h2>
-          <h2 className="text-white text-5xl font-bold font-caveat self-end ">
-            Detalju
-          </h2>
-        </div> */}
 
         <AnimatedBottomHeading />
       </section>
 
-      
-
       {/* <ImageSlider /> */}
 
-      <ImageStack />
+      {/* <ImageStack /> */}
+
+      {/* <CoverflowSlider /> */}
+
+   
 
       {/* Main Content */}
       <main className="flex-grow p-8">

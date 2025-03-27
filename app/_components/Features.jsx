@@ -12,7 +12,7 @@ import pergola4 from "../../public/hero/pergola4.png";
 import pergola5 from "../../public/hero/pergola5.png";
 import pergola6 from "../../public/hero/pergola6.png";
 import AnimatedHeading from "./AnimatedHeading";
-// import pergola4 from "../../public/hero/pergola4.png";
+
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -236,9 +236,9 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-green-400 p-5">
+          <div className="flex size-full flex-col justify-between bg-green-400 p-3">
             <motion.h1
-              className="bento-title  max-w-64 text-black"
+              className="bento-title text-2xl  max-w-64 text-black"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
@@ -249,7 +249,8 @@ const Features = () => (
               }}
               whileTap={{ scale: 0.95 }}
             >
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
+              {/* M<b>o</b>re co<b>m</b>ing s<b>o</b>on. */}
+              Pogledaj sve proizvode
             </motion.h1>
 
             <TiLocationArrow className="m-5 scale-[5] self-end text-black " />

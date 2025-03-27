@@ -26,10 +26,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden max-w-full">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`${jetbrainsMono.variable}  antialiased`}
+        className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full`}
       >
         <HeaderX />
         {children}

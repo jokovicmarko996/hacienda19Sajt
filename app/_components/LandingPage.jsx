@@ -7,6 +7,8 @@ import GlassButton from "./Button";
 import Features from "./Features";
 import StarryQuote from "./StarryQuote";
 import AnimatedHeading from "./AnimatedHeading";
+import GsapAnimatedText from "./GsapAT";
+import Link from "next/link";
 
 const caveat = Caveat({ subsets: ["latin"] });
 
@@ -28,40 +30,38 @@ export default function HeroC() {
             priority
           />
         </div>
-
-        {/* <AnimatedText text="Hacienda" /> */}
+        {/* Animated Heading */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* <h1 className="text-4xl lg:text-8xl text-primary-50 mb-10 tracking-tight font-normal">
-            Hacienda
-          </h1> */}
-
-          <AnimatedText
+          {/* <AnimatedText
             text="Hacienda"
             // className="text-7xl lg:text-8xl font-caveat font-dancing-script"
             className="text-7xl lg:text-[154px] font-caveat text-white"
             // style={{ fontFamily: caveat.style.fontFamily }}
+          /> */}
+
+          {/* <GsapAnimatedText
+            text="Hacienda"
+            className="text-7xl lg:text-[154px] font-caveat text-white"
+          /> */}
+          <GsapAnimatedText
+            text="Hacienda"
+            morphText="Dobrodošli na našu stranicu"
+            className="text-7xl lg:text-[154px] font-caveat text-white"
           />
         </div>
-
-        {/* <HandwritingText />  */}
-
-        {/* Hero Content (Optional) */}
-        {/* <div className="relative z-10 text-center text-white">
-          <h1 className="text-4xl font-bold">Welcome to My Website</h1>
-          <p className="mt-4 text-lg">This is a full-screen hero section.</p>
-        </div> */}
+        {/* TODO: add button to the right side of the screen */}
+        {/* treba srediti pozicioniranje ovog dugmeta i animiranje nakon sto se naslov zavrsi => pogledaj TAILWIND HERO SECTION */}
+        <div className="absolute bottom-28 right-6 rounded-full flex items-center justify-center">
+          <Link href={`/contact`}>
+            <GlassButton
+              text="Kontaktirajte nas"
+              className="text-2xl lg:text-3xl font-caveat text-white"
+            />
+          </Link>
+        </div>
       </section>
 
-      {/* Main Content */}
-
       <StarryQuote />
-
-      {/* <AnimatedHeading /> */}
-
-      {/* Footer */}
-      {/* <footer className="bg-gray-800 text-white text-center py-4">
-        <p>&copy; 2023 My Website. All rights reserved.</p>
-      </footer> */}
 
       <Features />
     </div>

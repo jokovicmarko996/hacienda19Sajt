@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from "react";
 import logo from "../../public/logo.png";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
-  { href: "/products", label: "Products" },
+  { href: "/", label: "Početna" },
+  { href: "/about", label: "O nama" },
+  { href: "/products", label: "Proizvodi" },
+  { href: "/contact", label: "Kontakt" },
   // { href: "/projects", label: "Projects" }, nzm da li ovo dodati jer je slicno kao produkti
-  { href: "/services", label: "Services" },
+  { href: "/services", label: "Usluge" },
 ];
 
 function Navigation() {
