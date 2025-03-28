@@ -1,37 +1,8 @@
-// "use client";
-
-// import { motion } from "framer-motion";
-
-// const GlassButton = ({ text, onClick }) => {
-//   return (
-//     <div className="relative group">
-//       {/* Animated Border */}
-//       <motion.div
-//         className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-white"
-//         initial={{ scaleX: 0, scaleY: 1 }}
-//         whileHover={{ scaleX: 1, scaleY: 1 }}
-//         transition={{
-//           duration: 0.4,
-//           ease: "easeInOut",
-//         }}
-//       />
-
-//       {/* Button Content */}
-//       <button
-//         onClick={onClick}
-//         className="relative px-6 py-3 text-white font-semibold bg-transparent backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 rounded-lg shadow-lg transition-all duration-300"
-//       >
-//         {text}
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default GlassButton;
 
 "use client";
 
 import { motion } from "framer-motion";
+import { TiLocationArrow } from "react-icons/ti";
 
 const GlassButton = ({ text, onClick }) => {
   
@@ -53,8 +24,9 @@ const GlassButton = ({ text, onClick }) => {
       {/* Button */}
       <button
         onClick={onClick}
-        className="relative px-6 py-3 text-white font-semibold bg-transparent backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 rounded-lg shadow-lg transition-all duration-300"
+        className="relative px-3 py-3 text-white font-semibold bg-transparent backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
       >
+        {/* <TiLocationArrow className="relative z-20 text-white inline-block text-lg" /> */}
         {text}
       </button>
     </div>
@@ -62,3 +34,23 @@ const GlassButton = ({ text, onClick }) => {
 };
 
 export default GlassButton;
+
+
+  //  <Link
+  //    href={"/products"}
+  //    ref={hoverButtonRef}
+  //    onMouseMove={handleMouseMove}
+  //    onMouseEnter={handleMouseEnter}
+  //    onMouseLeave={handleMouseLeave}
+  //    className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
+  //  >
+  //    <div
+  //      className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+  //      style={{
+  //        opacity: hoverOpacity,
+  //        background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #2ef55287, #f2f1f125)`,
+  //      }}
+  //    />
+  //    <TiLocationArrow className="relative z-20 text-white" />
+  //    <p className="relative z-20 text-white">Pogledaj</p>
+  //  </Link>;

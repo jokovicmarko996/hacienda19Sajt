@@ -45,7 +45,8 @@ function Navigation() {
           {/* Logo */}
           <Link href="/" className="text-gray-800 ">
             {/* <div className="text-2xl font-bold text-gray-900">Brand</div> */}
-            <Image src={logo} alt="Logo Hacienda" width={60} height={60} />
+            {/* <Image src={logo} alt="Logo Hacienda" width={60} height={60} /> */}
+            <p className="text-black text-lg font-bold font-caveat">Hacienda</p>
             {/* <p className="text-black text-lg font-bold">
               Hacienda <span className="text-tertiary">.</span>
             </p> */}

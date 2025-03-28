@@ -57,7 +57,7 @@ const MansoryLayout = () => {
   return (
     <>
       {/* MANSORY GRID  */}
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-black p-4">
         {/* PRVA KOLONA */}
         <div class="grid gap-4">
           {images_col1.map((image, index) => (
