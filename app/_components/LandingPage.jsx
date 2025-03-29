@@ -43,13 +43,13 @@ export default function HeroC() {
             text="Hacienda"
             className="text-7xl lg:text-[154px] font-caveat text-white"
           /> */}
-          {/* <GsapAnimatedText
+          <GsapAnimatedText
             text="Hacienda"
             morphText="Dobrodošli na našu stranicu"
             className="text-7xl lg:text-[154px] font-caveat text-white"
-          /> */}
+          />
 
-          <AnimiraniNaslov text="Hacienda" />
+          {/* <AnimiraniNaslov text="Hacienda" /> */}
         </div>
         {/* TODO: add button to the right side of the screen */}
         {/* treba srediti pozicioniranje ovog dugmeta i animiranje nakon sto se naslov zavrsi => pogledaj TAILWIND HERO SECTION */}
