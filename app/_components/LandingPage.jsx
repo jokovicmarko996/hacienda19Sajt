@@ -9,6 +9,7 @@ import StarryQuote from "./StarryQuote";
 import AnimatedHeading from "./AnimatedHeading";
 import GsapAnimatedText from "./GsapAT";
 import Link from "next/link";
+import AnimiraniNaslov from "./AnimiraniNaslov";
 
 const caveat = Caveat({ subsets: ["latin"] });
 
@@ -38,16 +39,17 @@ export default function HeroC() {
             className="text-7xl lg:text-[154px] font-caveat text-white"
             // style={{ fontFamily: caveat.style.fontFamily }}
           /> */}
-
           {/* <GsapAnimatedText
             text="Hacienda"
             className="text-7xl lg:text-[154px] font-caveat text-white"
           /> */}
-          <GsapAnimatedText
+          {/* <GsapAnimatedText
             text="Hacienda"
             morphText="Dobrodošli na našu stranicu"
             className="text-7xl lg:text-[154px] font-caveat text-white"
-          />
+          /> */}
+
+          <AnimiraniNaslov text="Hacienda" />
         </div>
         {/* TODO: add button to the right side of the screen */}
         {/* treba srediti pozicioniranje ovog dugmeta i animiranje nakon sto se naslov zavrsi => pogledaj TAILWIND HERO SECTION */}

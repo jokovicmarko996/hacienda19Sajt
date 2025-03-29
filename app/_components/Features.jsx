@@ -146,7 +146,7 @@ export const BentoCard = ({ src, title, description }) => {
             }}
           />
           <TiLocationArrow className="relative z-20 text-white" />
-          <p className="relative z-20 text-white">Pogledaj</p>
+          <p className="relative z-20 text-white font-bodoni">Pogledaj</p>
         </Link>
 
         {/* <Link

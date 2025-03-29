@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="overflow-x-hidden max-w-full">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full`}
+        className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full bg-black`}
       >
         <HeaderX />
         {children}

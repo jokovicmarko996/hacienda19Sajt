@@ -46,7 +46,8 @@ function Navigation() {
           <Link href="/" className="text-gray-800 ">
             {/* <div className="text-2xl font-bold text-gray-900">Brand</div> */}
             {/* <Image src={logo} alt="Logo Hacienda" width={60} height={60} /> */}
-            <p className="text-black text-lg font-bold font-caveat">Hacienda</p>
+            <p className="text-black text-2xl sm:text-3xl font-bold font-caveat">Hacienda</p>
+            {/* <p className="text-black text-lg font-bold font-bodoni">Hacienda</p> */}
             {/* <p className="text-black text-lg font-bold">
               Hacienda <span className="text-tertiary">.</span>
             </p> */}
@@ -58,7 +59,7 @@ function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 text-lg font-bold  ${
+                className={`px-3 py-2 text-lg font-bold font-bodoni  ${
                   pathname === link.href
                     ? " text-green-400   underline decoration-2 decoration-green-400" // Active link style
                     : "text-primary hover:text-tertiary" // Inactive link style
@@ -120,7 +121,7 @@ function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1 text-sm font-medium ${
+                  className={`px-3 py-1 text-sm font-bold font-bodoni ${
                     pathname === link.href
                       ? " text-green-400   underline decoration-2 decoration-green-400" // Active link style
                       : "text-primary hover:text-tertiary" // Inactive link style

@@ -26,6 +26,7 @@ export default {
       },
       fontFamily: {
         amagro: ["Amagro", ...fontFamily.sans], // Add your custom font
+        bodoni: ['"Bodoni Moda"', "serif"],
         marker: ["Permanent Marker", "cursive"], // Add Permanent Marker
         "dancing-script": ["Dancing Script", "cursive"],
         caveat: ["Caveat", "cursive"],

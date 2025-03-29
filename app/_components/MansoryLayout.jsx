@@ -134,7 +134,7 @@ const MansoryLayout = () => {
           ))}
         </div>
       </div>
-      ;
+      
     </>
   );
 };
