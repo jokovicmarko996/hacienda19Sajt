@@ -10,6 +10,7 @@ import AnimatedHeading from "./AnimatedHeading";
 import GsapAnimatedText from "./GsapAT";
 import Link from "next/link";
 import AnimiraniNaslov from "./AnimiraniNaslov";
+import { MdLocalPhone } from "react-icons/md";
 
 const caveat = Caveat({ subsets: ["latin"] });
 
@@ -56,9 +57,11 @@ export default function HeroC() {
         <div className="absolute bottom-28 right-6 rounded-full flex items-center justify-center">
           <Link href={`/contact`}>
             <GlassButton
-              text="Kontaktirajte nas"
-              className="text-2xl lg:text-3xl font-caveat text-white"
-            />
+              text={"Kontakt"}
+              className="text-2xl lg:text-3xl   text-white"
+            >
+              <MdLocalPhone className="text-2xl lg:text-3xl  font-caveat text-white" />
+            </GlassButton>
           </Link>
         </div>
       </section>

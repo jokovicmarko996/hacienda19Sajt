@@ -49,6 +49,13 @@ body {
   }
 
   @font-face {
+    font-family: "Panchang";
+    src: url("/fonts/Panchang-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
     font-family: "circular-web";
     src: url("/fonts/circularweb-book.woff2") format("woff2");
   }

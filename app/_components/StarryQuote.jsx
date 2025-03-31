@@ -32,7 +32,7 @@ export default function StarryQuote() {
   return (
     <div className="relative w-full h-[50vh] bg-black flex items-center justify-center text-white text-2xl text-center p-4">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
-      <p className="relative z-10  md:text-4xl font-bodoni">
+      <p className="relative z-10  md:text-4xl font-bodoni ">
         “The only limit to our realization of tomorrow is our doubts of today.”
       </p>
     </div>

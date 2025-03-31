@@ -25,6 +25,7 @@ export default {
         "fade-in": "fade-in 1s ease-in-out",
       },
       fontFamily: {
+        panchang: ["Panchang", "sans-serif"], // Add Panchang to Tailwind
         amagro: ["Amagro", ...fontFamily.sans], // Add your custom font
         bodoni: ['"Bodoni Moda"', "serif"],
         marker: ["Permanent Marker", "cursive"], // Add Permanent Marker
