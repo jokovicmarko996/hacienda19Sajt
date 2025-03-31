@@ -8,7 +8,8 @@ import Image from "next/image";
 import pergola1 from "../../public/products/pergola1.png";
 import pergola2 from "../../public/products/pergola6.png";
 import pergola3 from "../../public/products/pergola7.png";
-import pergola4 from "../../public/products/pergola4.png";
+// import pergola4 from "../../public/products/pergola4.png"; -> izmena
+import pergola4 from "../../public/products/pergola2.png";
 import pergola5 from "../../public/products/pergola10.png";
 import pergola6 from "../../public/products/pergola6.png";
 import AnimatedHeading from "./AnimatedHeading";

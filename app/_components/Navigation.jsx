@@ -38,6 +38,7 @@ function Navigation() {
           gsap.to(nav, {
             y: 0,
             duration: 0.2, // Smooth transition duration
+            // ease: "power4.inOut", // Smooth easing
             ease: "none", // Smooth easing
           });
         } else {
@@ -46,6 +47,7 @@ function Navigation() {
             y: "-100%",
             duration: 0.2, // Smooth transition duration
             ease: "none", // Smooth easing
+            // ease: "power4.inOut", // Smooth easing
           });
         }
       },
