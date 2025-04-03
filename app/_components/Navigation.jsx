@@ -18,7 +18,7 @@ const links = [
   { href: "/about", label: "O nama" },
   { href: "/products", label: "Proizvodi" },
   { href: "/contact", label: "Kontakt" },
-  { href: "/services", label: "Usluge" },
+  // { href: "/services", label: "Usluge" },
 ];
 
 function Navigation() {
@@ -96,7 +96,7 @@ function Navigation() {
                 href={link.href}
                 className={`px-3 py-2 text-lg font-bold font-stardom ${
                   pathname === link.href
-                    ? "text-green-400 " // Active link style
+                    ? "text-primary  " // Active link style
                     : "text-primary " // Inactive link style
                 }`}
               >
@@ -156,12 +156,12 @@ function Navigation() {
                   href={link.href}
                   // className={`px-3 py-1 text-sm font-bold font-bodoni ${
                   //   pathname === link.href
-                  //     ? "text-green-400 underline decoration-2 decoration-green-400" // Active link style
+                  //     ? "text-white underline decoration-2 decoration-green-400" // Active link style
                   //     : "text-primary hover:text-tertiary" // Inactive link style
                   // }`}
                   className={`px-3 py-1 text-sm font-bold font-stardom ${
                     pathname === link.href
-                      ? "text-green-400 " // Active link style
+                      ? "text-white " // Active link style
                       : "text-primary " // Inactive link style
                   }`}
                 >

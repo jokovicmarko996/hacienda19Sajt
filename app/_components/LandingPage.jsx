@@ -1,6 +1,6 @@
 import Image from "next/image";
 // import pergolaHero from "../../public/hero/pergola1.png";
-import pergolaHero from "../../public/products/pergola9.png";
+import pergolaHero from "../../public/products/pergola1.png";
 import AnimatedText from "./animatedText";
 import { Caveat } from "next/font/google";
 import GlassButton from "./Button";
@@ -47,7 +47,7 @@ export default function HeroC() {
           <GsapAnimatedText
             text="Hacienda"
             morphText="Dobrodošli na našu stranicu"
-            className="text-7xl lg:text-[154px] font-caveat text-white"
+            className="text-7xl lg:text-[154px] font-caveat text-white font-extralight"
             // className="text-3xl  md:text-5xl lg:text-[154px] font-panchang text-white"
           />
 
