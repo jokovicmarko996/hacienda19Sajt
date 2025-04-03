@@ -250,9 +250,13 @@ const Features = () => (
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
+          {/* <Link
+            href={"/products"}
+            className="flex size-full flex-col justify-between bg-gradient-to-b from-green-400 to-white p-3"
+          > */}
           <Link
             href={"/products"}
-            className="flex size-full flex-col justify-between bg-green-400 p-3"
+            className="flex size-full flex-col justify-between bg-green-400  p-3"
           >
             <motion.h1
               className="bento-title text-2xl  max-w-64 text-black"

@@ -111,7 +111,7 @@ export default function FooterC() {
 
               {/* Instagram Icon */}
               <Link
-                href="https://www.instagram.com/hacienda_namestaj/?__d=1utm_sourceig_embed"
+                href="https://www.instagram.com/hacienda.outdoorfurniture/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pink-600 transition-colors duration-300"
@@ -140,6 +140,13 @@ export default function FooterC() {
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* dodat textualni logo  */}
+        <div>
+          <h1 className="text-2xl font-bold text-green-400 text-center pt-5 font-panchang">
+            Hacienda
+          </h1>
         </div>
 
         {/* Bottom Footer Section */}

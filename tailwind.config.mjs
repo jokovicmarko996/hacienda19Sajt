@@ -26,6 +26,7 @@ export default {
       },
       fontFamily: {
         panchang: ["Panchang", "sans-serif"], // Add Panchang to Tailwind
+        stardom: ["Stardom", "sans-serif"], // Add Panchang to Tailwind
         amagro: ["Amagro", ...fontFamily.sans], // Add your custom font
         bodoni: ['"Bodoni Moda"', "serif"],
         marker: ["Permanent Marker", "cursive"], // Add Permanent Marker
@@ -37,15 +38,6 @@ export default {
         "robert-medium": ["robert-medium", "sans-serif"],
         "robert-regular": ["robert-regular", "sans-serif"],
       },
-      // keyframes: {
-      //   fadeGreenToWhite: {
-      //     "0%": { color: "#22c55e" }, // Green-500
-      //     "100%": { color: "#ffffff" }, // White
-      //   },
-      // },
-      // animation: {
-      //   fadeGreenToWhite: "fadeGreenToWhite 1.5s ease-out forwards",
-      // },
     },
   },
   plugins: [],

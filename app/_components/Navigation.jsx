@@ -7,9 +7,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+/* The following plugin is a Club GSAP perk */
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-gsap.registerPlugin(ScrollTrigger);
-
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 const links = [
   { href: "/", label: "Početna" },
   { href: "/about", label: "O nama" },
@@ -24,7 +26,7 @@ function Navigation() {
   const menuRef = useRef(null);
   const navRef = useRef(null);
 
-  useEffect(() => {
+  useGSAP(() => {
     const nav = navRef.current;
 
     // GSAP ScrollTrigger to hide/show navigation smoothly
@@ -37,7 +39,7 @@ function Navigation() {
           // Scrolling up: Show the navigation
           gsap.to(nav, {
             y: 0,
-            duration: 0.2, // Smooth transition duration
+            duration: 0.4, // Smooth transition duration
             // ease: "power4.inOut", // Smooth easing
             ease: "none", // Smooth easing
           });
@@ -45,7 +47,7 @@ function Navigation() {
           // Scrolling down: Hide the navigation
           gsap.to(nav, {
             y: "-100%",
-            duration: 0.2, // Smooth transition duration
+            duration: 0.4, // Smooth transition duration
             ease: "none", // Smooth easing
             // ease: "power4.inOut", // Smooth easing
           });
@@ -81,7 +83,7 @@ function Navigation() {
           {/* Logo */}
           <Link href="/" className="text-gray-800">
             <p className="text-black text-lg sm:text-3xl font-bold font-panchang">
-              Hacienda.
+              Hacienda
             </p>
           </Link>
 
@@ -91,10 +93,10 @@ function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 text-lg font-bold font-bodoni ${
+                className={`px-3 py-2 text-lg font-bold font-stardom ${
                   pathname === link.href
-                    ? "text-green-400 underline decoration-2 decoration-green-400" // Active link style
-                    : "text-primary hover:text-tertiary" // Inactive link style
+                    ? "text-green-400 " // Active link style
+                    : "text-primary " // Inactive link style
                 }`}
               >
                 {link.label}
@@ -151,10 +153,15 @@ function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1 text-sm font-bold font-bodoni ${
+                  // className={`px-3 py-1 text-sm font-bold font-bodoni ${
+                  //   pathname === link.href
+                  //     ? "text-green-400 underline decoration-2 decoration-green-400" // Active link style
+                  //     : "text-primary hover:text-tertiary" // Inactive link style
+                  // }`}
+                  className={`px-3 py-1 text-sm font-bold font-stardom ${
                     pathname === link.href
-                      ? "text-green-400 underline decoration-2 decoration-green-400" // Active link style
-                      : "text-primary hover:text-tertiary" // Inactive link style
+                      ? "text-green-400 " // Active link style
+                      : "text-primary " // Inactive link style
                   }`}
                 >
                   {link.label}

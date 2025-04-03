@@ -44,3 +44,6 @@ next-env.d.ts
 *.xls
 *.xlsx
 *.xlsm
+
+# Ignore all `.txt` files
+*.txt

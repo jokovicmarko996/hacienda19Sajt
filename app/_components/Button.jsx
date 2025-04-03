@@ -22,11 +22,9 @@ const GlassButton = ({ text, onClick, children }) => {
       {/* Button */}
       <button
         onClick={onClick}
-        className="relative font-panchang px-3 py-3 text-white font-semibold bg-transparent backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
+        className="relative font-panchang px-3 py-3 text-white font-semibold  backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
       >
-        {/* <TiLocationArrow className="relative z-20 text-white inline-block text-lg" /> */}
         {text}
-        {/* <span>{children}</span> */}
       </button>
     </div>
   );
