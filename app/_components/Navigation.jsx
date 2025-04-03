@@ -9,9 +9,10 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 /* The following plugin is a Club GSAP perk */
-import { ScrollSmoother } from "gsap/ScrollSmoother";
+// import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+// gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 const links = [
   { href: "/", label: "Početna" },
   { href: "/about", label: "O nama" },
