@@ -1,11 +1,11 @@
 import React from "react";
-import GSAPReactLearning from "../_components/GSAPReactLearning";
+// import GSAPReactLearning from "../_components/GSAPReactLearning";
 
 /* ovde bi mogao diy varijantu da dodas, da se importuje kalendar i da se na zahtev posalje req za izradu pergole */
 const page = () => {
   return (
     <section className="p-8">
-      <GSAPReactLearning />
+      {/* <GSAPReactLearning /> */}
 
       <div className="bg-black h-screen w-screen">
         <div>
