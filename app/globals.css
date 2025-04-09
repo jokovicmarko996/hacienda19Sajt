@@ -50,12 +50,42 @@ body {
 
   @font-face {
     font-family: "Panchang";
-    src: url("/fonts/Panchang-Regular.woff2") format("woff2");
-    font-weight: normal;
+    src: url("/fonts/Panchang-Extralight.woff2") format("woff2");
+    font-weight: 200;
     font-style: normal;
   }
 
-    @font-face {
+  @font-face {
+    font-family: "Panchang";
+    src: url("/fonts/Panchang-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Panchang";
+    src: url("/fonts/Panchang-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Panchang";
+    src: url("/fonts/Panchang-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Panchang";
+    src: url("/fonts/Panchang-Semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+
+
+  @font-face {
     font-family: "Stardom";
     src: url("/fonts/Stardom-Regular.woff2") format("woff2");
     font-weight: normal;
@@ -216,8 +246,6 @@ body {
     transform: translateY(-0px);
   }
 }
-
-
 
 @keyframes spin78236 {
   0% {

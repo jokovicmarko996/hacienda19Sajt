@@ -47,3 +47,7 @@ next-env.d.ts
 
 # Ignore all `.txt` files
 *.txt
+
+# Ignore GSAPReactLearning.jsx
+app/_components/GSAPReactLearning.jsx
+app/_components/GsapATcopy.jsx

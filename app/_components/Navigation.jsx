@@ -18,7 +18,7 @@ const links = [
   { href: "/about", label: "O nama" },
   { href: "/products", label: "Proizvodi" },
   { href: "/contact", label: "Kontakt" },
-  // { href: "/services", label: "Usluge" },
+  { href: "/services", label: "Usluge" },
 ];
 
 function Navigation() {
@@ -42,14 +42,14 @@ function Navigation() {
             y: 0,
             duration: 0.4, // Smooth transition duration
             // ease: "power4.inOut", // Smooth easing
-            ease: "none", // Smooth easing
+            ease: "expo.inOut", // Smooth easing
           });
         } else {
           // Scrolling down: Hide the navigation
           gsap.to(nav, {
             y: "-100%",
             duration: 0.4, // Smooth transition duration
-            ease: "none", // Smooth easing
+            ease: "expo.inOut", // Smooth easing
             // ease: "power4.inOut", // Smooth easing
           });
         }
@@ -83,7 +83,7 @@ function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="text-gray-800">
-            <p className="text-black text-lg sm:text-3xl font-bold font-panchang">
+            <p className="text-black text-lg sm:text-3xl font-panchang font-medium">
               Hacienda
             </p>
           </Link>
@@ -148,7 +148,7 @@ function Navigation() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-2">
+          <div className="lg:hidden mt-2">
             <div className="flex flex-col space-y-4 pb-5">
               {links.map((link) => (
                 <Link
@@ -160,6 +160,7 @@ function Navigation() {
                   //     : "text-primary hover:text-tertiary" // Inactive link style
                   // }`}
                   className={`px-3 py-1 text-sm font-bold font-stardom ${
+                    // className={`px-3 py-1 text-sm font-bold font-panchanglight ${
                     pathname === link.href
                       ? "text-white " // Active link style
                       : "text-primary " // Inactive link style

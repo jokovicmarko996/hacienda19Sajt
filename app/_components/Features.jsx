@@ -5,7 +5,7 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Image from "next/image";
 
-import pergola1 from "../../public/products/pergola1.png";
+import pergola1 from "../../public/products/pergola9.png";
 import pergola2 from "../../public/products/pergola6.png";
 import pergola3 from "../../public/products/pergola7.png";
 // import pergola4 from "../../public/products/pergola4.png"; -> izmena
@@ -138,6 +138,7 @@ export const BentoCard = ({ src, title, description }) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
+          // className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase shadow-lg transition-all duration-300"
         >
           <div
             className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -147,7 +148,10 @@ export const BentoCard = ({ src, title, description }) => {
             }}
           />
           <TiLocationArrow className="relative z-20 text-white" />
-          <p className="relative z-20 text-white font-bodoni">Pogledaj</p>
+          {/* <p className="relative z-20 text-white font-bodoni">Pogledaj</p> */}
+          <p className="relative z-20 text-white font-amagro sm:font-panchang">
+            Pogledaj
+          </p>
         </Link>
 
         {/* <Link

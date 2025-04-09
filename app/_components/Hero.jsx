@@ -2,7 +2,6 @@ import { Caveat } from "next/font/google";
 import Image from "next/image";
 import AnimatedBottomHeading from "./AnimatedBottomHeading";
 
-
 // ovaj moze da se koristi kao maketa za druge stranice
 
 const caveat = Caveat({ subsets: ["latin"] });
@@ -25,10 +24,7 @@ export default function HerroPattern({ image }) {
             priority
           />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-
-        </div>
-
+        <div className="absolute inset-0 flex items-center justify-center"></div>
 
         <AnimatedBottomHeading />
       </section>
@@ -39,13 +35,13 @@ export default function HerroPattern({ image }) {
 
       {/* <CoverflowSlider /> */}
 
-   
-
       {/* Main Content */}
       <main className="flex-grow p-8">
         <h2 className="text-2xl font-bold">Main Content</h2>
         <p className="mt-4">This is the main content of the page.</p>
       </main>
+
+
     </div>
   );
 }

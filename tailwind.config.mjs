@@ -25,7 +25,8 @@ export default {
         "fade-in": "fade-in 1s ease-in-out",
       },
       fontFamily: {
-        panchang: ["Panchang", "sans-serif"], // Add Panchang to Tailwind
+        panchang: ["Panchang", "sans-serif"], // Panchang Regular
+        // panchangLight: ["PanchangLight", "sans-serif"], // Panchang Light
         stardom: ["Stardom", "sans-serif"], // Add Panchang to Tailwind
         amagro: ["Amagro", ...fontFamily.sans], // Add your custom font
         bodoni: ['"Bodoni Moda"', "serif"],

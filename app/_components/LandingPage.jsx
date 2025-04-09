@@ -7,10 +7,11 @@ import GlassButton from "./Button";
 import Features from "./Features";
 import StarryQuote from "./StarryQuote";
 import AnimatedHeading from "./AnimatedHeading";
-import GsapAnimatedText from "./GsapAT";
+import GsapAnimatedText from "./GsapATB";
 import Link from "next/link";
 import AnimiraniNaslov from "./AnimiraniNaslov";
 import { MdLocalPhone } from "react-icons/md";
+import AnimatedHeadingGsap from "./AnimatedHeadingGsap";
 
 const caveat = Caveat({ subsets: ["latin"] });
 
@@ -32,38 +33,12 @@ export default function HeroC() {
             priority
           />
         </div>
-        {/* Animated Heading */}
-        <div className="absolute bottom-[15%] flex flex-col items-center justify-center">
-          {/* <AnimatedText
-            text="Hacienda"
-            // className="text-7xl lg:text-8xl font-caveat font-dancing-script"
-            className="text-7xl lg:text-[154px] font-caveat text-white"
-            // style={{ fontFamily: caveat.style.fontFamily }}
-          /> */}
-          {/* <GsapAnimatedText
-            text="Hacienda"
-            className="text-7xl lg:text-[154px] font-caveat text-white"
-          /> */}
-          <GsapAnimatedText
-            text="Hacienda"
-            morphText="Dobrodošli na našu stranicu"
-            className="text-7xl lg:text-[154px] font-caveat text-white font-extralight"
-            // className="text-3xl  md:text-5xl lg:text-[154px] font-panchang text-white"
-          />
 
-          {/* <AnimiraniNaslov text="Hacienda" /> */}
-          <div clasname="items-center justify-center">
-            <Link href={`/contact`}>
-              <GlassButton
-                text={"Kontakt"}
-                className="text-xl lg:text-3xl   text-white"
-              ></GlassButton>
-            </Link>
-          </div>
-        </div>
-        {/* TODO: add button to the right side of the screen */}
-        {/* treba srediti pozicioniranje ovog dugmeta i animiranje nakon sto se naslov zavrsi => pogledaj TAILWIND HERO SECTION */}
-        {/* <div className="absolute bottom-28 right-6 rounded-full flex items-center justify-center  md:bottom-28 md:right-1/4 "> */}
+        {/* Animated Heading & Button */}
+        <GsapAnimatedText
+          className="text-white font-extralight"
+          // className="text-3xl  md:text-5xl lg:text-[154px] font-panchang text-white"
+        />
       </section>
 
       <StarryQuote />

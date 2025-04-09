@@ -26,6 +26,14 @@ const page = () => {
       {/* TO DO => HERO SECTION =>  */}
       <HerroPattern image={bg} />
 
+
+
+      <section>
+        {/* animirani text  */}
+        Svaka pergola koju kreiramo je unikatna, prilagođena vašim željama i
+        potrebama prostora.
+      </section>
+
       {/* <MansoryLayoutImproved images={images} /> */}
       {/* <HerroPattern image={"/public/hero/pergola1.png"} /> */}
       {/* <HerroPattern image={bg} /> */}
