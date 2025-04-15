@@ -8,127 +8,127 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-// const Testimonials = () => {
-//   const testimonialsRef = useRef([]);
+const Testimonials = () => {
+  const testimonialsRef = useRef([]);
 
-//   useEffect(() => {
-//     // Animate each testimonial card when it enters the viewport
-//     testimonialsRef.current.forEach((card, index) => {
-//       gsap.fromTo(
-//         card,
-//         { opacity: 0, y: 30 }, // Reduced vertical offset for smoother animation on mobile
-//         {
-//           opacity: 1,
-//           y: 0, // Move to visible and centered
-//           duration: 0.8, // Shorter duration for faster animations on mobile
-//           delay: index * 0.15, // Reduced stagger delay for better flow on mobile
-//           ease: "power2.out",
-//           scrollTrigger: {
-//             trigger: card, // Trigger animation when the card enters the viewport
-//             start: "top center", // when the top of the trigger hits the center of the viewport
-//             end: "+=250", // end after scrolling 500px beyond the start
-//             markers: { startColor: "green", endColor: "red", fontSize: "12px" },
-//           },
-//         }
-//       );
-//     });
-//   }, []);
+  useEffect(() => {
+    // Animate each testimonial card when it enters the viewport
+    testimonialsRef.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        { opacity: 0, y: 30 }, // Reduced vertical offset for smoother animation on mobile
+        {
+          opacity: 1,
+          y: 0, // Move to visible and centered
+          duration: 0.8, // Shorter duration for faster animations on mobile
+          delay: index * 0.15, // Reduced stagger delay for better flow on mobile
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card, // Trigger animation when the card enters the viewport
+            start: "top center", // when the top of the trigger hits the center of the viewport
+            end: "+=250", // end after scrolling 500px beyond the start
+            markers: { startColor: "green", endColor: "red", fontSize: "12px" },
+          },
+        }
+      );
+    });
+  }, []);
 
-//   const testimonials = [
-//     {
-//       text: "Pergola je prelepa! Transformisala je naš spoljašnji prostor u prelepu i funkcionalnu oblast.",
-//       author: "Andrea Pekić",
-//     },
-//     {
-//       text: "Tim je bio profesionalan i isporučio je tačno ono što smo želeli. Toplo preporučujem Haciendu!",
-//       author: "Stefan Paunović",
-//     },
-//     {
-//       text: "Njihovi dizajni su jedinstveni, a kvalitet je vrhunski. Ne možemo biti srećniji sa rezultatima.",
-//       author: "Petar Vuković",
-//     },
-//   ];
+  const testimonials = [
+    {
+      text: "Pergola je prelepa! Transformisala je naš spoljašnji prostor u prelepu i funkcionalnu oblast.",
+      author: "Andrea Pekić",
+    },
+    {
+      text: "Tim je bio profesionalan i isporučio je tačno ono što smo želeli. Toplo preporučujem Haciendu!",
+      author: "Stefan Paunović",
+    },
+    {
+      text: "Njihovi dizajni su jedinstveni, a kvalitet je vrhunski. Ne možemo biti srećniji sa rezultatima.",
+      author: "Petar Vuković",
+    },
+  ];
 
-//   return (
-//     <section className="bg-black py-16">
-//       <div className="container mx-auto px-6 md:px-12">
-//         {/* Section Title */}
-//         <h2 className="text-3xl md:text-5xl font-panchang text-center text-white mb-12">
-//           Šta ljudi kažu o nama
-//         </h2>
+  return (
+    <section className="bg-black py-16">
+      <div className="container mx-auto px-6 md:px-12">
+        {/* Section Title */}
+        <h2 className="text-3xl md:text-5xl font-panchang text-center text-white mb-12">
+          Šta ljudi kažu o nama
+        </h2>
 
-//         {/* Reviews Grid */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {testimonials.map((testimonial, index) => (
-//             <div
-//               key={index}
-//               ref={(el) => (testimonialsRef.current[index] = el)}
-//               className="bg-gray-800 p-6 rounded-lg shadow-lg"
-//             >
-//               <p className="text-lg text-gray-300 italic mb-4">
-//                 "{testimonial.text}"
-//               </p>
-//               <h4 className="text-xl font-bold text-white">
-//                 - {testimonial.author}
-//               </h4>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-// const StatsSection = ({ stats }) => {
-//   const statsRefs = useRef([]);
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              ref={(el) => (testimonialsRef.current[index] = el)}
+              className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            >
+              <p className="text-lg text-gray-300 italic mb-4">
+                "{testimonial.text}"
+              </p>
+              <h4 className="text-xl font-bold text-white">
+                - {testimonial.author}
+              </h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+const StatsSection = ({ stats }) => {
+  const statsRefs = useRef([]);
 
-//   useEffect(() => {
-//     // Animate each stat number when the section enters the viewport
-//     statsRefs.current.forEach((ref, index) => {
-//       gsap.fromTo(
-//         ref,
-//         { innerText: 0 }, // Start from 0
-//         {
-//           innerText: ref.dataset.value, // Target value from data-value attribute
-//           duration: 2, // Animation duration
-//           ease: "power2.out",
-//           snap: { innerText: 1 }, // Snap to whole numbers
-//           onUpdate: function () {
-//             ref.innerText = Math.floor(this.targets()[0].innerText); // Update the text content
-//           },
-//           scrollTrigger: {
-//             trigger: ref, // Trigger animation when the card enters the viewport
-//             start: "top center", // when the top of the trigger hits the center of the viewport
-//             end: "+=250", // end after scrolling 500px beyond the start
-//             markers: { startColor: "green", endColor: "red", fontSize: "12px" },
-//           },
-//         }
-//       );
-//     });
-//   }, []);
+  useEffect(() => {
+    // Animate each stat number when the section enters the viewport
+    statsRefs.current.forEach((ref, index) => {
+      gsap.fromTo(
+        ref,
+        { innerText: 0 }, // Start from 0
+        {
+          innerText: ref.dataset.value, // Target value from data-value attribute
+          duration: 2, // Animation duration
+          ease: "power2.out",
+          snap: { innerText: 1 }, // Snap to whole numbers
+          onUpdate: function () {
+            ref.innerText = Math.floor(this.targets()[0].innerText); // Update the text content
+          },
+          scrollTrigger: {
+            trigger: ref, // Trigger animation when the card enters the viewport
+            start: "top center", // when the top of the trigger hits the center of the viewport
+            end: "+=250", // end after scrolling 500px beyond the start
+            markers: { startColor: "green", endColor: "red", fontSize: "12px" },
+          },
+        }
+      );
+    });
+  }, []);
 
-//   return (
-//     <section className="py-16">
-//       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center mb-8">
-//         {stats.map((stat, index) => (
-//           <div
-//             key={index}
-//             className="bg-transparent p-6 rounded-full shadow-lg border-4 border-green-400 flex flex-col items-center justify-center w-40 h-40 mx-auto"
-//           >
-//             {/* Animated Number */}
-//             <h5
-//               ref={(el) => (statsRefs.current[index] = el)}
-//               data-value={stat.value}
-//               className="text-3xl font-bold text-green-400"
-//             >
-//               0
-//             </h5>
-//             <p className="text-sm text-gray-300 text-center">{stat.label}</p>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
+  return (
+    <section className="py-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center mb-8">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="bg-transparent p-6 rounded-full shadow-lg border-4 border-green-400 flex flex-col items-center justify-center w-40 h-40 mx-auto"
+          >
+            {/* Animated Number */}
+            <h5
+              ref={(el) => (statsRefs.current[index] = el)}
+              data-value={stat.value}
+              className="text-3xl font-bold text-green-400"
+            >
+              0
+            </h5>
+            <p className="text-sm text-gray-300 text-center">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const AboutContent = () => {
   const stats = [
@@ -216,68 +216,13 @@ const AboutContent = () => {
       </section>
 
       {/* Stats Section */}
-      <section>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center mb-8">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-transparent p-6 rounded-full shadow-lg border-4 border-green-400 flex flex-col items-center justify-center w-40 h-40 mx-auto"
-            >
-              {/* Animated Number */}
-              <h5
-                ref={(el) => (statsRefs.current[index] = el)}
-                data-value={stat.value}
-                className="text-3xl font-bold text-green-400"
-              >
-                0
-              </h5>
-              <p className="text-sm text-gray-300 text-center">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+     <StatsSection stats={stats} />
 
       {/* Testimonials Section */}
-      <section className="bg-black py-16">
-        <div className="container mx-auto px-6 md:px-12">
-          {/* Section Title */}
-          <h2 className="text-3xl md:text-5xl font-panchang text-center text-white mb-12">
-            Šta ljudi kažu o nama
-          </h2>
+      <Testimonials ref={testimonialsSectionRef} />
 
-          {/* Reviews Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Review 1 */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <p className="text-lg text-gray-300 italic mb-4">
-                "Pergola je prelepa! Transformisala je naš spoljašnji prostor u
-                prelepu i funkcionalnu oblast."
-              </p>
-              <h4 className="text-xl font-bold text-white">- Andrea Pekić</h4>
-            </div>
 
-            {/* Review 2 */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <p className="text-lg text-gray-300 italic mb-4">
-                "Tim je bio profesionalan i isporučio je tačno ono što smo
-                želeli. Toplo preporučujem Haciendu!"
-              </p>
-              <h4 className="text-xl font-bold text-white">
-                - Stefan Paunović
-              </h4>
-            </div>
-
-            {/* Review 3 */}
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-              <p className="text-lg text-gray-300 italic mb-4">
-                "Njihovi dizajni su jedinstveni, a kvalitet je vrhunski. Ne
-                možemo biti srećniji sa rezultatima."
-              </p>
-              <h4 className="text-xl font-bold text-white">- Petar Vuković</h4>
-            </div>
-          </div>
-        </div>
-      </section>
+  
 
     </section>
   );
