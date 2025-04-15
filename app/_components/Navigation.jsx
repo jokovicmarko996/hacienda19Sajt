@@ -94,9 +94,9 @@ function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 text-lg font-bold font-stardom ${
+                className={`px-3 py-2 text-lg font-bold font-serif ${
                   pathname === link.href
-                    ? "text-primary  " // Active link style
+                    ? "text-primary underline decoration-2  " // Active link style
                     : "text-primary " // Inactive link style
                 }`}
               >
@@ -159,10 +159,10 @@ function Navigation() {
                   //     ? "text-white underline decoration-2 decoration-green-400" // Active link style
                   //     : "text-primary hover:text-tertiary" // Inactive link style
                   // }`}
-                  className={`px-3 py-1 text-sm font-bold font-stardom ${
+                  className={`px-3 py-1 text-sm font-bold font-serif ${
                     // className={`px-3 py-1 text-sm font-bold font-panchanglight ${
                     pathname === link.href
-                      ? "text-white " // Active link style
+                      ? "text-primary underline decoration-2 " // Active link style
                       : "text-primary " // Inactive link style
                   }`}
                 >

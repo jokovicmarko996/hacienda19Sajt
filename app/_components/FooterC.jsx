@@ -40,7 +40,7 @@ export default function FooterC() {
   return (
     // <footer className="fixed bottom-0 min-w-full bg-white/10 backdrop-blur-md border-t border-white/20 py-12">
 
-    <footer className="overflow-x-hidden  max-w-full bg-black backdrop-blur-md border-t  border-white/20 py-12 ">
+    <footer className="overflow-x-hidden  max-w-full bg-black backdrop-blur-md border-t  border-white/20 py-12 font-serif ">
       <div className="container mx-auto px-6">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -143,11 +143,11 @@ export default function FooterC() {
         </div>
 
         {/* dodat textualni logo  */}
-        <div>
+        <Link href="/">
           <h1 className="text-2xl font-bold text-green-400 text-center pt-5 font-panchang">
             Hacienda
           </h1>
-        </div>
+        </Link>
 
         {/* Bottom Footer Section */}
         <div className="border-t border-white/20 mt-8 pt-8 text-center">

@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import GlassButton from "./Button";
+import GlassButton from "./GlassButton";
 import Link from "next/link";
 
 const GsapAnimatedTextButton = ({ className }) => {

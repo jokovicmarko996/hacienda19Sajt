@@ -70,7 +70,7 @@ const AnimatedBottomHeading = () => {
         //   }`}
         <motion.h2
           key={index}
-          className={`text-white font-extrabold font-caveat ${
+          className={`text-white font-bold font-caveat ${
           // className={`text-white  font-panchang text-lg ${
             index % 2 === 0 ? "self-end" : "self-center sm:self-end"
           } text-6xl lg:text-7xl xl:text-8xl ${

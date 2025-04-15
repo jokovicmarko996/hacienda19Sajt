@@ -1,7 +1,43 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const AboutContent = () => {
+  const stats = [
+    { value: 95, label: "Završenih Projekta" },
+    { value: 150, label: "Zadovoljnih Klijenata" },
+    { value: 8, label: "Godina iskustva" },
+  ];
+
+  const statsRefs = useRef([]);
+
+  useGSAP(() => {
+    // Animate each stat number when the section enters the viewport
+    statsRefs.current.forEach((ref, index) => {
+      gsap.fromTo(
+        ref,
+        { innerText: 0 }, // Start from 0
+        {
+          innerText: ref.dataset.value, // Target value from data-value attribute
+          duration: 2, // Animation duration
+          ease: "power2.out",
+          snap: { innerText: 1 }, // Snap to whole numbers
+          onUpdate: function () {
+            ref.innerText = Math.floor(this.targets()[0].innerText); // Update the text content
+          },
+          scrollTrigger: {
+            trigger: ref, // Trigger animation when the stat enters the viewport
+            start: "top 80%", // Start animation when the top of the stat is 80% down the viewport
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
     <section>
       {/* <AboutPageTextAnimation /> */}
@@ -15,22 +51,23 @@ const AboutContent = () => {
         <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Row 1: Text Column */}
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-white md:text-5xl">
+            <h2 className="text-2xl font-panchang text-white md:text-5xl">
               O nama
             </h2>
-            <p className="text-lg text-gray-400 leading-relaxed">
-              Welcome to Hacienda! We are dedicated to providing the best
-              services and products to our customers. Our mission is to create
-              innovative solutions that make your life easier and more
-              enjoyable.
+            <p className="text-xl text-gray-400 leading-relaxed font-bodoni">
+              U Haciendi, pergole nisu samo konstrukcije – one su srce vašeg
+              eksterijera, prostor gde se funkcionalnost, estetika i udobnost
+              spajaju u savršen sklad.
             </p>
-            <p className="text-lg text-gray-400 leading-relaxed">
+            {/* <p className="text-lg text-gray-400 leading-relaxed">
               With years of experience and a passion for excellence, we strive
               to exceed your expectations in every way possible.
-            </p>
-            <button className="px-6 py-3 bg-green-400 text-white font-semibold rounded-lg shadow-lg hover:bg-green-600 transition-all duration-300">
-              Pogledaj više
-            </button>
+            </p> */}
+            <Link href="/products">
+              <button className="px-4 py-2 bg-green-600 text-gray-400 font-semibold rounded-lg shadow-lg hover:bg-green-600 transition-all duration-300">
+                Pogledaj više
+              </button>
+            </Link>
           </div>
 
           {/* Row 1: Image Column */}
@@ -46,12 +83,16 @@ const AboutContent = () => {
 
           {/* Row 2: Full-Width Content */}
           <div className="col-span-1 md:col-span-2 bg-gray-800 p-8 rounded-lg shadow-lg text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">Our Mission</h3>
+            <h3 className="text-3xl font-panchang text-white mb-4">
+              Naša misija
+            </h3>
             <p className="text-lg text-gray-400 leading-relaxed">
               At Hacienda, we aim to bridge the gap between innovation and
               practicality. Our team is committed to delivering high-quality
               products and services that empower our customers to achieve their
-              goals.
+              goals. Naša misija je da nastavimo da kreiramo kvalitetne,
+              dugotrajne i dizajnerski usavršene pergole, prilagođene vašim
+              potrebama i stilu prostora.
             </p>
           </div>
 
@@ -75,7 +116,31 @@ const AboutContent = () => {
         </div>
       </section>
 
+      <section>
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-center mb-8">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="bg-transparent p-6 rounded-full shadow-lg border-4 border-green-400 flex flex-col items-center justify-center w-40 h-40 mx-auto"
+            >
+              {/* Animated Number */}
+              <h5
+                ref={(el) => (statsRefs.current[index] = el)}
+                data-value={stat.value}
+                className="text-3xl font-bold text-green-400"
+              >
+                0
+              </h5>
+              <p className="text-sm text-gray-300 text-center">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* TO DO => KAO U ZENTRY-U SLIKA KOJA SE RASIRI NA EKRAN I IZNAD NJE NEKI TEXT => ISPOD NEKE ANIMACIJE  */}
+
+      <section>Recenzije</section>
     </section>
   );
 };

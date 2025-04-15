@@ -27,8 +27,11 @@ export default {
       fontFamily: {
         panchang: ["Panchang", "sans-serif"], // Panchang Regular
         // panchangLight: ["PanchangLight", "sans-serif"], // Panchang Light
-        stardom: ["Stardom", "sans-serif"], // Add Panchang to Tailwind
+        stardom: ["Stardom", "sans-serif"], // Add Stardom font
+        notable: ["Notable", "sans-serif"], // Add Notable font
+        playfair: ['"Playfair Display"', "serif"], // Add Playfair Display
         amagro: ["Amagro", ...fontFamily.sans], // Add your custom font
+        corinthia: ["Corinthia", "cursive"], // Add Corinthia font
         bodoni: ['"Bodoni Moda"', "serif"],
         marker: ["Permanent Marker", "cursive"], // Add Permanent Marker
         "dancing-script": ["Dancing Script", "cursive"],

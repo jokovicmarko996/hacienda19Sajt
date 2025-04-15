@@ -22,7 +22,7 @@ const GlassButton = ({ text, onClick, children }) => {
       {/* Button */}
       <button
         onClick={onClick}
-        className="relative font-panchang px-3 py-3 text-white font-semibold  backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
+        className="relative font-panchang px-3 py-2 text-white font-semibold  backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
       >
         {text}
       </button>

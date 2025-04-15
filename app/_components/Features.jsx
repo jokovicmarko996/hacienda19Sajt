@@ -260,16 +260,17 @@ const Features = () => (
           > */}
           <Link
             href={"/products"}
-            className="flex size-full flex-col justify-between bg-green-400  p-3"
+            className="flex size-full flex-col justify-between bg-green-400  p-3 hover:text-white"
           >
             <motion.h1
-              className="bento-title text-2xl  max-w-64 text-black"
-              initial={{ opacity: 0, y: 50 }}
+              className="bento-title text-2xl  max-w-64 text-black "
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{
-                scale: 1.1,
+                scale: 1.05,
+                backgroundColor: "gradient-to-b from-green-400 to-white",
                 // boxShadow: "0px 5px 15px rgba(0,0,0,0.2)",
               }}
               whileTap={{ scale: 0.95 }}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import pergolaHero from "../../public/products/pergola1.png";
 import AnimatedText from "./animatedText";
 import { Caveat } from "next/font/google";
-import GlassButton from "./Button";
+import GlassButton from "./GlassButton";
 import Features from "./Features";
 import StarryQuote from "./StarryQuote";
 import AnimatedHeading from "./AnimatedHeading";

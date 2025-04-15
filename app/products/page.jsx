@@ -3,6 +3,7 @@ import HerroPattern from "../_components/Hero";
 import MansoryLayout from "../_components/MansoryLayout";
 import bg from "../../public/hero/pergola5.png"; // slika koja ce da bude hero image
 import MansoryLayoutImproved from "../_components/MansoryLayoutImproved";
+import ProductsContent from "../_components/ui/ProductsContent";
 
 const images = [
   { src: "/hero/pergola1.png", aspectRatio: "0.8" },
@@ -25,6 +26,8 @@ const page = () => {
     <div className="overflow-x-hidden max-w-full">
       {/* TO DO => HERO SECTION =>  */}
       <HerroPattern image={bg} />
+
+      <ProductsContent />
 
 
 

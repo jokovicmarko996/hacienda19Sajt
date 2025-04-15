@@ -6,7 +6,7 @@ import AnimatedBottomHeading from "./AnimatedBottomHeading";
 
 const caveat = Caveat({ subsets: ["latin"] });
 
-export default function HerroPattern({ image }) {
+export default function HerroPattern({ image, children }) {
   return (
     <div
       className="flex flex-col min-h-screen"
