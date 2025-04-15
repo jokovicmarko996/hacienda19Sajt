@@ -36,11 +36,6 @@ export default function HerroPattern({ image, children }) {
       {/* <CoverflowSlider /> */}
 
       {/* Main Content */}
-      <main className="flex-grow p-8">
-        <h2 className="text-2xl font-bold">Main Content</h2>
-        <p className="mt-4">This is the main content of the page.</p>
-      </main>
-
 
     </div>
   );

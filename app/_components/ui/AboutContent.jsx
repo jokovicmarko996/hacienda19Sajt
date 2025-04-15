@@ -140,7 +140,44 @@ const AboutContent = () => {
 
       {/* TO DO => KAO U ZENTRY-U SLIKA KOJA SE RASIRI NA EKRAN I IZNAD NJE NEKI TEXT => ISPOD NEKE ANIMACIJE  */}
 
-      <section>Recenzije</section>
+      <section className="bg-black py-16">
+        <div className="container mx-auto px-6 md:px-12">
+          {/* Section Title */}
+          <h2 className="text-3xl md:text-5xl font-panchang text-center text-white mb-12">
+            Šta ljudi kažu o nama
+          </h2>
+
+          {/* Reviews Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Review 1 */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+              <p className="text-lg text-gray-300 italic mb-4">
+                "Pergola je prelepa! Transformisala je naš spoljašnji
+                prostor u prelepu i funkcionalnu oblast."
+              </p>
+              <h4 className="text-xl font-bold text-white">- Andrea Pekić</h4>
+            </div>
+
+            {/* Review 2 */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+              <p className="text-lg text-gray-300 italic mb-4">
+                "Tim je bio profesionalan i isporučio je tačno ono što smo
+                želeli. Toplo preporučujem Haciendu!"
+              </p>
+              <h4 className="text-xl font-bold text-white">- Stefan Paunović</h4>
+            </div>
+
+            {/* Review 3 */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+              <p className="text-lg text-gray-300 italic mb-4">
+                "Njihovi dizajni su jedinstveni, a kvalitet je vrhunski. Ne
+                možemo biti srećniji sa rezultatima."
+              </p>
+              <h4 className="text-xl font-bold text-white">- Petar Vuković</h4>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 };

@@ -56,7 +56,7 @@ const AboutHero = () => {
         {/* Second Heading */}
         <h2
           ref={(el) => (headingRefs.current[1] = el)}
-          className="text-5xl md:text-9xl font-corinthia text-white md:-mt-4"
+          className="text-5xl md:text-9xl font-corinthia text-white -mt-4"
         >
           Pergole
         </h2>
@@ -64,7 +64,7 @@ const AboutHero = () => {
         {/* Third Heading */}
         <h3
           ref={(el) => (headingRefs.current[2] = el)}
-          className="text-2xl md:text-4xl lg:text-6xl font-playfair text-white -mt-4"
+          className="text-2xl md:text-4xl lg:text-6xl font-playfair text-white -mt-2 md:-mt-4"
         >
           Unikatnog Dizajna
         </h3>
