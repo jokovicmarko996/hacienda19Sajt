@@ -18,7 +18,7 @@ const links = [
   { href: "/about", label: "O nama" },
   { href: "/products", label: "Proizvodi" },
   { href: "/contact", label: "Kontakt" },
-  { href: "/services", label: "Usluge" },
+  // { href: "/services", label: "Usluge" },
 ];
 
 function Navigation() {

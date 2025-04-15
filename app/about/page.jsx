@@ -9,7 +9,7 @@ import AboutHero from "../_components/ui/AboutHero";
 const page = () => {
   return (
     <div>
-      <HerroPattern image={bg} />
+      {/* <HerroPattern image={bg} /> */}
 
       <AboutHero />
 

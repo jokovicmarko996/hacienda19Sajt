@@ -27,6 +27,9 @@ const page = () => {
       {/* TO DO => HERO SECTION =>  */}
       <HerroPattern image={bg} />
 
+      <h1>Treba hero sliku izmeniti</h1>
+      <h1>Treba dopisati malo pre proizvoda texta</h1>
+
       <ProductsContent />
 
 
