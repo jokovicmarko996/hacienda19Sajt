@@ -224,12 +224,19 @@ const AboutContent = () => {
               className="bg-transparent p-6 rounded-full shadow-lg border-4 border-green-400 flex flex-col items-center justify-center w-40 h-40 mx-auto"
             >
               {/* Animated Number */}
-              <h5
+              {/* <h5
                 ref={(el) => (statsRefs.current[index] = el)}
                 data-value={stat.value}
                 className="text-3xl font-bold text-green-400"
               >
                 0
+              </h5> */}
+              <h5
+                ref={(el) => (statsRefs.current[index] = el)}
+                data-value={stat.value}
+                className="text-3xl font-bold text-green-400"
+              >
+                {stat.value}
               </h5>
               <p className="text-sm text-gray-300 text-center">{stat.label}</p>
             </div>
@@ -279,6 +286,10 @@ const AboutContent = () => {
         </div>
       </section>
 
+      <h1 className="flex justify-center text-4xl">
+        Svaku sekciju animirati scroll reveal, stats animirati kada upadne u
+        viewport, dodati accordion sa onim listama
+      </h1>
     </section>
   );
 };
