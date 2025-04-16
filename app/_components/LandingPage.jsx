@@ -41,6 +41,11 @@ export default function HeroC() {
         />
       </section>
 
+      <h1 className="text-2xl flex justify-center items-center text-white font-pachang font-normal mb-4">
+        Podsetnik: Zvezdice da budu dinamicne i zvezda padalica da prolece na
+        2-3 sekunde. Prevedy stery quotes sekciju
+      </h1>
+
       <StarryQuote />
 
       <Features />

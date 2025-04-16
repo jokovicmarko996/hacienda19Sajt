@@ -144,7 +144,7 @@ export default function FooterC() {
 
         {/* dodat textualni logo  */}
         <Link href="/">
-          <h1 className="text-2xl font-bold text-green-400 text-center pt-5 font-panchang">
+          <h1 className="text-2xl font-normal text-green-400 text-center pt-5 font-panchang">
             Hacienda
           </h1>
         </Link>
