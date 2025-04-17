@@ -14,6 +14,8 @@ const page = () => {
       <AboutHero />
 
       <AboutContent />
+
+      {/* uradi animacije */}
     </div>
   );
 };
