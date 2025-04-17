@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const ContactContent = () => {
@@ -9,25 +10,46 @@ const ContactContent = () => {
           Kontaktirajte nas
         </h2>
 
+        <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
+          Familiji i prijateljima ne radimo ni za pare.
+        </h2>
+
         {/* Two Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Column 1: Contact Information */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-bold text-white mb-4">Naša adresa</h3>
             <p className="text-lg text-gray-400 leading-relaxed">
-              Hacienda d.o.o. <br />
-              Ulica Pere Perića 123 <br />
-              11000 Beograd, Srbija
+              PR Hacienda 2019 <br />
+              Njegoseva 21
+              <br />
+              19320 Kladovo
             </p>
 
             <h3 className="text-xl font-bold text-white mt-6 mb-4">Telefon</h3>
+            {/* <p className="text-lg text-gray-400 leading-relaxed">
+              +381 65 267 0616
+            </p> */}
             <p className="text-lg text-gray-400 leading-relaxed">
-              +381 11 123 4567
+              <a
+                href="tel:+381652670616"
+                className="hover:underline"
+              >
+                +381 65 267 0616
+              </a>
             </p>
 
             <h3 className="text-xl font-bold text-white mt-6 mb-4">Email</h3>
+            {/* <p className="text-lg text-gray-400 leading-relaxed">
+              Hacienda.office2019@gmail.com
+            </p> */}
             <p className="text-lg text-gray-400 leading-relaxed">
-              info@hacienda.rs
+              <Link
+                href="mailto:Hacienda.office2019@gmail.com"
+                className=" hover:underline"
+              >
+                Hacienda.office2019@gmail.com
+              </Link>
             </p>
           </div>
 

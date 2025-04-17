@@ -13,8 +13,8 @@ const page = () => {
     <>
       <HerroPattern image={bg} />
       {/* <Contact /> */}
-      <FAQAccordion />
       <ContactContent />
+      <FAQAccordion />
       <SocialMediaLinks />
     </>
   );

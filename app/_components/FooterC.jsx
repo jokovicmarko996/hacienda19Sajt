@@ -29,7 +29,7 @@ const links = [
   { href: "/products", label: "Proizvodi" },
   { href: "/contact", label: "Kontakt" },
   // { href: "/projects", label: "Projects" }, nzm da li ovo dodati jer je slicno kao produkti
-  { href: "/services", label: "Usluge" },
+  // { href: "/services", label: "Usluge" },
 ];
 
 export default function FooterC() {

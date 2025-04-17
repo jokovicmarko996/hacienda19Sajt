@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -83,7 +83,7 @@ const StatsSection = () => {
   const stats = [
     { value: 95, label: "Završenih Projekta" },
     { value: 150, label: "Zadovoljnih Klijenata" },
-    { value: 8, label: "Godina iskustva" },
+    { value: 6, label: "Godina iskustva" },
   ];
   const statsRefs = useRef([]);
 
@@ -313,6 +313,34 @@ const AboutContent = () => {
         Slika iz hero sekcije mora da bude sa aspect ratiom 16:9 da bi se bolje
         videla na desktopu a ne iseceno!
       </h1>
+
+      {/* ubaci u trenutne krugove -> svaki krug */}
+      {/* <motion.svg
+        className="w-[300px] xl:w-[506px] h-[300px] xl:h-[506px]"
+        fill="transparent"
+        viewBox="0 0 506 506"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <motion.circle
+          cx="253"
+          cy="253"
+          r="250"
+          stroke="#00ff99"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ strokeDasharray: "24 10 0 0" }}
+          animate={{
+            strokeDasharray: ["15 120 25 25", "16 25 92 72", "4 250 22 22"],
+            rotate: [120, 360],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      </motion.svg> */}
     </section>
   );
 };
