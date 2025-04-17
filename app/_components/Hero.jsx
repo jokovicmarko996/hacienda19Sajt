@@ -26,7 +26,7 @@ export default function HerroPattern({ image, children }) {
         </div>
         <div className="absolute inset-0 flex items-center justify-center"></div>
 
-        <AnimatedBottomHeading />
+        {/* <AnimatedBottomHeading /> */}
       </section>
 
       {/* <ImageSlider /> */}
