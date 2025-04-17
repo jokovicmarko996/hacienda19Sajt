@@ -3,8 +3,6 @@ import React from "react";
 const ProductsContent = () => {
   return (
     <>
-   
-
       <div className="col-span-1 md:col-span-2 bg-black p-4 rounded-lg shadow-lg">
         {/* Heading */}
         <h2 className="text-2xl md:text-5xl font-panchang text-white mb-6 text-center">
@@ -24,8 +22,8 @@ const ProductsContent = () => {
             </p>
           </div>
 
-          {/* Column 2 */}
-          <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
+          {/* Column 2 (Hidden on smaller screens) */}
+          <div className="hidden md:block bg-gray-800 p-4 rounded-lg shadow-lg">
             <p className="text-lg text-gray-400 leading-relaxed">
               Nudimo širok spektar pergola, uključujući klasične, moderne i
               rustične dizajne. Naš cilj je da vaš eksterijer pretvorimo u

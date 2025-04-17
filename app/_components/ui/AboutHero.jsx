@@ -5,12 +5,14 @@ import { TextPlugin } from "gsap/TextPlugin";
 import Image from "next/image";
 import bgImage from "../../../public/hero/pergola11.png";
 import { useGSAP } from "@gsap/react";
+import GlassButton from "../GlassButton"; // Adjust the import path as needed
 
 gsap.registerPlugin(TextPlugin);
 
 const AboutHero = () => {
   const headingRefs = useRef([]);
   const heroImageRef = useRef(null);
+  const glassButtonRef = useRef(null);
   const headingSectionRef = useRef(null);
 
   useGSAP(() => {
@@ -68,6 +70,31 @@ const AboutHero = () => {
       duration: 1.5,
       ease: "power2.out",
     });
+
+    // // Animate Glass Buttons
+    // timeline.fromTo(
+    //   ".glass-button", // Target buttons with this class
+    //   { opacity: 0, y: 20 }, // Start hidden and slightly below
+    //   {
+    //     opacity: 1,
+    //     y: 0, // Move to visible and centered
+    //     duration: 0.8,
+    //     ease: "power2.out",
+    //   },
+    //   "+=0.3" // Add a delay of 0.3 seconds after the hero image is revealed
+    // );
+    // Animate Glass Buttons
+    timeline.fromTo(
+      glassButtonRef.current, // Target the buttons container
+      { opacity: 0, y: 20 }, // Start hidden and slightly below
+      {
+        opacity: 1,
+        y: 0, // Move to visible and centered
+        duration: 0.4,
+        ease: "power2.out",
+      },
+      "+=0.1" // Add a delay of 0.3 seconds after the hero image is revealed
+    );
   }, []);
 
   return (
@@ -107,7 +134,7 @@ const AboutHero = () => {
       {/* Hero Image Section */}
       <div
         ref={heroImageRef}
-        className="flex flex-col min-h-screen opacity-0" // Initially hidden
+        className="flex flex-col min-h-screen opacity-0 relative" // Added relative for positioning
       >
         <section className="relative flex-grow flex items-center justify-center h-screen">
           {/* Background Image */}
@@ -118,6 +145,23 @@ const AboutHero = () => {
               layout="fill"
               objectFit="cover"
               priority
+            />
+          </div>
+
+          {/* Buttons */}
+          <div
+            ref={glassButtonRef}
+            className="absolute bottom-[15%] md:bottom-[20%] left-[20%] md:left-0 w-full flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4"
+          >
+            <GlassButton
+              href="/contact"
+              text={"Kontakt"}
+              className="px-4 py-2 text-xs md:text-lg "
+            />
+            <GlassButton
+              href="/products"
+              text={"Proizvodi"}
+              className="px-4 py-2 text-xs md:text-lg "
             />
           </div>
         </section>

@@ -55,8 +55,8 @@ const GsapAnimatedTextButton = ({ className }) => {
         <Link href={`/contact`}>
           <GlassButton
             text={"Kontakt"}
-            className="text-xl lg:text-3xl text-white"
-          ></GlassButton>
+            className="px-4 py-2 text-xs md:text-lg"
+          />
         </Link>
       </div>
     </div>

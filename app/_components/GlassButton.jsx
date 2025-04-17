@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TiLocationArrow } from "react-icons/ti";
 
-const GlassButton = ({ text, onClick, children }) => {
+const GlassButton = ({ text, onClick, className }) => {
   return (
     <div className="relative group w-max overflow-hidden">
       {/* Animated Border */}
@@ -22,7 +21,7 @@ const GlassButton = ({ text, onClick, children }) => {
       {/* Button */}
       <button
         onClick={onClick}
-        className="relative font-panchang px-3 py-2 text-white font-semibold  backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg"
+        className={`relative font-panchang px-3 py-2 text-white font-semibold backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg ${className}`}
       >
         {text}
       </button>

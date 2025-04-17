@@ -135,7 +135,13 @@ const StatsSection = () => {
             >
               {stat.value}
             </h5>
-            <p className="text-sm text-gray-300 text-center">{stat.label}</p>
+            <p className="text-sm text-gray-300 text-center font-panchang font-normal capitalize">
+              {stat.label.split(" ").map((word, index) => (
+                <span key={index} className="block">
+                  {word}
+                </span>
+              ))}
+            </p>
           </div>
         ))}
       </div>
@@ -306,12 +312,7 @@ const AboutContent = () => {
 
       <h1 className="flex justify-center text-4xl">
         Svaku sekciju animirati scroll reveal, stats animirati kada upadne u
-        viewport, dodati accordion sa onim listama. Slika iz hero sekcije mora
-        da bude
-      </h1>
-      <h1 className="flex justify-center text-4xl">
-        Slika iz hero sekcije mora da bude sa aspect ratiom 16:9 da bi se bolje
-        videla na desktopu a ne iseceno!
+        viewport
       </h1>
 
       {/* ubaci u trenutne krugove -> svaki krug */}

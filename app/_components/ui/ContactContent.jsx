@@ -10,9 +10,9 @@ const ContactContent = () => {
           Kontaktirajte nas
         </h2>
 
-        <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
+        {/* <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
           Familiji i prijateljima ne radimo ni za pare.
-        </h2>
+        </h2> */}
 
         {/* Two Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

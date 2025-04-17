@@ -35,7 +35,7 @@ export default function HeroC() {
         </div>
 
         {/* Animated Heading & Button */}
-        <GsapAnimatedText
+      <GsapAnimatedText
           className="text-white font-extralight"
           // className="text-3xl  md:text-5xl lg:text-[154px] font-panchang text-white"
         />

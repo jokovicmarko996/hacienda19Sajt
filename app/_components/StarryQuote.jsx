@@ -32,7 +32,7 @@ export default function StarryQuote() {
     // Function to make random stars glow
     function glowStars() {
       // Select 5 random stars to glow
-      const glowingStars = stars.sort(() => 0.5 - Math.random()).slice(0, 5);
+      const glowingStars = stars.sort(() => 0.5 - Math.random()).slice(0, 15);
 
       glowingStars.forEach((star) => {
         // Animate the star's radius to create a glowing effect
