@@ -310,10 +310,10 @@ const AboutContent = () => {
       {/* Testimonials Section */}
       <Testimonials />
 
-      <h1 className="flex justify-center text-4xl">
+      {/* <h1 className="flex justify-center text-4xl">
         Svaku sekciju animirati scroll reveal, stats animirati kada upadne u
         viewport
-      </h1>
+      </h1> */}
 
       {/* ubaci u trenutne krugove -> svaki krug */}
       {/* <motion.svg
