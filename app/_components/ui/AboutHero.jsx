@@ -6,6 +6,7 @@ import Image from "next/image";
 import bgImage from "../../../public/hero/pergola11.png";
 import { useGSAP } from "@gsap/react";
 import GlassButton from "../GlassButton"; // Adjust the import path as needed
+import Link from "next/link";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -153,16 +154,19 @@ const AboutHero = () => {
             ref={glassButtonRef}
             className="absolute bottom-[15%] md:bottom-[20%] left-[20%] md:left-0 w-full flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4"
           >
-            <GlassButton
-              href="/contact"
-              text={"Kontakt"}
-              className="px-4 py-2 text-xs md:text-lg "
-            />
-            <GlassButton
-              href="/products"
-              text={"Proizvodi"}
-              className="px-4 py-2 text-xs md:text-lg "
-            />
+            <Link href={`/contact`}>
+              <GlassButton
+                text={"Kontakt"}
+                className="px-4 py-2 text-xs md:text-lg "
+              />
+            </Link>
+
+            <Link href={`/products`}>
+              <GlassButton
+                text={"Proizvodi"}
+                className="px-4 py-2 text-xs md:text-lg "
+              />
+            </Link>
           </div>
         </section>
       </div>
