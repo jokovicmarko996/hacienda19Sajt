@@ -116,7 +116,7 @@ export const BentoCard = ({ src, title, description }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <div className="relative size-full">
+    <Link href="/products" className="relative size-full">
       <Image
         src={src}
         alt={title}
@@ -126,10 +126,17 @@ export const BentoCard = ({ src, title, description }) => {
       <div className=" relative z-10 flex size-full flex-col justify-between p-5 text-white">
         {/* TO DO => NAZIV PERGOLE */}
         {/* <div>
-    <h1 className="font-extrabold text-3xl md:text-4xl font-amagro">
-      {title}
-    </h1>
-  </div> */}
+<h1 className="font-extrabold text-3xl md:text-4xl font-amagro">
+{title}
+</h1>
+</div> */}
+        {/* <h1 className="absolute top-2 left-2 text-white text-lg sm:text-xl font-panchang bg-black/50 px-3 py-1 rounded-md">
+          {title}
+        </h1> */}
+
+        <h1 className="absolute top-2 left-2 bg-white/80 text-black  font-semibold text-lg sm:text-xl px-2 py-1 rounded-md shadow-md font-panchang">
+          {title}
+        </h1>
 
         <Link
           href={"/products"}
@@ -137,7 +144,7 @@ export const BentoCard = ({ src, title, description }) => {
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
+          className="absolute bottom-2 right-2 sm:bottom-5 sm:right-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
           // className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase shadow-lg transition-all duration-300"
         >
           <div
@@ -148,11 +155,17 @@ export const BentoCard = ({ src, title, description }) => {
             }}
           />
           <TiLocationArrow className="relative z-20 text-white" />
-          {/* <p className="relative z-20 text-white font-bodoni">Pogledaj</p> */}
+
           <p className="relative z-20 text-white font-amagro sm:font-panchang">
             Pogledaj
           </p>
         </Link>
+
+        {/* Dugme u donjem desnom uglu */}
+        {/* <button className="absolute bottom-2 right-2 flex items-center gap-2 px-3 py-1 bg-black text-white text-xs font-amagro sm:font-amagro uppercase rounded-full shadow-md w-fit items-center hover:bg-gray-800 transition-all duration-300">
+          <TiLocationArrow className="text-white" />
+          <span>Detalji</span>
+        </button> */}
 
         {/* <Link
           href={"/products"}
@@ -174,7 +187,7 @@ export const BentoCard = ({ src, title, description }) => {
           <p className="relative z-20 text-white">Pogledaj</p>
         </Link> */}
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -202,7 +215,7 @@ const Features = () => (
           title={
             <>
               {/* svoj naziv */}
-              {/* radia<b>n</b>t */}
+              Pergola 1
             </>
           }
           description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
@@ -217,7 +230,7 @@ const Features = () => (
             title={
               <>
                 {/* svoj naziv */}
-                zig<b>m</b>a
+                Pergola 2
               </>
             }
             description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
@@ -228,12 +241,7 @@ const Features = () => (
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
             src={pergola3}
-            title={
-              <>
-                {/* svoj naziv */}
-                {/* n<b>e</b>xus */}
-              </>
-            }
+            title={<>Pergola 3</>}
             description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
             // isComingSoon
           />
@@ -245,7 +253,7 @@ const Features = () => (
             title={
               <>
                 {/* svoj naziv */}
-                {/* az<b>u</b>l */}
+                Pergola 4
               </>
             }
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
@@ -313,7 +321,7 @@ const Features = () => (
             title={
               <>
                 {/* svoj naziv */}
-                {/* az<b>u</b>l */}
+                Pergola 5
               </>
             }
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."

@@ -58,11 +58,22 @@ export default function StarryQuote() {
   }, []);
 
   return (
-    <div className="relative w-full h-[50vh] bg-black flex items-center justify-center text-white text-2xl text-center p-4">
+    <div className="relative w-full h-[60vh] bg-black flex items-center justify-center text-white text-center p-4">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
-      <p className="relative z-10 text-2xl md:text-4xl font-panchang font-normal text-white text-center leading-loose">
-        “Sumnja uništi više snova nego neuspeh.”
-      </p>
+      <div className="relative z-10">
+        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+          Mesto gde
+        </h1>
+        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+          spoljašnji prostor
+        </h1>
+        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+          postaje
+        </h1>
+        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+          dom
+        </h1>
+      </div>
     </div>
   );
 }
