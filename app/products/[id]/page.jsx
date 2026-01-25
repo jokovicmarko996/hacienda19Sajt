@@ -8,7 +8,8 @@ const products = [
     id: 1,
     title: "Pergola 1",
     description:
-      "Detalji o Pergoli 1. Ovo je elegantna pergola sa modernim dizajnom.",
+      "Ova pergola je savršeno rešenje za vaš vrt ili terasu. Izrađena je od visokokvalitetnih materijala koji pružaju dugotrajnost i otpornost na vremenske uslove. Njen moderan dizajn omogućava savršeno uklapanje u svaki prostor, dok pruža zaštitu od sunca i kiše. Idealna je za opuštanje i uživanje na otvorenom.",
+    price: "1,200$/kv",
     images: [
       "/products/pergola1.png",
       "/products/pergola1.png",
@@ -19,7 +20,9 @@ const products = [
   {
     id: 2,
     title: "Pergola 2",
-    description: "Detalji o Pergoli 2. Ovo je savršena pergola za vaš vrt.",
+    description:
+      "Ova pergola kombinuje funkcionalnost i estetiku. Nudi odličnu zaštitu od vremenskih uslova, dok njen elegantan dizajn doprinosi lepoti vašeg prostora. Lako se montira i održava, što je čini idealnim izborom za svaki dom.",
+    price: "1,500$/kv",
     images: [
       "/products/pergola2.png",
       "/products/pergola1.png",
@@ -27,7 +30,6 @@ const products = [
       "/products/pergola3.png",
     ],
   },
-  // Dodajte ostale pergole ovde...
 ];
 
 const ProductPage = () => {
@@ -59,10 +61,6 @@ const ProductPage = () => {
 
   return (
     <div className="p-4 mt-[calc(60px+10px)]">
-      {" "}
-      {/* Dinamički razmak od vrha */}
-      {/* Naslov */}
-      <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
       {/* Glavna slika sa naslovom */}
       <div className="relative w-full h-96 mb-4">
         <Image
@@ -71,24 +69,25 @@ const ProductPage = () => {
           className="object-cover rounded-lg"
           layout="fill"
         />
-        {/* Naslov u gornjem levom uglu */}
-        <div className="absolute top-2 left-2 bg-white/80 text-black text-sm font-semibold px-3 py-1 rounded-md shadow-md">
+        {/* Naslov u donjem desnom uglu */}
+        <div className="absolute bottom-2 right-2 bg-white/80 text-black text-sm font-panchang px-3 py-1 rounded-md shadow-md">
           {product.title}
         </div>
         {/* Dugmad za navigaciju */}
         <button
           onClick={handlePrevImage}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/50"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 hover:bg-white/20 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none"
         >
-          &lt;
+          <span className="text-lg font-bold">&lt;</span>
         </button>
         <button
           onClick={handleNextImage}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/50"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hover:bg-white/20 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none"
         >
-          &gt;
+          <span className="text-lg font-bold">&gt;</span>
         </button>
       </div>
+
       {/* Male slike */}
       <div className="grid grid-cols-3 gap-4 mb-4">
         {product.images.slice(1).map((image, index) => (
@@ -102,9 +101,22 @@ const ProductPage = () => {
           </div>
         ))}
       </div>
+
       {/* Detalji o proizvodu */}
-      <div className="bg-gray-700 text-gray-300 p-4 rounded-lg">
-        <p className="text-lg">{product.description}</p>
+      <div className="bg-gray-700 text-gray-300 p-6 rounded-lg space-y-4">
+        {/* Naslov */}
+        <h3 className="text-2xl font-panchang text-white">{product.title}</h3>
+
+        {/* Opis */}
+        <h3 className="text-2xl font-panchang text-green-400">Opis</h3>
+        <p className="text-gray-300 text-lg font-serif text-justify">
+          {product.description}
+        </p>
+
+        {/* Cena */}
+        <h3 className="text-2xl font-panchang text-green-400">
+          Cena: {product.price}
+        </h3>
       </div>
     </div>
   );

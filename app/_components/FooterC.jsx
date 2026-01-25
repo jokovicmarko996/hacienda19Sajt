@@ -41,6 +41,7 @@ export default function FooterC() {
     // <footer className="fixed bottom-0 min-w-full bg-white/10 backdrop-blur-md border-t border-white/20 py-12">
 
     <footer className="overflow-x-hidden  max-w-full bg-black backdrop-blur-md border-t  border-white/20 py-12 font-serif ">
+
       <div className="container mx-auto px-6">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

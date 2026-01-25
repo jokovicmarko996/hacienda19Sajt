@@ -11,6 +11,46 @@ import { useGSAP } from "@gsap/react";
 /* The following plugin is a Club GSAP perk */
 // import { ScrollSmoother } from "gsap/ScrollSmoother";
 
+import PropTypes from "prop-types";
+import { useRouter } from "next/navigation";
+import { FaArrowUp } from "react-icons/fa"; // Uvoz ikone strelice
+
+const Button = ({ text, href, onClick, className }) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (href) {
+      router.push(href); // Navigacija na zadati URL
+    } else if (onClick) {
+      onClick(); // Poziv funkcije ako je prosleđena
+    }
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`flex items-center justify-center gap-2 px-2 py-1 bg-green-600
+         text-white text-sm font-bold rounded-md hover:bg-green-700 transition-all duration-300 ${className}`}
+    >
+      {text}
+      <FaArrowUp className="text-white rotate-45" /> {/* Ikonica strelice */}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+};
+
+Button.defaultProps = {
+  href: null,
+  onClick: null,
+  className: "",
+};
+
 // gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 const links = [
@@ -103,6 +143,9 @@ function Navigation() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Button */}
+            <Button text="Zatraži ponudu" href="/contact" className="ml-4" />
           </div>
 
           {/* Mobile Menu Button */}
@@ -169,6 +212,13 @@ function Navigation() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Button in Mobile Menu */}
+              <Button
+                text="Zatraži ponudu"
+                href="/contact"
+                className="w-full"
+              />
             </div>
           </div>
         )}
