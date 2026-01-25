@@ -1,17 +1,10 @@
 import Image from "next/image";
 // import pergolaHero from "../../public/hero/pergola1.png";
-import pergolaHero from "../../public/products/pergola1.png";
-import AnimatedText from "./animatedText";
 import { Caveat } from "next/font/google";
-import GlassButton from "./GlassButton";
+import pergolaHero from "../../public/products/pergola1.png";
 import Features from "./Features";
-import StarryQuote from "./StarryQuote";
-import AnimatedHeading from "./AnimatedHeading";
 import GsapAnimatedText from "./GsapATB";
-import Link from "next/link";
-import AnimiraniNaslov from "./AnimiraniNaslov";
-import { MdLocalPhone } from "react-icons/md";
-import AnimatedHeadingGsap from "./AnimatedHeadingGsap";
+import StarryQuote from "./StarryQuote";
 
 const caveat = Caveat({ subsets: ["latin"] });
 

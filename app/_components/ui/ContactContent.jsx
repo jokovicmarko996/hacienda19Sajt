@@ -1,113 +1,122 @@
-"use client";
-import { useParams } from "next/navigation"; // Koristimo useParams za dinamičke parametre
-import Image from "next/image";
-import { useState } from "react"; // Dodajemo state za navigaciju kroz slike
+import Link from "next/link";
+import React from "react";
 
-const products = [
-  {
-    id: 1,
-    title: "Pergola 1",
-    description:
-      "Detalji o Pergoli 1. Ovo je elegantna pergola sa modernim dizajnom.",
-    images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
-    ],
-  },
-  {
-    id: 2,
-    title: "Pergola 2",
-    description: "Detalji o Pergoli 2. Ovo je savršena pergola za vaš vrt.",
-    images: [
-      "/products/pergola2.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
-    ],
-  },
-  // Dodajte ostale pergole ovde...
-];
-
-const ProductPage = () => {
-  const params = useParams(); // Dohvatanje dinamičkih parametara iz URL-a
-  const { id } = params;
-
-  // Pronađi proizvod na osnovu ID-a
-  const product = products.find((p) => p.id === parseInt(id));
-
-  // State za praćenje trenutne slike
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Funkcije za navigaciju kroz slike
-  const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  if (!product) {
-    return <p>Proizvod nije pronađen.</p>;
-  }
-
+const ContactContent = () => {
   return (
-    <div className="p-4 mt-[calc(60px+10px)]">
-      {" "}
-      {/* Dinamički razmak od vrha */}
-      {/* Naslov */}
-      <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
-      {/* Glavna slika sa naslovom */}
-      <div className="relative w-full h-96 mb-4">
-        <Image
-          src={product.images[currentImageIndex]}
-          alt={product.title}
-          className="object-cover rounded-lg"
-          layout="fill"
-        />
-        {/* Naslov u gornjem levom uglu */}
-        <div className="absolute top-2 left-2 bg-white/80 text-black text-sm font-semibold px-3 py-1 rounded-md shadow-md">
-          {product.title}
-        </div>
-        {/* Dugmad za navigaciju */}
-        <button
-          onClick={handlePrevImage}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/50"
-        >
-          &lt;
-        </button>
-        <button
-          onClick={handleNextImage}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/30 backdrop-blur-md text-black w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/50"
-        >
-          &gt;
-        </button>
-      </div>
-      {/* Male slike */}
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {product.images.slice(1).map((image, index) => (
-          <div key={index} className="relative w-full h-40">
-            <Image
-              src={image}
-              alt={`${product.title} - Slika ${index + 1}`}
-              className="object-cover rounded-lg"
-              layout="fill"
-            />
+    <section className="bg-black py-16">
+      <div className="container mx-auto px-6 md:px-12">
+        {/* Heading */}
+        <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
+          Kontaktirajte nas
+        </h2>
+
+        {/* <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
+          Familiji i prijateljima ne radimo ni za pare.
+        </h2> */}
+
+        {/* Two Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Column 1: Contact Information */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold text-white mb-4">Naša adresa</h3>
+            <p className="text-lg text-gray-400 leading-relaxed">
+              PR Hacienda 2019 <br />
+              Njegoseva 21
+              <br />
+              19320 Kladovo
+            </p>
+
+            <h3 className="text-xl font-bold text-white mt-6 mb-4">Telefon</h3>
+            {/* <p className="text-lg text-gray-400 leading-relaxed">
+              +381 65 267 0616
+            </p> */}
+            <p className="text-lg text-gray-400 leading-relaxed">
+              <a href="tel:+381652670616" className="hover:underline">
+                +381 65 267 0616
+              </a>
+            </p>
+
+            <h3 className="text-xl font-bold text-white mt-6 mb-4">Email</h3>
+            {/* <p className="text-lg text-gray-400 leading-relaxed">
+              Hacienda.office2019@gmail.com
+            </p> */}
+            <p className="text-lg text-gray-400 leading-relaxed">
+              <Link
+                href="mailto:Hacienda.office2019@gmail.com"
+                className=" hover:underline"
+              >
+                Hacienda.office2019@gmail.com
+              </Link>
+            </p>
           </div>
-        ))}
+
+          {/* Column 2: Contact Form */}
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h3 className="text-xl font-bold text-white mb-4">
+              Pošaljite poruku
+            </h3>
+            <form className="space-y-4">
+              {/* Name Field */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-lg text-gray-400 mb-2"
+                >
+                  Ime i prezime
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  className="w-full p-3 rounded-lg bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                  placeholder="Unesite vaše ime"
+                />
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-lg text-gray-400 mb-2"
+                >
+                  Email adresa
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full p-3 rounded-lg bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                  placeholder="Unesite vašu email adresu"
+                />
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-lg text-gray-400 mb-2"
+                >
+                  Poruka
+                </label>
+                <textarea
+                  id="message"
+                  rows="5"
+                  className="w-full p-3 rounded-lg bg-gray-700 text-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600"
+                  placeholder="Unesite vašu poruku"
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full py-3 bg-green-600 text-gray-300 font-semibold rounded-lg shadow-lg hover:bg-green-700 transition-all duration-300"
+              >
+                Pošalji
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-      {/* Detalji o proizvodu */}
-      <div className="bg-gray-700 text-gray-300 p-4 rounded-lg">
-        <p className="text-lg">{product.description}</p>
-      </div>
-    </div>
+    </section>
   );
 };
 
-export default ProductPage;
+export default ContactContent;

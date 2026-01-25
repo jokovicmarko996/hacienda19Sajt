@@ -58,46 +58,6 @@
 
 // export default AnimatedHeading;
 
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-
-const AnimatedHeading = ({ title }) => {
-  const headingRef = useRef(null);
-
-  useEffect(() => {
-    const words = gsap.utils.toArray(".word"); // Select all words
-
-    gsap.fromTo(
-      words,
-      { x: 100, opacity: 0 }, // Start position (off-screen right)
-      {
-        x: 0, // Move to normal position
-        opacity: 1,
-        duration: 1,
-        stagger: 0.2, // Delays between each word
-        ease: "power3.out",
-      }
-    );
-  }, []);
-
-  return (
-    <h1
-      ref={headingRef}
-      className="text-4xl md:text-6xl font-bold text-white flex flex-col gap-2 overflow-hidden font-amagro "
-    >
-      {title.split(" ").map((word, index) => (
-        <span key={index} className="word block">
-          {word}
-        </span>
-      ))}
-    </h1>
-  );
-};
-
-export default AnimatedHeading;
-
 // "use client";
 
 // import { useEffect, useRef } from "react";
@@ -161,3 +121,42 @@ export default AnimatedHeading;
 // };
 
 // export default AnimatedHeading;
+
+"use client";
+
+import { motion } from "framer-motion";
+
+const AnimatedHeading = ({ title }) => {
+  // Variants for animating each word
+  const wordVariants = {
+    hidden: { x: 100, opacity: 0 }, // Start position (off-screen right)
+    visible: (index) => ({
+      x: 0, // Move to normal position
+      opacity: 1,
+      transition: {
+        duration: 1,
+        delay: index * 0.2, // Stagger effect for each word
+        ease: "easeOut",
+      },
+    }),
+  };
+
+  return (
+    <h1 className="text-4xl md:text-6xl font-bold text-white flex flex-col gap-2 overflow-hidden font-amagro">
+      {title.split(" ").map((word, index) => (
+        <motion.span
+          key={index}
+          className="word block"
+          initial="hidden"
+          animate="visible"
+          custom={index} // Pass the index to the variant
+          variants={wordVariants}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </h1>
+  );
+};
+
+export default AnimatedHeading;
