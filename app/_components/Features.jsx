@@ -113,7 +113,8 @@ export const BentoCard = ({ src, title, description }) => {
   const handleMouseLeave = () => setHoverOpacity(0);
 
   return (
-    <Link href="/products" className="relative size-full">
+    <div className="relative size-full">
+      {/* <Link href="/products" className="relative size-full"> */}
       <Image
         src={src}
         alt={title}
@@ -145,34 +146,8 @@ export const BentoCard = ({ src, title, description }) => {
             Pogledaj
           </p>
         </div>
-
-        {/* Dugme u donjem desnom uglu */}
-        {/* <button className="absolute bottom-2 right-2 flex items-center gap-2 px-3 py-1 bg-black text-white text-xs font-amagro sm:font-amagro uppercase rounded-full shadow-md w-fit items-center hover:bg-gray-800 transition-all duration-300">
-          <TiLocationArrow className="text-white" />
-          <span>Detalji</span>
-        </button> */}
-
-        {/* <Link
-          href={"/products"}
-          ref={hoverButtonRef}
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="absolute bottom-5 left-5 sm:bottom-3 sm:left-3 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-4 py-2 sm:px-3 sm:py-1 text-xs uppercase text-white/20"
-        >
-         
-          <div
-            className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-            style={{
-              opacity: hoverOpacity,
-              background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #2ef55287, #f2f1f125)`,
-            }}
-          />
-          <TiLocationArrow className="relative z-20 text-white" />
-          <p className="relative z-20 text-white">Pogledaj</p>
-        </Link> */}
       </div>
-    </Link>
+    </div>
   );
 };
 
