@@ -6,13 +6,12 @@ import { TiLocationArrow } from "react-icons/ti";
 import Image from "next/image";
 import Link from "next/link";
 
-// import pergola4 from "../../public/products/pergola4.png"; -> izmena
+
 import pergola2 from "../../public/products/pergola6.png";
 import pergola3 from "../../public/products/pergola7.png";
 import pergola1 from "../../public/products/pergola9.png";
 import pergola5 from "../../public/products/pergola10.png";
 import pergola4 from "../../public/products/pergola2.png";
-
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -210,7 +209,8 @@ const Features = () => (
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
-          src={pergola1}
+          src="/products/pergola9.png"
+          // src={pergola1}
           title={
             <>
               {/* svoj naziv */}
@@ -225,7 +225,8 @@ const Features = () => (
       <div className="grid h-[135vh] max-w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src={pergola2}
+            // src={pergola2}
+            src="/products/pergola6.png"
             title={
               <>
                 {/* svoj naziv */}
@@ -239,7 +240,8 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src={pergola3}
+            // src={pergola3}
+            src="/products/pergola7.png"
             title={<>Pergola 3</>}
             description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
             // isComingSoon
@@ -248,7 +250,8 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
           <BentoCard
-            src={pergola4}
+            src="/products/pergola2.png"
+            // src={pergola4}
             title={
               <>
                 {/* svoj naziv */}
@@ -316,7 +319,8 @@ const Features = () => (
           /> */}
 
           <BentoCard
-            src={pergola5}
+            src="products/pergola10.png"
+            // src={pergola5}
             title={
               <>
                 {/* svoj naziv */}
