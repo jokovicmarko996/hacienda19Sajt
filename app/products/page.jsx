@@ -1,5 +1,5 @@
 "use client";
-import HerroPattern from "../_components/Hero";
+import HerroPattern from "../_components/HerroPattern";
 import MansoryLayout from "../_components/MansoryLayout";
 import bg from "../../public/hero/pergola5.png"; // slika koja ce da bude hero image
 import MansoryLayoutImproved from "../_components/MansoryLayoutImproved";
@@ -25,11 +25,9 @@ const page = () => {
   return (
     <div className="overflow-x-hidden max-w-full">
       {/* TO DO => HERO SECTION =>  */}
-      <HerroPattern image={bg} />
-
+      <HerroPattern image={bg} heading={"Savrsena pergola"} />
 
       <ProductsContent />
-
 
       {/* <MansoryLayoutImproved images={images} /> */}
       {/* <HerroPattern image={"/public/hero/pergola1.png"} /> */}

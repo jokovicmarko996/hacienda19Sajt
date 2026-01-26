@@ -60,6 +60,7 @@ const GsapAnimatedTextButton = ({ className }) => {
       opacity: 1,
       scale: 1,
       transition: {
+        delay: 0.3 + "Hacienda".length * 0.1, // Dugmad se prikazuju 0.2s nakon završetka animacije teksta
         duration: 0.6,
         ease: "easeOut",
       },
@@ -114,5 +115,3 @@ const GsapAnimatedTextButton = ({ className }) => {
 };
 
 export default GsapAnimatedTextButton;
-
-

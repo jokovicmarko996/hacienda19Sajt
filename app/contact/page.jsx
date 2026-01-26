@@ -2,7 +2,7 @@
 import React from "react";
 import Contact from "../_components/Contact";
 import StarsCanvas from "../_components/canvas/Stars";
-import HerroPattern from "../_components/Hero";
+import HerroPattern from "../_components/HerroPattern";
 import bg from "../../public/products/pergola5.png"; // slika koja ce da bude hero image
 import ContactContent from "../_components/ui/ContactContent";
 import FAQAccordion from "../_components/FAQAccordion";

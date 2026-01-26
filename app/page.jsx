@@ -1,11 +1,9 @@
-import Image from "next/image";
-import HeroC from "./_components/LandingPage";
-import HeaderC from "./_components/HeaderC";
+import LandingPage from "./_components/LandingPage";
 
 export default function Home() {
   return (
     <div>
-      <HeroC />
+      <LandingPage />
     </div>
   );
 }

@@ -1,19 +1,18 @@
 "use client";
-import { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Image from "next/image";
+import Link from "next/link";
 
-import pergola1 from "../../public/products/pergola9.png";
+// import pergola4 from "../../public/products/pergola4.png"; -> izmena
 import pergola2 from "../../public/products/pergola6.png";
 import pergola3 from "../../public/products/pergola7.png";
-// import pergola4 from "../../public/products/pergola4.png"; -> izmena
-import pergola4 from "../../public/products/pergola2.png";
+import pergola1 from "../../public/products/pergola9.png";
 import pergola5 from "../../public/products/pergola10.png";
-import pergola6 from "../../public/products/pergola6.png";
-import AnimatedHeading from "./AnimatedHeading";
-import Link from "next/link";
+import pergola4 from "../../public/products/pergola2.png";
+
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },

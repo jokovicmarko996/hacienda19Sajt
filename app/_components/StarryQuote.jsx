@@ -61,16 +61,16 @@ export default function StarryQuote() {
     <div className="relative w-full h-[60vh] bg-black flex items-center justify-center text-white text-center p-4">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
       <div className="relative z-10">
-        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+        <h1 className="text-[2rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
           Mesto gde
         </h1>
-        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+        <h1 className="text-[2rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
           spoljašnji prostor
         </h1>
-        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+        <h1 className="text-[2rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
           postaje
         </h1>
-        <h1 className="text-[2.5rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
+        <h1 className="text-[2rem] md:text-[3.5rem] font-panchang font-semibold text-white leading-relaxed">
           dom
         </h1>
       </div>
