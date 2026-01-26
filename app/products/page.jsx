@@ -25,7 +25,7 @@ const page = () => {
   return (
     <div className="overflow-x-hidden max-w-full">
       {/* TO DO => HERO SECTION =>  */}
-      <HerroPattern image={bg} heading={"Savrsena pergola"} />
+      <HerroPattern image={bg} heading={"Ekskluzivni ambijent"} />
 
       <ProductsContent />
 

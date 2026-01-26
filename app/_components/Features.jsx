@@ -6,7 +6,6 @@ import { TiLocationArrow } from "react-icons/ti";
 import Image from "next/image";
 import Link from "next/link";
 
-
 import pergola2 from "../../public/products/pergola6.png";
 import pergola3 from "../../public/products/pergola7.png";
 import pergola1 from "../../public/products/pergola9.png";
@@ -115,23 +114,24 @@ export const BentoCard = ({ src, title, description }) => {
 
   return (
     <Link href="/products" className="relative size-full">
-      <Image
+      {/* <Image
         src={src}
         alt={title}
         fill
         className="absolute left-0 top-0 size-full object-cover object-center"
-      />
+      /> */}
+      <div className="absolute inset-0 z-0 will-change-transform [transform:translateZ(0)] [-webkit-transform:translateZ(0)] [-webkit-backface-visibility:hidden] contain-paint">
+        <Image
+          src={src.startsWith("/") ? src : `/${src}`}
+          alt={typeof title === "string" ? title : "Pergola"}
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectFit: "cover" }}
+          // unoptimized // uključi za test, pa ukloni kad potvrdiš
+        />
+      </div>
       <div className=" relative z-10 flex size-full flex-col justify-between p-5 text-white">
-        {/* TO DO => NAZIV PERGOLE */}
-        {/* <div>
-<h1 className="font-extrabold text-3xl md:text-4xl font-amagro">
-{title}
-</h1>
-</div> */}
-        {/* <h1 className="absolute top-2 left-2 text-white text-lg sm:text-xl font-panchang bg-black/50 px-3 py-1 rounded-md">
-          {title}
-        </h1> */}
-
         <h1 className="absolute top-2 left-2 bg-white/80 text-black  font-semibold text-lg sm:text-xl px-2 py-1 rounded-md shadow-md font-panchang">
           {title}
         </h1>
@@ -143,7 +143,6 @@ export const BentoCard = ({ src, title, description }) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className="absolute bottom-2 right-2 sm:bottom-5 sm:right-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
-          // className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase shadow-lg transition-all duration-300"
         >
           <div
             className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
@@ -319,7 +318,7 @@ const Features = () => (
           /> */}
 
           <BentoCard
-            src="products/pergola10.png"
+            src="/products/pergola10.png"
             // src={pergola5}
             title={
               <>

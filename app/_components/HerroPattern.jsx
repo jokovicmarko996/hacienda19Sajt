@@ -16,7 +16,7 @@ export default function HeroPattern({ image, heading = "" }) {
 
       {/* Text – bottom right */}
       <div className="absolute bottom-40 right-8 md:bottom-12 md:right-12 z-10 text-right">
-        <h1 className="font-panchang font-semibold text-white leading-tight text-4xl sm:text-4xl md:text-5xl lg:text-7xl">
+        <h1 className="font-panchang font-semibold text-white  text-4xl sm:text-4xl md:text-5xl lg:text-7xl">
           {words.map((word, i) => (
             <span key={i} className="block">
               {word}
