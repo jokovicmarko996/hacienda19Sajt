@@ -114,39 +114,40 @@ export const BentoCard = ({ src, title, description }) => {
 
   return (
     <div className="relative size-full">
-      {/* <Link href="/products" className="relative size-full"> */}
-      <Image
-        src={src}
-        alt={title}
-        fill
-        className="absolute left-0 top-0 size-full object-cover object-center"
-      />
-      <div className=" relative z-10 flex size-full flex-col justify-between p-5 text-white">
-        <h1 className="absolute top-2 left-2 bg-white/80 text-black  font-semibold text-lg sm:text-xl px-2 py-1 rounded-md shadow-md font-panchang">
-          {title}
-        </h1>
+      <Link href="/products">
+        <Image
+          src={src}
+          alt={title}
+          fill
+          className="absolute left-0 top-0 size-full object-cover object-center"
+        />
+        <div className=" relative z-10 flex size-full flex-col justify-between p-5 text-white">
+          <h1 className="absolute top-2 left-2 bg-white/80 text-black  font-semibold text-lg sm:text-xl px-2 py-1 rounded-md shadow-md font-panchang">
+            {title}
+          </h1>
 
-        <div
-          ref={hoverButtonRef}
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="absolute bottom-2 right-2 sm:bottom-5 sm:right-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
-        >
           <div
-            className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-            style={{
-              opacity: hoverOpacity,
-              background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #2ef55287, #f2f1f125)`,
-            }}
-          />
-          <TiLocationArrow className="relative z-20 text-white" />
+            ref={hoverButtonRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="absolute bottom-2 right-2 sm:bottom-5 sm:right-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
+          >
+            <div
+              className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+              style={{
+                opacity: hoverOpacity,
+                background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #2ef55287, #f2f1f125)`,
+              }}
+            />
+            <TiLocationArrow className="relative z-20 text-white" />
 
-          <p className="relative z-20 text-white font-amagro sm:font-panchang">
-            Pogledaj
-          </p>
+            <p className="relative z-20 text-white font-amagro sm:font-panchang">
+              Pogledaj
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
