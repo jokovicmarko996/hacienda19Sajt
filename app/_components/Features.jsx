@@ -114,30 +114,18 @@ export const BentoCard = ({ src, title, description }) => {
 
   return (
     <Link href="/products" className="relative size-full">
-      {/* <Image
+      <Image
         src={src}
         alt={title}
         fill
         className="absolute left-0 top-0 size-full object-cover object-center"
-      /> */}
-      <div className="absolute inset-0 z-0 will-change-transform [transform:translateZ(0)] [-webkit-transform:translateZ(0)] [-webkit-backface-visibility:hidden] contain-paint">
-        <Image
-          src={src.startsWith("/") ? src : `/${src}`}
-          alt={typeof title === "string" ? title : "Pergola"}
-          fill
-          priority
-          sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: "cover" }}
-          // unoptimized // uključi za test, pa ukloni kad potvrdiš
-        />
-      </div>
+      />
       <div className=" relative z-10 flex size-full flex-col justify-between p-5 text-white">
         <h1 className="absolute top-2 left-2 bg-white/80 text-black  font-semibold text-lg sm:text-xl px-2 py-1 rounded-md shadow-md font-panchang">
           {title}
         </h1>
 
-        <Link
-          href={"/products"}
+        <div
           ref={hoverButtonRef}
           onMouseMove={handleMouseMove}
           onMouseEnter={handleMouseEnter}
@@ -156,7 +144,7 @@ export const BentoCard = ({ src, title, description }) => {
           <p className="relative z-20 text-white font-amagro sm:font-panchang">
             Pogledaj
           </p>
-        </Link>
+        </div>
 
         {/* Dugme u donjem desnom uglu */}
         {/* <button className="absolute bottom-2 right-2 flex items-center gap-2 px-3 py-1 bg-black text-white text-xs font-amagro sm:font-amagro uppercase rounded-full shadow-md w-fit items-center hover:bg-gray-800 transition-all duration-300">
