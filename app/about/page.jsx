@@ -2,6 +2,9 @@
 
 import AboutContent from "../_components/ui/AboutContent";
 import AboutHero from "../_components/ui/AboutHero";
+import AboutStats from "../_components/ui/AboutStatsCGPT";
+import AboutValues from "../_components/ui/AboutValuesCGPT";
+import FollowUsSection from "../_components/ui/FollowUsCGPT";
 
 const page = () => {
   return (
@@ -10,7 +13,12 @@ const page = () => {
 
       <AboutHero />
 
-      <AboutContent />
+      <AboutStats />
+
+      <AboutValues />
+      {/* <AboutContent /> */}
+
+      <FollowUsSection />
 
       {/* <MansoryLayoutNew /> */}
 

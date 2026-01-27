@@ -1,30 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiPlus, FiMinus } from "react-icons/fi";
 
 const FAQAccordion = () => {
-  // const faqs = [
-  //   {
-  //     question: "Kako mogu da naručim pergolu?",
-  //     answer:
-  //       "Možete nas kontaktirati putem telefona, emaila ili popunjavanjem kontakt forme na našoj stranici. Naš tim će vas kontaktirati kako bismo dogovorili sve detalje.",
-  //   },
-  //   {
-  //     question: "Koji materijali se koriste za izradu pergola?",
-  //     answer:
-  //       "Naše pergole su izrađene od visokokvalitetnih materijala, uključujući pažljivo odabrano drvo i aluminijum, kako bi se osigurala dugotrajnost i otpornost na vremenske uslove.",
-  //   },
-  //   {
-  //     question: "Da li nudite prilagođene dizajne?",
-  //     answer:
-  //       "Da, nudimo prilagođene dizajne koji odgovaraju vašim potrebama i stilu prostora. Naš tim će raditi sa vama kako bi kreirao savršenu pergolu za vaš prostor.",
-  //   },
-  //   {
-  //     question: "Koliko traje proces izrade i montaže?",
-  //     answer:
-  //       "Proces izrade i montaže obično traje između 2 i 4 nedelje, u zavisnosti od složenosti projekta i trenutne dostupnosti materijala.",
-  //   },
-  // ];
-
   const faqs = [
     {
       question: "Da li izrađujete proizvode po meri?",
@@ -44,7 +23,7 @@ const FAQAccordion = () => {
     {
       question: "Koje materijale koristite?",
       answer:
-        "Koristimo kvalitetno, suvo drvo – najčešće smrču, bor i hrast, ali po želji radimo i sa drugim vrstama drveta. Svi materijali su tretirani i pripremljeni za dugotrajnu upotrebu na otvorenom.",
+        "Koristimo kvalitetno lamelirano drvo BSH i uzdužno nastavljano KVH, kao i suvo drvo iz vakuum sušare – smrču i beli bor. Svi materijali su pažljivo obrađeni i pripremljeni za dugotrajnu upotrebu na otvorenom.",
     },
     {
       question: "Da li radite i van mog grada?",
@@ -68,47 +47,119 @@ const FAQAccordion = () => {
     },
   ];
 
+  // (opciono) samo jedan otvoren u isto vreme:
+  const [openIndex, setOpenIndex] = useState(null);
+
   return (
-    <div className="bg-black p-8 rounded-lg shadow-lg">
-      <h2 className="text-2xl md:text-5xl font-panchang text-white mb-8 text-center">
-        Često postavljana pitanja
-      </h2>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <AccordionItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-          />
-        ))}
+    <section className="w-full bg-black px-4 sm:px-6 lg:px-10 py-14 sm:py-20">
+      <div className="mx-auto w-full max-w-6xl">
+        {/* Frame container */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 px-5 py-12 sm:px-8 sm:py-14">
+          {/* green glow */}
+          <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#4cffb3]/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
+
+          <h2 className="relative z-10 text-center font-panchang text-3xl sm:text-4xl lg:text-5xl text-[#4cffb3]">
+            Često postavljana pitanja
+          </h2>
+
+          <div className="relative z-10 mt-10 space-y-4 sm:space-y-5">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openIndex === index}
+                onToggle={() =>
+                  setOpenIndex((prev) => (prev === index ? null : index))
+                }
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-const AccordionItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
+const AccordionItem = ({ question, answer, isOpen, onToggle }) => {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
-      {/* Accordion Header */}
-      <div
-        className="flex justify-between items-center cursor-pointer"
-        onClick={toggleAccordion}
+    <motion.div
+      layout
+      className="
+        rounded-2xl border border-[#4cffb3]/25
+        bg-gradient-to-b from-[#4cffb3]/10 via-black/45 to-black/70
+        shadow-[0_0_30px_-18px_rgba(76,255,179,0.6)]
+        transition
+        hover:border-[#4cffb3]/55
+      "
+      whileHover={{ scale: 1.01 }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+    >
+      {/* Header */}
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-4 px-5 py-5 sm:px-6 sm:py-6 text-left"
+        aria-expanded={isOpen}
       >
-        <h3 className="text-xl font-bold text-white">{question}</h3>
-        <span className="text-white text-2xl">{isOpen ? "-" : "+"}</span>
-      </div>
+        <h3 className="font-panchang text-base sm:text-lg text-white">
+          {question}
+        </h3>
 
-      {/* Accordion Content */}
-      {isOpen && (
-        <p className="text-lg text-gray-400 leading-relaxed mt-4">{answer}</p>
-      )}
-    </div>
+        <span
+          className="
+            shrink-0 grid h-10 w-10 place-items-center rounded-full
+            border border-white/15 bg-black/40 text-[#4cffb3]
+          "
+          aria-hidden="true"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {isOpen ? (
+              <motion.span
+                key="minus"
+                initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+              >
+                <FiMinus className="text-xl" />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="plus"
+                initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+              >
+                <FiPlus className="text-xl" />
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </span>
+      </button>
+
+      {/* Content */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 sm:px-6 sm:pb-6">
+              <p className="font-montserrat text-sm sm:text-base text-white/70 leading-relaxed">
+                {answer}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

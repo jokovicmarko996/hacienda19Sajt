@@ -93,31 +93,56 @@ const MansoryLayout = () => {
         {images.map((image) => (
           <div
             key={image.id}
-            className={`relative w-full aspect-[${image.aspectRatio}]`}
+            className={`
+              group relative w-full overflow-hidden rounded-2xl
+              border border-white/10 bg-black/40
+              shadow-[0_0_30px_-22px_rgba(76,255,179,0.45)]
+              transition
+              hover:border-[#4cffb3]/45 hover:shadow-[0_0_32px_-18px_rgba(76,255,179,0.6)]
+              aspect-[${image.aspectRatio}]
+            `}
           >
-            {/* Link za navigaciju */}
-            <Link href={`/products/${image.id}`}>
-              <div className="block relative w-full h-full">
-                {/* Slika */}
+            {/* Link za navigaciju (cela kartica) */}
+            <Link href={`/products/${image.id}`} className="absolute inset-0">
+              <div className="relative h-full w-full">
+                {/* Slika (bez zamračivanja) */}
                 <Image
                   src={image.src}
                   alt={image.title}
-                  className="h-auto max-w-full object-cover rounded-lg"
+                  className="h-auto max-w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                   fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 25vw"
                 />
               </div>
             </Link>
 
-            {/* Naslov u gornjem levom uglu */}
-            <div className="absolute top-2 left-2 bg-white/80 text-black text-xs font-semibold px-2 py-1 rounded-md shadow-md font-panchang">
+            {/* Naslov u gornjem levom uglu (isti fontovi kao kod tebe) */}
+            <div className="absolute top-2 left-2 z-10 bg-white/80 text-black text-xs font-semibold px-2 py-1 rounded-md shadow-md font-panchang">
               {image.title}
             </div>
 
-            {/* Dugme u donjem desnom uglu */}
-            <button className="absolute bottom-2 right-2 flex items-center gap-2 px-3 py-1 bg-black text-white text-xs font-amagro sm:font-amagro uppercase rounded-full shadow-md hover:bg-gray-800 transition-all duration-300">
-              <TiLocationArrow className="text-white" />
+            {/* "Detalji" zeleno dugme (Link, da stvarno vodi na detalje) */}
+            <Link
+              href={`/products/${image.id}`}
+              aria-label={`Detalji - ${image.title}`}
+              className="
+                absolute bottom-2 right-2 z-10
+                inline-flex items-center gap-2 px-3 py-1
+                bg-[#4cffb3] text-black
+                text-xs font-amagro sm:font-amagro uppercase
+                rounded-full shadow-md
+                transition-all duration-300
+                hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
+                active:scale-[0.98]
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+              "
+            >
+              <TiLocationArrow className="text-black" />
               <span>Detalji</span>
-            </button>
+            </Link>
+
+            {/* suptilan glow (ne utiče na sliku) */}
+            <div className="pointer-events-none absolute -bottom-16 -right-16 h-44 w-44 rounded-full bg-[#4cffb3]/0 blur-3xl transition duration-500 group-hover:bg-[#4cffb3]/10" />
           </div>
         ))}
       </div>
@@ -125,261 +150,23 @@ const MansoryLayout = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-black p-4">
-      {/* Prva kolona */}
-      {renderColumn(images_col1)}
+    <section className="w-full bg-black px-4 sm:px-6 lg:px-10 py-10">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 p-4 sm:p-6">
+          {/* green glows */}
+          <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#4cffb3]/10 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-      {/* Druga kolona */}
-      {renderColumn(images_col2)}
-
-      {/* Treća kolona */}
-      {renderColumn(images_col3)}
-
-      {/* Četvrta kolona */}
-      {renderColumn(images_col4)}
-    </div>
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+            {renderColumn(images_col1)}
+            {renderColumn(images_col2)}
+            {renderColumn(images_col3)}
+            {renderColumn(images_col4)}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
 export default MansoryLayout;
-
-// import Image from "next/image";
-// import React from "react";
-
-// {
-//   /* <div className="w-full aspect-[1.25] bg-gray-300"></div> */
-// }
-// // w-full → Makes the div take the full width of its parent.
-// // aspect-[1.25] → Sets height dynamically so that height = width × 1.25.
-
-// // Array holding image sources and aspect ratios
-// const images = [
-//   { src: "/hero/pergola1.png", aspectRatio: "aspect-[0.8]" },
-//   { src: "/hero/pergola2.png", aspectRatio: "aspect-[1.22]" },
-//   { src: "/hero/pergola3.png", aspectRatio: "aspect-[1.08]" },
-//   { src: "/hero/pergola4.png", aspectRatio: "aspect-[1.02]" },
-//   { src: "/hero/pergola5.png", aspectRatio: "aspect-[0.71]" },
-//   { src: "/hero/pergola6.png", aspectRatio: "aspect-[1.6]" },
-//   { src: "/hero/pergola1.png", aspectRatio: "aspect-[0.72]" },
-//   { src: "/hero/pergola2.png", aspectRatio: "aspect-[1.31]" },
-//   { src: "/hero/pergola3.png", aspectRatio: "aspect-[1.17]" },
-//   { src: "/hero/pergola4.png", aspectRatio: "aspect-[1.44]" },
-//   { src: "/hero/pergola5.png", aspectRatio: "aspect-[0.61]" },
-//   { src: "/hero/pergola6.png", aspectRatio: "aspect-[1.57]" },
-// ];
-
-// const images_col1 = [
-//   { src: "/products/pergola1.png", aspectRatio: "0.8" },
-//   { src: "/products/pergola2.png", aspectRatio: "1.22" },
-//   { src: "/products/pergola3.png", aspectRatio: "1.08" },
-// ];
-
-// const images_col2 = [
-//   { src: "/products/pergola4.png", aspectRatio: "1.02" },
-//   { src: "/products/pergola5.png", aspectRatio: "0.71" },
-//   { src: "/products/pergola6.png", aspectRatio: "1.6" },
-// ];
-
-// const images_col3 = [
-//   { src: "/products/pergola7.png", aspectRatio: "0.72" },
-//   { src: "/products/pergola8.png", aspectRatio: "1.31" },
-//   { src: "/products/pergola9.png", aspectRatio: "1.17" },
-// ];
-
-// // const images_col4 = [
-// //   { src: "/products/pergola10.png", aspectRatio: "1.44" },
-// //   { src: "/products/pergola11.png", aspectRatio: "0.61" },
-// //   { src: "/products/pergola12.png", aspectRatio: "1.57" },
-// // ];
-
-// const images_col4 = [
-//   { src: "/products/pergola10.png", aspectRatio: "1.17" },
-//   { src: "/products/pergola11.png", aspectRatio: "0.72" },
-//   { src: "/products/pergola12.png", aspectRatio: "1.31" },
-// ];
-
-// const MansoryLayout = () => {
-//   return (
-//     <>
-//       {/* MANSORY GRID  */}
-//       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 bg-black p-4">
-//         {/* PRVA KOLONA */}
-//         <div class="grid gap-4">
-//           {images_col1.map((image, index) => (
-//             <div
-//               key={index}
-//               className={`relative w-full aspect-[${image.aspectRatio}]`}
-//             >
-//               <Image
-//                 src={image.src}
-//                 alt={`Masonry image ${index + 1}`}
-//                 className="h-auto max-w-full object-cover  rounded-lg "
-//                 // placeholder="blur" // Optional: Add a blur placeholder
-//                 // blurDataURL={image.src} // Optional: Use the same image as a placeholder
-//                 fill // Ensures the image fills the container
-//               />
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* DRUGA KOLONA */}
-//         <div class="grid gap-4">
-//           {images_col2.map((image, index) => (
-//             <div
-//               key={index}
-//               className={`relative w-full aspect-[${image.aspectRatio}]`}
-//             >
-//               <Image
-//                 src={image.src}
-//                 alt={`Masonry image ${index + 1}`}
-//                 className="h-auto max-w-full  rounded-lg "
-//                 // placeholder="blur" // Optional: Add a blur placeholder
-//                 // blurDataURL={image.src} // Optional: Use the same image as a placeholder
-//                 fill // Ensures the image fills the container
-//               />
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* TRECA KOLONA */}
-//         <div class="grid gap-4">
-//           {images_col3.map((image, index) => (
-//             <div
-//               key={index}
-//               className={`relative w-full aspect-[${image.aspectRatio}]`}
-//             >
-//               <Image
-//                 src={image.src}
-//                 alt={`Masonry image ${index + 1}`}
-//                 className="h-auto max-w-full  rounded-lg "
-//                 // placeholder="blur" // Optional: Add a blur placeholder
-//                 // blurDataURL={image.src} // Optional: Use the same image as a placeholder
-//                 fill // Ensures the image fills the container
-//               />
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* CETVRTA KOLONA */}
-//         <div class="grid gap-4">
-//           {images_col4.map((image, index) => (
-//             <div
-//               key={index}
-//               className={`relative w-full aspect-[${image.aspectRatio}]`}
-//             >
-//               <Image
-//                 src={image.src}
-//                 alt={`Masonry image ${index + 1}`}
-//                 className="h-auto max-w-full  rounded-lg "
-//                 // placeholder="blur" // Optional: Add a blur placeholder
-//                 // blurDataURL={image.src} // Optional: Use the same image as a placeholder
-//                 fill // Ensures the image fills the container
-//               />
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//     </>
-//   );
-// };
-
-// export default MansoryLayout;
-
-// {
-//   /* MANSORY GRID */
-// }
-// <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-//   <div class="grid gap-4">
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
-//         alt=""
-//       />
-//     </div>
-//   </div>
-//   <div class="grid gap-4">
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
-//         alt=""
-//       />
-//     </div>
-//   </div>
-//   <div class="grid gap-4">
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
-//         alt=""
-//       />
-//     </div>
-//   </div>
-//   <div class="grid gap-4">
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
-//         alt=""
-//       />
-//     </div>
-//     <div>
-//       <img
-//         class="h-auto max-w-full rounded-lg"
-//         src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
-//         alt=""
-//       />
-//     </div>
-//   </div>
-// </div>;

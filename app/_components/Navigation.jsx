@@ -1,137 +1,11 @@
-// "use client";
-
-// import { motion, useAnimation } from "framer-motion";
-// import { useEffect, useState } from "react";
-// import Link from "next/link";
-// import { usePathname } from "next/navigation";
-// import PropTypes from "prop-types";
-// import { FaArrowUp } from "react-icons/fa";
-
-// const Button = ({ text, href, onClick, className }) => {
-//   const handleClick = () => {
-//     if (href) {
-//       window.location.href = href; // Navigacija na zadati URL
-//     } else if (onClick) {
-//       onClick(); // Poziv funkcije ako je prosleđena
-//     }
-//   };
-
-//   return (
-//     <button
-//       onClick={handleClick}
-//       className={`flex items-center justify-center gap-2 px-2 py-1 bg-green-600
-//          text-white text-sm font-bold rounded-md hover:bg-green-700 transition-all duration-300 ${className}`}
-//     >
-//       {text}
-//       <FaArrowUp className="text-white rotate-45" /> {/* Ikonica strelice */}
-//     </button>
-//   );
-// };
-
-// Button.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   href: PropTypes.string,
-//   onClick: PropTypes.func,
-//   className: PropTypes.string,
-// };
-
-// Button.defaultProps = {
-//   href: null,
-//   onClick: null,
-//   className: "",
-// };
-
-// const links = [
-//   { href: "/", label: "Početna" },
-//   { href: "/about", label: "O nama" },
-//   { href: "/products", label: "Proizvodi" },
-//   { href: "/contact", label: "Kontakt" },
-// ];
-
-// function Navigation() {
-//   const pathname = usePathname();
-//   const controls = useAnimation(); // Kontrola animacija
-//   const [lastScrollY, setLastScrollY] = useState(0);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       const currentScrollY = window.scrollY;
-
-//       if (currentScrollY > lastScrollY) {
-//         // Skrolovanje na dole - sakrij navigaciju
-//         controls.start({
-//           y: "-100%",
-//           transition: { duration: 0.4, ease: "easeInOut" },
-//         });
-//       } else {
-//         // Skrolovanje na gore - prikaži navigaciju
-//         controls.start({
-//           y: 0,
-//           transition: { duration: 0.4, ease: "easeInOut" },
-//         });
-//       }
-
-//       setLastScrollY(currentScrollY);
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-
-//     return () => {
-//       window.removeEventListener("scroll", handleScroll);
-//     };
-//   }, [lastScrollY, controls]);
-
-//   return (
-//     <motion.nav
-//       animate={controls}
-//       initial={{ y: 0 }}
-//       className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 border-b rounded-b-lg border-white/10 shadow-md"
-//     >
-//       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="flex justify-between items-center h-16">
-//           {/* Logo */}
-//           <Link href="/" className="text-gray-800">
-//             <p className="text-black text-lg sm:text-3xl font-panchang font-medium">
-//               Hacienda
-//             </p>
-//           </Link>
-
-//           {/* Desktop Menu */}
-//           <div className="hidden lg:flex space-x-6">
-//             {links.map((link) => (
-//               <Link
-//                 key={link.href}
-//                 href={link.href}
-//                 className={`px-3 py-2 text-lg font-bold font-serif ${
-//                   pathname === link.href
-//                     ? "text-primary underline decoration-2" // Active link style
-//                     : "text-primary" // Inactive link style
-//                 }`}
-//               >
-//                 {link.label}
-//               </Link>
-//             ))}
-
-//             {/* Button */}
-//             <Button text="Zatraži ponudu" href="/contact" className="ml-4" />
-//           </div>
-//         </div>
-//       </div>
-//     </motion.nav>
-//   );
-// }
-
-// export default Navigation;
-
 "use client";
 
 import Link from "next/link";
-
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
-import { FaArrowUp } from "react-icons/fa"; // Uvoz ikone strelice
+import { FaArrowUp } from "react-icons/fa";
 
 const links = [
   { href: "/", label: "Početna" },
@@ -144,21 +18,23 @@ const Button = ({ text, href, onClick, className }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    if (href) {
-      router.push(href); // Navigacija na zadati URL
-    } else if (onClick) {
-      onClick(); // Poziv funkcije ako je prosleđena
-    }
+    if (href) router.push(href);
+    else if (onClick) onClick();
   };
 
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center justify-center gap-2 px-2 py-1 bg-green-600
-         text-white text-sm font-bold rounded-md hover:bg-green-700 transition-all duration-300 ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-md
+        bg-[#4cffb3] px-3 py-2 text-sm font-bold text-black
+        transition-all duration-300
+        hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
+        active:scale-[0.98]
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+        ${className}`}
     >
       {text}
-      <FaArrowUp className="text-white rotate-45" /> {/* Ikonica strelice */}
+      <FaArrowUp className="rotate-45 text-black transition-transform duration-300 group-hover:translate-x-[1px] group-hover:-translate-y-[1px]" />
     </button>
   );
 };
@@ -181,163 +57,168 @@ function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const controls = useAnimation(); // Kontrola animacija
+  const controls = useAnimation();
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY) {
-        // Skrolovanje na dole - sakrij navigaciju
+      if (currentScrollY > lastScrollY && currentScrollY > 40) {
         controls.start({
-          y: "-100%",
-          transition: { duration: 0.4, ease: "easeInOut" },
+          y: "-110%",
+          transition: { duration: 0.35, ease: "easeInOut" },
         });
       } else {
-        // Skrolovanje na gore - prikaži navigaciju
         controls.start({
           y: 0,
-          transition: { duration: 0.4, ease: "easeInOut" },
+          transition: { duration: 0.35, ease: "easeInOut" },
         });
       }
 
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, controls]);
 
-  const handleOutsideClick = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      setIsOpen(false);
-    }
-  };
-
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("click", handleOutsideClick);
-    } else {
-      document.removeEventListener("click", handleOutsideClick);
-    }
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
+    const handleOutsideClick = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
     };
+
+    if (isOpen) document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, [isOpen]);
+
+  // close menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  const NavLink = ({ href, label, mobile = false }) => {
+    const active = pathname === href;
+
+    return (
+      <Link
+        href={href}
+        className={`relative ${
+          mobile ? "px-3 py-2 text-base" : "px-3 py-2 text-sm"
+        } font-semibold transition-colors
+          ${active ? "text-[#4cffb3]" : "text-white/80 hover:text-white"}
+        `}
+      >
+        {label}
+        <span
+          className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-[#4cffb3] transition-all ${
+            active ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </Link>
+    );
+  };
 
   return (
     <motion.nav
       animate={controls}
       initial={{ y: 0 }}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 border-b rounded-b-lg border-white/10 shadow-md"
+      className="fixed top-0 left-0 z-50 w-full"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="text-gray-800">
-            <p className="text-black text-lg sm:text-3xl font-panchang font-medium">
-              Hacienda
-            </p>
-          </Link>
+      {/* outer bg + blur */}
+      <div className="relative border-b border-white/10 bg-black/55 backdrop-blur-xl">
+        {/* subtle glow */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#4cffb3]/10 via-transparent to-transparent" />
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-6">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-3 py-2 text-lg font-bold font-serif ${
-                  pathname === link.href
-                    ? "text-primary underline decoration-2  " // Active link style
-                    : "text-primary " // Inactive link style
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="relative z-10">
+              <p className="font-panchang text-lg sm:text-2xl text-[#4cffb3]">
+                Hacienda
+              </p>
+            </Link>
 
-            {/* Button */}
-            <Button text="Zatraži ponudu" href="/contact" className="ml-4" />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div ref={menuRef} className="lg:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-800 focus:outline-none"
-            >
-              {isOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={3}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18 18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="lg:hidden mt-2">
-            <div className="flex flex-col space-y-4 pb-5">
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center gap-2">
               {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  // className={`px-3 py-1 text-sm font-bold font-bodoni ${
-                  //   pathname === link.href
-                  //     ? "text-white underline decoration-2 decoration-green-400" // Active link style
-                  //     : "text-primary hover:text-tertiary" // Inactive link style
-                  // }`}
-                  className={`px-3 py-1 text-sm font-bold font-serif ${
-                    // className={`px-3 py-1 text-sm font-bold font-panchanglight ${
-                    pathname === link.href
-                      ? "text-primary underline decoration-2 " // Active link style
-                      : "text-primary " // Inactive link style
-                  }`}
-                >
-                  {link.label}
-                </Link>
+                <NavLink key={link.href} href={link.href} label={link.label} />
               ))}
 
-              {/* Button in Mobile Menu */}
-              <Button
-                text="Zatraži ponudu"
-                href="/contact"
-                className="w-full"
-              />
+              <Button text="Zatraži ponudu" href="/contact" className="ml-3" />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div ref={menuRef} className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setIsOpen((v) => !v)}
+                aria-label={isOpen ? "Zatvori meni" : "Otvori meni"}
+                aria-expanded={isOpen}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl
+                  border border-white/10 bg-black/40 text-white
+                  transition
+                  hover:border-[#4cffb3]/40 hover:text-[#4cffb3]
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                <span className="relative block h-5 w-6">
+                  <span
+                    className={`absolute left-0 top-0 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
+                      isOpen ? "top-2 rotate-45" : ""
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-2 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
+                      isOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-4 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
+                      isOpen ? "top-2 -rotate-45" : ""
+                    }`}
+                  />
+                </span>
+              </button>
             </div>
           </div>
-        )}
+
+          {/* Mobile Menu (animated) */}
+          <AnimatePresence initial={false}>
+            {isOpen && (
+              <motion.div
+                key="mobile-menu"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="lg:hidden overflow-hidden"
+              >
+                <div className="pb-5 pt-2">
+                  <div className="flex flex-col rounded-2xl border border-white/10 bg-black/40 p-2">
+                    {links.map((link) => (
+                      <NavLink
+                        key={link.href}
+                        href={link.href}
+                        label={link.label}
+                        mobile
+                      />
+                    ))}
+
+                    <div className="px-2 pt-2">
+                      <Button
+                        text="Zatraži ponudu"
+                        href="/contact"
+                        className="w-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </motion.nav>
   );

@@ -233,26 +233,27 @@ const Features = () => (
           > */}
           <Link
             href={"/products"}
-            className="flex size-full flex-col justify-between bg-green-400  p-3 hover:text-white"
+            className="relative flex size-full flex-col justify-between overflow-hidden bg-green-400 p-3 hover:text-white"
           >
+            {/* crni gradijent odozdo */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90" />
+
             <motion.h1
-              className="bento-title text-2xl  max-w-64 text-black "
+              className="relative z-10 bento-title text-2xl max-w-64 text-black"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 1, ease: "easeOut" }}
               whileHover={{
                 scale: 1.05,
-                backgroundColor: "gradient-to-b from-green-400 to-white",
-                // boxShadow: "0px 5px 15px rgba(0,0,0,0.2)",
+                // backgroundColor: ... (izbaci ovo, jer ne radi kako očekuješ)
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {/* M<b>o</b>re co<b>m</b>ing s<b>o</b>on. */}
               Pogledaj sve proizvode
             </motion.h1>
 
-            <TiLocationArrow className="m-5 scale-[3] sm:scale-[5] self-end text-black " />
+            <TiLocationArrow className="relative z-10 m-5 scale-[3] sm:scale-[5] self-end text-black" />
           </Link>
 
           {/* <motion.div

@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, animate, useInView, useMotionValue } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,11 +56,48 @@ const Testimonials = () => {
   );
 };
 
+import { useEffect, useRef, useState } from "react";
+// ...existing code...
+
+const StatNumber = ({ value, duration = 2, className = "" }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+
+  const motionValue = useMotionValue(0);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    // subscribe to value changes
+    const unsub = motionValue.on("change", (latest) => {
+      setDisplay(Math.floor(latest));
+    });
+
+    return () => unsub();
+  }, [motionValue]);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const controls = animate(motionValue, value, {
+      duration,
+      ease: "easeOut",
+    });
+
+    return () => controls.stop();
+  }, [inView, motionValue, value, duration]);
+
+  return (
+    <span ref={ref} className={className}>
+      {display}
+    </span>
+  );
+};
+
 const StatsSection = () => {
   const stats = [
-    { value: 95, label: "Završenih Projekta" },
-    { value: 150, label: "Zadovoljnih Klijenata" },
-    { value: 6, label: "Godina iskustva" },
+    { value: 55, label: "Završenih Projekta" },
+    { value: 75, label: "Zadovoljnih Klijenata" },
+    { value: 7, label: "Godina iskustva" },
   ];
 
   return (
@@ -77,34 +114,15 @@ const StatsSection = () => {
               delay: index * 0.2,
               ease: "easeOut",
             }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.4 }}
           >
-            <motion.h5
-              className="text-3xl font-bold text-green-400"
-              initial={{ innerText: 0 }}
-              whileInView={{
-                innerText: stat.value,
-              }}
-              transition={{
-                duration: 2,
-                ease: "easeOut",
-                onUpdate: (latest) => {
-                  const element = document.querySelector(
-                    `[data-index="${index}"]`
-                  );
-                  if (element) {
-                    element.innerText = Math.floor(latest.innerText);
-                  }
-                },
-              }}
-              viewport={{ once: true }}
-              data-index={index}
-            >
-              {stat.value}
-            </motion.h5>
+            <h5 className="text-3xl font-bold text-green-400">
+              <StatNumber value={stat.value} duration={2} />
+            </h5>
+
             <p className="text-sm text-gray-300 text-center font-panchang font-normal capitalize">
-              {stat.label.split(" ").map((word, index) => (
-                <span key={index} className="block">
+              {stat.label.split(" ").map((word, i) => (
+                <span key={i} className="block">
                   {word}
                 </span>
               ))}
@@ -115,6 +133,7 @@ const StatsSection = () => {
     </section>
   );
 };
+
 
 const AboutContent = () => {
   return (

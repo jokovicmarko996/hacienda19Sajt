@@ -1,23 +1,3 @@
-// import {
-//   FacebookIcon,
-//   TwitterIcon,
-//   InstagramIcon,
-//   LinkedinIcon,
-// } from "@/public/icons"; // Replace with your social media icons or use Heroicons
-
-// import {
-//   EnvelopeIcon,
-//   HomeIcon,
-//   WrenchScrewdriverIcon,
-//   UserIcon,
-//   PhoneIcon,
-// } from "@heroicons/react/24/outline";
-// import {
-//   FacebookIcon,
-//   TwitterIcon,
-//   InstagramIcon,
-//   LinkedinIcon,
-// } from "@heroicons/react/24/solid";
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -28,146 +8,175 @@ const links = [
   { href: "/about", label: "O nama" },
   { href: "/products", label: "Proizvodi" },
   { href: "/contact", label: "Kontakt" },
-  // { href: "/projects", label: "Projects" }, nzm da li ovo dodati jer je slicno kao produkti
-  // { href: "/services", label: "Usluge" },
 ];
 
 export default function FooterC() {
   const pathname = usePathname();
-  // Get the current year
   const currentYear = new Date().getFullYear();
 
+  const isActive = (href) => pathname === href;
+
   return (
-    // <footer className="fixed bottom-0 min-w-full bg-white/10 backdrop-blur-md border-t border-white/20 py-12">
+    <footer className="relative overflow-hidden bg-black border-t border-white/10">
+      {/* green glows */}
+      <div className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-56 -right-56 h-[34rem] w-[34rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-    <footer className="overflow-x-hidden  max-w-full bg-black backdrop-blur-md border-t  border-white/20 py-12 font-serif ">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 py-14">
+        {/* frame */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 px-6 py-10 sm:px-10">
+          {/* subtle inner overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
 
-      <div className="container mx-auto px-6">
-        {/* Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Column 1: About */}
-          <Link href="/about">
-            <h3 className="text-lg font-bold mb-4 text-green-400">O nama</h3>
-            <p className="text-sm text-gray-300">
-              Mi smo kompanija posvećena pružanju najbolje usluge našim kupcima.
-              Pridružite nam se na našem putovanju!
-            </p>
-          </Link>
+          <div className="relative z-10 grid grid-cols-1 gap-10 md:grid-cols-4">
+            {/* Column 1 */}
+            <div>
+              <Link href="/about" className="inline-block">
+                <h3 className="font-panchang text-lg text-[#4cffb3]">O nama</h3>
+              </Link>
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
+                Mi smo kompanija posvećena pružanju najbolje usluge našim
+                kupcima. Pridružite nam se na našem putovanju!
+              </p>
+            </div>
 
-          {/* Column 2: Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-green-400">Linkovi</h3>
-            <ul className="space-y-2">
-              {links.map((link, index) => (
-                <li
-                  className="text-sm text-gray-300 hover:text-tertiary"
-                  key={index}
+            {/* Column 2 */}
+            <div>
+              <h3 className="font-panchang text-lg text-[#4cffb3]">Linkovi</h3>
+              <ul className="mt-3 space-y-2">
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`text-sm transition-colors ${
+                        isActive(link.href)
+                          ? "text-[#4cffb3]"
+                          : "text-white/70 hover:text-white"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3 */}
+            <div>
+              <h3 className="font-panchang text-lg text-[#4cffb3]">Novosti</h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
+                Pretplatite se kako bi dobili najnovije vesti o našim
+                proizvodima i ponude.
+              </p>
+
+              <form className="mt-4 flex flex-col gap-3">
+                <input
+                  type="email"
+                  placeholder="Vaš email"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-2 text-sm text-white placeholder:text-white/40 outline-none transition focus:border-[#4cffb3]/60 focus:ring-2 focus:ring-[#4cffb3]/20"
+                />
+
+                <button
+                  type="submit"
+                  className="
+                    inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold
+                    bg-[#4cffb3] text-black
+                    transition
+                    hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
+                    active:scale-[0.98]
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                  "
                 >
-                  <Link key={link.href} href={link.href}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  Pretplati se
+                </button>
+              </form>
+            </div>
+
+            {/* Column 4 */}
+            <div>
+              <h3 className="font-panchang text-lg text-[#4cffb3]">
+                Zapratite nas
+              </h3>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                <SocialIcon
+                  href="https://www.facebook.com/Hacijendanamestajoddrveta/"
+                  label="Facebook"
+                >
+                  <FaFacebook className="text-xl" />
+                </SocialIcon>
+
+                <SocialIcon
+                  href="https://www.instagram.com/hacienda.outdoorfurniture/"
+                  label="Instagram"
+                >
+                  <FaInstagram className="text-xl" />
+                </SocialIcon>
+
+                <SocialIcon
+                  href="https://www.linkedin.com/in/bojan-jokovic-75a6a4310/"
+                  label="LinkedIn"
+                >
+                  <FaLinkedin className="text-xl" />
+                </SocialIcon>
+
+                <SocialIcon
+                  href="https://www.kupujemprodajem.com/dvoriste-i-basta/suncobrani-tende-i-paviljoni/pergola-sa-istaknutim-sredisnjim-delom-5x6m-premium-proizvod/oglas/163596190"
+                  label="KupujemProdajem"
+                >
+                  <span className="text-sm font-bold tracking-wide">kp</span>
+                </SocialIcon>
+              </div>
+            </div>
           </div>
 
-          {/* Column 3: Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-green-400">Novosti</h3>
-            <p className="text-sm text-gray-300 mb-4">
-              Pretplatite se kako bi dobili najnovije vesti o našim proizovdima
-              i ponude.
-              {/* Subscribe to our newsletter to get the latest updates. */}
-            </p>
-            <form className="flex flex-col space-y-3">
-              <input
-                type="email"
-                placeholder="Vaš email"
-                className="p-2 rounded-lg bg-white/10 backdrop-blur-sm text-white text-center placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-white/20"
-              />
-              {/* TO DO ->  */}
-              <button
-                type="submit"
-                className="bg-white/10 backdrop-blur-sm text-white py-2 px-4 rounded-lg hover:bg-white/20 transition duration-300 border border-white/20"
-              >
-                Pretplati se
-              </button>
-            </form>
-          </div>
+          {/* brand + bottom */}
+          <div className="relative z-10 mt-10">
+            <Link href="/" className="block">
+              <h1 className="text-center font-panchang text-2xl text-[#4cffb3]">
+                Hacienda
+              </h1>
+            </Link>
 
-          {/* Column 4: Social Media */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-green-400">
-              Zapratite nas
-            </h3>
-            <div className="flex space-x-4">
-              <Link
-                href="https://www.facebook.com/Hacijendanamestajoddrveta/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-600 transition-colors duration-300"
-              >
-                <FaFacebook className="text-2xl" />
-              </Link>
+            <div className="mt-6 border-t border-white/10 pt-6 text-center">
+              <p className="text-sm text-white/60">
+                &copy; {currentYear} Hacienda19. Sva prava su rezervirana.
+              </p>
 
-              {/* Instagram Icon */}
-              <Link
-                href="https://www.instagram.com/hacienda.outdoorfurniture/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-pink-600 transition-colors duration-300"
-              >
-                <FaInstagram className="text-2xl" />
-              </Link>
-
-              {/* LinkedIn Icon */}
-              <Link
-                href="https://www.linkedin.com/in/bojan-jokovic-75a6a4310/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-700 transition-colors duration-300"
-              >
-                <FaLinkedin className="text-2xl" />
-              </Link>
-
-              {/* KupujemProdajem Icon */}
-              <Link
-                href="https://www.kupujemprodajem.com/dvoriste-i-basta/suncobrani-tende-i-paviljoni/pergola-sa-istaknutim-sredisnjim-delom-5x6m-premium-proizvod/oglas/163596190"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-700 transition-colors duration-300 flex-center"
-              >
-                <p className="text-2xl font-bold ">kp</p>
-              </Link>
+              <p className="mt-1 text-sm text-white/60">
+                Sajt izradio{" "}
+                <Link
+                  href="https://www.instagram.com/j_marko.26/"
+                  target="_blank"
+                  className="text-[#4cffb3] hover:underline"
+                >
+                  MarkoDev
+                </Link>
+              </p>
             </div>
           </div>
         </div>
-
-        {/* dodat textualni logo  */}
-        <Link href="/">
-          <h1 className="text-2xl font-normal text-green-400 text-center pt-5 font-panchang">
-            Hacienda
-          </h1>
-        </Link>
-
-        {/* Bottom Footer Section */}
-        <div className="border-t border-white/20 mt-8 pt-8 text-center">
-          <p className="text-sm text-green-400">
-            &copy; {currentYear} Hacienda19. Sva prava su rezervirana.
-          </p>
-          <p className="text-sm text-green-400">
-            Sajt izradio{" "}
-            <span>
-              <Link
-                href={`https://www.instagram.com/j_marko.26/`}
-                target="_blank"
-              >
-                MarkoDev
-              </Link>
-            </span>
-          </p>
-        </div>
       </div>
     </footer>
+  );
+}
+
+function SocialIcon({ href, label, children }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="
+        inline-flex h-11 w-11 items-center justify-center rounded-xl
+        border border-white/10 bg-black/40 text-white/80
+        transition
+        hover:border-[#4cffb3]/50 hover:text-[#4cffb3] hover:shadow-[0_0_22px_-12px_#4cffb3]
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+      "
+    >
+      {children}
+    </Link>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
-import { useParams } from "next/navigation"; // Koristimo useParams za dinamičke parametre
+
+import { useParams } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react"; // Dodajemo state za navigaciju kroz slike
+import { useMemo, useState } from "react";
 
 const products = [
   {
@@ -15,6 +16,7 @@ const products = [
       "/products/pergola1.png",
       "/products/pergola2.png",
       "/products/pergola3.png",
+      // dodaj još slika po potrebi...
     ],
   },
   {
@@ -28,97 +30,265 @@ const products = [
       "/products/pergola1.png",
       "/products/pergola2.png",
       "/products/pergola3.png",
+      // dodaj još slika po potrebi...
     ],
   },
 ];
 
+const GREEN = "#4cffb3";
+const INITIAL_THUMBS = 6;
+
 const ProductPage = () => {
-  const params = useParams(); // Dohvatanje dinamičkih parametara iz URL-a
-  const { id } = params;
+  const { id } = useParams();
 
-  // Pronađi proizvod na osnovu ID-a
-  const product = products.find((p) => p.id === parseInt(id));
+  const product = useMemo(
+    () => products.find((p) => p.id === Number.parseInt(id, 10)),
+    [id]
+  );
 
-  // State za praćenje trenutne slike
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showAllThumbs, setShowAllThumbs] = useState(false);
 
-  // Funkcije za navigaciju kroz slike
   const handlePrevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? product.images.length - 1 : prevIndex - 1
+    if (!product) return;
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
     );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === product.images.length - 1 ? 0 : prevIndex + 1
+    if (!product) return;
+    setCurrentImageIndex((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
     );
   };
 
   if (!product) {
-    return <p>Proizvod nije pronađen.</p>;
+    return (
+      <section className="min-h-[60vh] bg-black px-4 sm:px-6 lg:px-10 pt-24 pb-14">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="rounded-3xl border border-white/10 bg-black/60 p-6 text-center">
+            <p className="text-white/70">Proizvod nije pronađen.</p>
+          </div>
+        </div>
+      </section>
+    );
   }
 
+  const totalImages = product.images.length;
+  const visibleCount = showAllThumbs
+    ? totalImages
+    : Math.min(INITIAL_THUMBS, totalImages);
+  const hiddenCount = totalImages - visibleCount;
+  const visibleImages = product.images.slice(0, visibleCount);
+
   return (
-    <div className="p-4 mt-[calc(60px+10px)]">
-      {/* Glavna slika sa naslovom */}
-      <div className="relative w-full h-96 mb-4">
-        <Image
-          src={product.images[currentImageIndex]}
-          alt={product.title}
-          className="object-cover rounded-lg"
-          layout="fill"
-        />
-        {/* Naslov u donjem desnom uglu */}
-        <div className="absolute bottom-2 right-2 bg-white/80 text-black text-sm font-panchang px-3 py-1 rounded-md shadow-md">
-          {product.title}
-        </div>
-        {/* Dugmad za navigaciju */}
-        <button
-          onClick={handlePrevImage}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 hover:bg-white/20 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none"
-        >
-          <span className="text-lg font-bold">&lt;</span>
-        </button>
-        <button
-          onClick={handleNextImage}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hover:bg-white/20 text-black w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 focus:outline-none"
-        >
-          <span className="text-lg font-bold">&gt;</span>
-        </button>
-      </div>
+    <section className="relative w-full overflow-hidden bg-black px-4 sm:px-6 lg:px-10 pt-24 pb-14">
+      {/* background glows */}
+      <div className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-56 -right-56 h-[34rem] w-[34rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-      {/* Male slike */}
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {product.images.slice(1).map((image, index) => (
-          <div key={index} className="relative w-full h-40">
-            <Image
-              src={image}
-              alt={`${product.title} - Slika ${index + 1}`}
-              className="object-cover rounded-lg"
-              layout="fill"
-            />
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 p-4 sm:p-6">
+          {/* subtle inner overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+
+          <div className="relative z-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
+            {/* Gallery */}
+            <div className="lg:col-span-7">
+              <div
+                className="
+                  group relative overflow-hidden rounded-2xl
+                  border border-white/10 bg-black/40
+                  shadow-[0_0_30px_-22px_rgba(76,255,179,0.45)]
+                "
+              >
+                <div className="relative w-full aspect-[16/9]">
+                  <Image
+                    src={product.images[currentImageIndex]}
+                    alt={product.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+
+                {/* title chip */}
+                <div className="absolute bottom-3 right-3">
+                  <span className="rounded-xl border border-white/10 bg-black/45 px-3 py-1 text-sm font-panchang text-white/85 backdrop-blur-md">
+                    {product.title}
+                  </span>
+                </div>
+
+                {/* nav buttons */}
+                <button
+                  type="button"
+                  onClick={handlePrevImage}
+                  aria-label="Prethodna slika"
+                  className="
+                    absolute left-3 top-1/2 -translate-y-1/2
+                    inline-flex h-11 w-11 items-center justify-center rounded-xl
+                    border border-white/10 bg-black/45 text-white/85 backdrop-blur-md
+                    transition
+                    hover:border-[#4cffb3]/50 hover:text-[#4cffb3] hover:shadow-[0_0_22px_-12px_#4cffb3]
+                    active:scale-[0.98]
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                  "
+                >
+                  <span className="text-lg font-bold">&lt;</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleNextImage}
+                  aria-label="Sledeća slika"
+                  className="
+                    absolute right-3 top-1/2 -translate-y-1/2
+                    inline-flex h-11 w-11 items-center justify-center rounded-xl
+                    border border-white/10 bg-black/45 text-white/85 backdrop-blur-md
+                    transition
+                    hover:border-[#4cffb3]/50 hover:text-[#4cffb3] hover:shadow-[0_0_22px_-12px_#4cffb3]
+                    active:scale-[0.98]
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                  "
+                >
+                  <span className="text-lg font-bold">&gt;</span>
+                </button>
+
+                {/* subtle glow */}
+                <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-[#4cffb3]/0 blur-3xl transition duration-500 group-hover:bg-[#4cffb3]/10" />
+              </div>
+
+              {/* Thumbnails */}
+              <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
+                {visibleImages.map((image, index) => {
+                  const active = index === currentImageIndex;
+                  const isLastVisibleWithMore =
+                    !showAllThumbs &&
+                    index === visibleCount - 1 &&
+                    hiddenCount > 0;
+
+                  return (
+                    <button
+                      key={`${image}-${index}`}
+                      type="button"
+                      onClick={() => {
+                        if (isLastVisibleWithMore) setShowAllThumbs(true);
+                        else setCurrentImageIndex(index);
+                      }}
+                      aria-label={
+                        isLastVisibleWithMore
+                          ? `Prikaži još ${hiddenCount} slika`
+                          : `Odaberi sliku ${index + 1}`
+                      }
+                      className={`
+                        group relative overflow-hidden rounded-2xl border bg-black/40
+                        transition
+                        ${
+                          active
+                            ? "border-[#4cffb3]/60 shadow-[0_0_26px_-15px_rgba(76,255,179,0.75)]"
+                            : "border-white/10 hover:border-[#4cffb3]/45 hover:shadow-[0_0_22px_-14px_rgba(76,255,179,0.6)]"
+                        }
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                      `}
+                    >
+                      <div className="relative w-full aspect-[4/3]">
+                        <Image
+                          src={image}
+                          alt={`${product.title} - Slika ${index + 1}`}
+                          fill
+                          sizes="(max-width: 1024px) 33vw, 20vw"
+                          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                        />
+                      </div>
+
+                      {/* +N badge only (images are not darkened otherwise) */}
+                      {isLastVisibleWithMore && (
+                        <div className="absolute inset-0 grid place-items-center bg-black/55">
+                          <span
+                            className="rounded-xl bg-[#4cffb3] px-3 py-1 text-sm font-semibold text-black shadow-[0_0_26px_-14px_rgba(76,255,179,0.75)]"
+                            style={{ boxShadow: `0 0 26px -14px ${GREEN}` }}
+                          >
+                            +{hiddenCount}
+                          </span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {!showAllThumbs && totalImages > INITIAL_THUMBS && (
+                <div className="mt-3 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllThumbs(true)}
+                    className="
+                      inline-flex items-center justify-center gap-2 rounded-md
+                      bg-[#4cffb3] px-3 py-2 text-sm font-bold text-black
+                      transition-all duration-300
+                      hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
+                      active:scale-[0.98]
+                      focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                    "
+                  >
+                    Prikaži sve slike
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Details */}
+            <div className="lg:col-span-5">
+              <div
+                className="
+                  relative overflow-hidden rounded-2xl
+                  border border-white/10 bg-black/40 p-5 sm:p-6
+                  shadow-[0_0_30px_-22px_rgba(76,255,179,0.35)]
+                "
+              >
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+
+                <div className="relative z-10 space-y-4">
+                  <h1 className="text-2xl sm:text-3xl font-panchang text-white">
+                    {product.title}
+                  </h1>
+
+                  <div className="h-px w-full bg-white/10" />
+
+                  <h2 className="text-xl font-panchang text-[#4cffb3]">Opis</h2>
+                  <p className="text-white/70 text-base sm:text-lg font-serif text-justify leading-relaxed">
+                    {product.description}
+                  </p>
+
+                  <div className="h-px w-full bg-white/10" />
+
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-xl font-panchang text-[#4cffb3]">
+                      Cena
+                    </h3>
+
+                    <span
+                      className="
+                        inline-flex items-center rounded-xl px-3 py-1 text-sm font-semibold
+                        bg-[#4cffb3] text-black
+                        shadow-[0_0_26px_-14px_rgba(76,255,179,0.75)]
+                      "
+                      style={{ boxShadow: `0 0 26px -14px ${GREEN}` }}
+                    >
+                      {product.price}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#4cffb3]/10 blur-3xl" />
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-
-      {/* Detalji o proizvodu */}
-      <div className="bg-gray-700 text-gray-300 p-6 rounded-lg space-y-4">
-        {/* Naslov */}
-        <h3 className="text-2xl font-panchang text-white">{product.title}</h3>
-
-        {/* Opis */}
-        <h3 className="text-2xl font-panchang text-green-400">Opis</h3>
-        <p className="text-gray-300 text-lg font-serif text-justify">
-          {product.description}
-        </p>
-
-        {/* Cena */}
-        <h3 className="text-2xl font-panchang text-green-400">
-          Cena: {product.price}
-        </h3>
-      </div>
-    </div>
+    </section>
   );
 };
 

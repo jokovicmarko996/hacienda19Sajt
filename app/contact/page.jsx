@@ -7,6 +7,7 @@ import bg from "../../public/products/pergola5.png"; // slika koja ce da bude he
 import ContactContent from "../_components/ui/ContactContent";
 import FAQAccordion from "../_components/FAQAccordion";
 import SocialMediaLinks from "../_components/SocialMediaLinks";
+import FollowUsSection from "../_components/ui/FollowUsCGPT";
 
 const page = () => {
   return (
@@ -15,7 +16,8 @@ const page = () => {
       {/* <Contact /> */}
       <ContactContent />
       <FAQAccordion />
-      <SocialMediaLinks />
+      {/* <SocialMediaLinks /> */}
+      <FollowUsSection />
     </>
   );
   // return (

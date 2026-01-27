@@ -5,6 +5,7 @@ import Image from "next/image";
 import bgImage from "../../../public/hero/pergola11.png";
 import GlassButton from "../GlassButton"; // Adjust the import path as needed
 import Link from "next/link";
+import { TransparentButton } from "../GsapATB";
 
 const AboutHero = () => {
   const headingSectionRef = useRef(null);
@@ -131,12 +132,25 @@ const AboutHero = () => {
                 />
               </Link>
 
-              <Link href={`/products`}>
+              {/* <Link href={`/products`}>
                 <GlassButton
                   text={"Proizvodi"}
                   className="px-4 py-2 text-xs md:text-lg"
                 />
-              </Link>
+              </Link> */}
+
+              <TransparentButton
+                text="Proizvodi"
+                href="/products"
+                className="px-4 py-2 text-sm md:text-lg font-bold font-panchang"
+              />
+
+              {/* <Link href={`/products`}>
+                <GlassButton
+                  text={"Proizvodi"}
+                  className="px-4 py-2 text-xs md:text-lg"
+                />
+              </Link> */}
             </motion.div>
           </section>
         </motion.div>

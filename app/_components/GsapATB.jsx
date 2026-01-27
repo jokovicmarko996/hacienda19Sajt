@@ -6,7 +6,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { useRouter } from "next/navigation";
 
-const TransparentButton = ({ text, href, className }) => {
+export const TransparentButton = ({ text, href, className }) => {
   const router = useRouter();
 
   const handleClick = () => {

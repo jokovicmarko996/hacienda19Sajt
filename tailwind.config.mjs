@@ -37,6 +37,7 @@ export default {
         "dancing-script": ["Dancing Script", "cursive"],
         caveat: ["Caveat", "cursive"],
         zentry: ["zentry", "sans-serif"],
+        boldonse: ["var(--font-boldonse)", "sans-serif"],
         general: ["general", "sans-serif"],
         "circular-web": ["circular-web", "sans-serif"],
         "robert-medium": ["robert-medium", "sans-serif"],

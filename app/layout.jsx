@@ -1,7 +1,14 @@
 import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import FooterC from "./_components/FooterC";
 import HeaderX from "./_components/Header";
+import { Boldonse } from "next/font/google";
 import "./globals.css";
+
+const boldonse = Boldonse({
+  subsets: ["latin"],
+  weight: ["400"], // dodaj ako ima više težina
+  variable: "--font-boldonse",
+});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrainsMono",
