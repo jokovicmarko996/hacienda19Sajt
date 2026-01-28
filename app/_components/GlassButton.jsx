@@ -2,81 +2,48 @@
 
 import { motion } from "framer-motion";
 
-const GlassButton = ({ text, onClick, className }) => {
+const GREEN = "#4cffb3";
+
+const GlassButton = ({ text, onClick, className = "" }) => {
   return (
-    <div className="relative group w-max overflow-hidden">
+    <div className="group relative w-max overflow-hidden rounded-lg">
+      {/* subtle green glow */}
+      <div className="pointer-events-none absolute -inset-10 opacity-0 blur-3xl transition duration-300 group-hover:opacity-100 bg-[#4cffb3]/10" />
+
       {/* Animated Border */}
       <motion.div
-        className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-white"
-        initial={{ scale: 0 }}
+        className="absolute inset-0 rounded-lg border border-white/15"
+        initial={false}
         whileHover={{
-          scale: 1,
-          borderColor: "rgba(255, 255, 255, 0.8)",
+          borderColor: "rgba(76, 255, 179, 0.7)",
         }}
         transition={{
-          duration: 0.75,
-          ease: "easeInOut",
+          duration: 0.35,
+          ease: "easeOut",
         }}
       />
+
       {/* Button */}
       <button
         onClick={onClick}
-        className={`relative font-panchang px-3 py-2 text-white font-semibold backdrop-blur-lg bg-white/10 hover:bg-white/20 border border-white/30 shadow-lg transition-all duration-300 uppercase rounded-lg ${className}`}
+        className={`
+          relative font-panchang
+          px-3 py-2 uppercase
+          rounded-lg
+          border border-white/15 bg-black/40 backdrop-blur
+          text-white
+          shadow-[0_0_30px_-22px_rgba(76,255,179,0.35)]
+          transition-all duration-300
+          hover:bg-black/55 hover:shadow-[0_0_26px_-10px_rgba(76,255,179,0.55)]
+          active:scale-[0.98]
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+          ${className}
+        `}
       >
-        {text}
+        <span className="text-[#4cffb3] font-semibold">{text}</span>
       </button>
     </div>
   );
 };
 
 export default GlassButton;
-
-// const TransparentButton = ({ text, href, className }) => {
-//   const router = useRouter();
-
-//   const handleClick = () => {
-//     if (href) {
-//       router.push(href); // Navigacija na zadati URL
-//     }
-//   };
-
-//   return (
-//     <button
-//       onClick={handleClick}
-//       className={`px-4 py-2 bg-white text-black font-panchang font-semibold uppercase rounded-lg border border-black hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 ${className}`}
-//     >
-//       {text}
-//     </button>
-//   );
-// };
-
-// TransparentButton.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   href: PropTypes.string.isRequired,
-//   className: PropTypes.string,
-// };
-
-// TransparentButton.defaultProps = {
-//   className: "",
-// };
-
-
-
-//  <Link
-//    href={"/products"}
-//    ref={hoverButtonRef}
-//    onMouseMove={handleMouseMove}
-//    onMouseEnter={handleMouseEnter}
-//    onMouseLeave={handleMouseLeave}
-//    className="absolute bottom-2 left-2 sm:bottom-5 sm:left-5 border-hsla flex w-fit cursor-pointer items-center gap-1 overflow-hidden rounded-full bg-black px-3 py-1 sm:px-4 sm:py-2 text-xs uppercase"
-//  >
-//    <div
-//      className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
-//      style={{
-//        opacity: hoverOpacity,
-//        background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #2ef55287, #f2f1f125)`,
-//      }}
-//    />
-//    <TiLocationArrow className="relative z-20 text-white" />
-//    <p className="relative z-20 text-white">Pogledaj</p>
-//  </Link>;

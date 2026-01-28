@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const products = [
   {
@@ -37,6 +38,33 @@ const products = [
 
 const GREEN = "#4cffb3";
 const INITIAL_THUMBS = 6;
+
+// --- animations
+const pageWrap = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.06 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const cardIn = {
+  hidden: { opacity: 0, y: 18, scale: 0.99, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.65, ease: "easeOut" },
+  },
+};
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -88,30 +116,55 @@ const ProductPage = () => {
       <div className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-56 -right-56 h-[34rem] w-[34rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 p-4 sm:p-6">
+      <motion.div
+        className="mx-auto w-full max-w-6xl"
+        variants={pageWrap}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 p-4 sm:p-6"
+          variants={fadeUp}
+        >
           {/* subtle inner overlay */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
 
           <div className="relative z-10 grid grid-cols-1 gap-6 lg:grid-cols-12">
             {/* Gallery */}
-            <div className="lg:col-span-7">
-              <div
+            <motion.div className="lg:col-span-7" variants={cardIn}>
+              <motion.div
                 className="
                   group relative overflow-hidden rounded-2xl
                   border border-white/10 bg-black/40
                   shadow-[0_0_30px_-22px_rgba(76,255,179,0.45)]
                 "
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 <div className="relative w-full aspect-[16/9]">
-                  <Image
-                    src={product.images[currentImageIndex]}
-                    alt={product.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    className="object-cover"
-                    priority
-                  />
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={product.images[currentImageIndex]}
+                      className="absolute inset-0"
+                      initial={{
+                        opacity: 0,
+                        scale: 1.015,
+                        filter: "blur(10px)",
+                      }}
+                      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, scale: 0.99, filter: "blur(10px)" }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    >
+                      <Image
+                        src={product.images[currentImageIndex]}
+                        alt={product.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="object-cover"
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
 
                 {/* title chip */}
@@ -122,10 +175,11 @@ const ProductPage = () => {
                 </div>
 
                 {/* nav buttons */}
-                <button
+                <motion.button
                   type="button"
                   onClick={handlePrevImage}
                   aria-label="Prethodna slika"
+                  whileTap={{ scale: 0.97 }}
                   className="
                     absolute left-3 top-1/2 -translate-y-1/2
                     inline-flex h-11 w-11 items-center justify-center rounded-xl
@@ -137,12 +191,13 @@ const ProductPage = () => {
                   "
                 >
                   <span className="text-lg font-bold">&lt;</span>
-                </button>
+                </motion.button>
 
-                <button
+                <motion.button
                   type="button"
                   onClick={handleNextImage}
                   aria-label="Sledeća slika"
+                  whileTap={{ scale: 0.97 }}
                   className="
                     absolute right-3 top-1/2 -translate-y-1/2
                     inline-flex h-11 w-11 items-center justify-center rounded-xl
@@ -154,14 +209,22 @@ const ProductPage = () => {
                   "
                 >
                   <span className="text-lg font-bold">&gt;</span>
-                </button>
+                </motion.button>
 
                 {/* subtle glow */}
                 <div className="pointer-events-none absolute -bottom-16 -right-16 h-56 w-56 rounded-full bg-[#4cffb3]/0 blur-3xl transition duration-500 group-hover:bg-[#4cffb3]/10" />
-              </div>
+              </motion.div>
 
               {/* Thumbnails */}
-              <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
+              <motion.div
+                className="mt-4 grid grid-cols-3 gap-3 sm:gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.06 } },
+                }}
+              >
                 {visibleImages.map((image, index) => {
                   const active = index === currentImageIndex;
                   const isLastVisibleWithMore =
@@ -170,8 +233,10 @@ const ProductPage = () => {
                     hiddenCount > 0;
 
                   return (
-                    <button
-                      key={`${image}-${index}`}
+                    <motion.button
+                      key={`${image}-${index}-${
+                        showAllThumbs ? "all" : "init"
+                      }`}
                       type="button"
                       onClick={() => {
                         if (isLastVisibleWithMore) setShowAllThumbs(true);
@@ -182,6 +247,17 @@ const ProductPage = () => {
                           ? `Prikaži još ${hiddenCount} slika`
                           : `Odaberi sliku ${index + 1}`
                       }
+                      variants={{
+                        hidden: { opacity: 0, y: 10, filter: "blur(8px)" },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          transition: { duration: 0.45, ease: "easeOut" },
+                        },
+                      }}
+                      whileHover={{ y: -1 }}
+                      whileTap={{ scale: 0.985 }}
                       className={`
                         group relative overflow-hidden rounded-2xl border bg-black/40
                         transition
@@ -214,16 +290,17 @@ const ProductPage = () => {
                           </span>
                         </div>
                       )}
-                    </button>
+                    </motion.button>
                   );
                 })}
-              </div>
+              </motion.div>
 
               {!showAllThumbs && totalImages > INITIAL_THUMBS && (
-                <div className="mt-3 flex justify-end">
-                  <button
+                <motion.div className="mt-3 flex justify-end" variants={fadeUp}>
+                  <motion.button
                     type="button"
                     onClick={() => setShowAllThumbs(true)}
+                    whileTap={{ scale: 0.98 }}
                     className="
                       inline-flex items-center justify-center gap-2 rounded-md
                       bg-[#4cffb3] px-3 py-2 text-sm font-bold text-black
@@ -234,60 +311,101 @@ const ProductPage = () => {
                     "
                   >
                     Prikaži sve slike
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
 
             {/* Details */}
-            <div className="lg:col-span-5">
-              <div
+            <motion.div className="lg:col-span-5" variants={cardIn}>
+              <motion.div
                 className="
                   relative overflow-hidden rounded-2xl
                   border border-white/10 bg-black/40 p-5 sm:p-6
                   shadow-[0_0_30px_-22px_rgba(76,255,179,0.35)]
                 "
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
               >
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
 
                 <div className="relative z-10 space-y-4">
-                  <h1 className="text-2xl sm:text-3xl font-panchang text-white">
+                  <motion.h1
+                    className="text-2xl sm:text-3xl font-panchang text-white"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                  >
                     {product.title}
-                  </h1>
+                  </motion.h1>
 
                   <div className="h-px w-full bg-white/10" />
 
-                  <h2 className="text-xl font-panchang text-[#4cffb3]">Opis</h2>
-                  <p className="text-white/70 text-base sm:text-lg font-serif text-justify leading-relaxed">
+                  <motion.h2
+                    className="text-xl font-panchang text-[#4cffb3]"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.55,
+                      ease: "easeOut",
+                      delay: 0.05,
+                    }}
+                  >
+                    Opis
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-white/70 text-base sm:text-lg font-serif text-justify leading-relaxed"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, ease: "easeOut", delay: 0.1 }}
+                  >
                     {product.description}
-                  </p>
+                  </motion.p>
 
                   <div className="h-px w-full bg-white/10" />
 
-                  <div className="flex items-center justify-between gap-3">
+                  <motion.div
+                    className="flex items-center justify-between gap-3"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.55,
+                      ease: "easeOut",
+                      delay: 0.15,
+                    }}
+                  >
                     <h3 className="text-xl font-panchang text-[#4cffb3]">
                       Cena
                     </h3>
 
-                    <span
+                    <motion.span
                       className="
                         inline-flex items-center rounded-xl px-3 py-1 text-sm font-semibold
                         bg-[#4cffb3] text-black
                         shadow-[0_0_26px_-14px_rgba(76,255,179,0.75)]
                       "
                       style={{ boxShadow: `0 0 26px -14px ${GREEN}` }}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        duration: 0.45,
+                        ease: "easeOut",
+                        delay: 0.2,
+                      }}
+                      whileHover={{ scale: 1.02 }}
                     >
                       {product.price}
-                    </span>
-                  </div>
+                    </motion.span>
+                  </motion.div>
                 </div>
 
                 <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#4cffb3]/10 blur-3xl" />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

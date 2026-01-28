@@ -1,10 +1,10 @@
 "use client";
-import HerroPattern from "../_components/HerroPattern";
-import MansoryLayout from "../_components/MansoryLayout";
 import bg from "../../public/hero/pergola5.png"; // slika koja ce da bude hero image
-import MansoryLayoutImproved from "../_components/MansoryLayoutImproved";
-import ProductsContent from "../_components/ui/ProductsContent";
 import HeroPattern from "../_components/HerroPattern";
+import MansoryLayout from "../_components/MansoryLayout";
+import ProductsContent from "../_components/ui/ProductsContent";
+
+const GREEN = "#4cffb3";
 
 const images = [
   { src: "/hero/pergola1.png", aspectRatio: "0.8" },
@@ -24,22 +24,23 @@ const images = [
 // bento grid iz tailwinda
 const page = () => {
   return (
-    <div className="overflow-x-hidden max-w-full ">
-      {/* TO DO => HERO SECTION =>  */}
+    <div className="max-w-full overflow-x-hidden">
+      {/* HERO SECTION */}
       <HeroPattern
         image={bg}
         heading={[
-          { text: "Ekskluzivni", className: "font-panchang text-black" },
-          { text: "ambijent", className: "font-panchang text-white" },
+          { text: "Ekskluzivni", className: "font-panchang text-white" },
+          {
+            text: "ambijent",
+            className: "font-panchang",
+            style: { color: GREEN },
+          },
         ]}
       />
 
       <ProductsContent />
 
       {/* <MansoryLayoutImproved images={images} /> */}
-      {/* <HerroPattern image={"/public/hero/pergola1.png"} /> */}
-      {/* <HerroPattern image={bg} /> */}
-      {/* TO DO => animacija texta od dole kao u onom GSAP tutorijalu => text: "savrsenstvo u svakom detalju" */}
       <MansoryLayout />
     </div>
   );

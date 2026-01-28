@@ -50,20 +50,68 @@ const FAQAccordion = () => {
   // (opciono) samo jedan otvoren u isto vreme:
   const [openIndex, setOpenIndex] = useState(null);
 
+  const section = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.12, delayChildren: 0.06 },
+    },
+  };
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
+  const list = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+  };
+
+  const itemIn = {
+    hidden: { opacity: 0, y: 14, scale: 0.99, filter: "blur(8px)" },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: { duration: 0.55, ease: "easeOut" },
+    },
+  };
+
   return (
     <section className="w-full bg-black px-4 sm:px-6 lg:px-10 py-14 sm:py-20">
-      <div className="mx-auto w-full max-w-6xl">
+      <motion.div
+        className="mx-auto w-full max-w-6xl"
+        variants={section}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
+      >
         {/* Frame container */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 px-5 py-12 sm:px-8 sm:py-14">
+        <motion.div
+          className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/60 px-5 py-12 sm:px-8 sm:py-14"
+          variants={fadeUp}
+        >
           {/* green glow */}
           <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#4cffb3]/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-          <h2 className="relative z-10 text-center font-panchang text-3xl sm:text-4xl lg:text-5xl text-[#4cffb3]">
+          <motion.h2
+            className="relative z-10 text-center font-panchang text-3xl sm:text-4xl lg:text-5xl text-[#4cffb3]"
+            variants={fadeUp}
+          >
             Često postavljana pitanja
-          </h2>
+          </motion.h2>
 
-          <div className="relative z-10 mt-10 space-y-4 sm:space-y-5">
+          <motion.div
+            className="relative z-10 mt-10 space-y-4 sm:space-y-5"
+            variants={list}
+          >
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
@@ -73,19 +121,21 @@ const FAQAccordion = () => {
                 onToggle={() =>
                   setOpenIndex((prev) => (prev === index ? null : index))
                 }
+                variants={itemIn}
               />
             ))}
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
 
-const AccordionItem = ({ question, answer, isOpen, onToggle }) => {
+const AccordionItem = ({ question, answer, isOpen, onToggle, variants }) => {
   return (
     <motion.div
       layout
+      variants={variants}
       className="
         rounded-2xl border border-[#4cffb3]/25
         bg-gradient-to-b from-[#4cffb3]/10 via-black/45 to-black/70
@@ -93,7 +143,7 @@ const AccordionItem = ({ question, answer, isOpen, onToggle }) => {
         transition
         hover:border-[#4cffb3]/55
       "
-      whileHover={{ scale: 1.01 }}
+      whileHover={{ y: -2, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
     >
       {/* Header */}

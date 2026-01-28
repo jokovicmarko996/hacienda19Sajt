@@ -6,22 +6,51 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { useRouter } from "next/navigation";
 
-export const TransparentButton = ({ text, href, className }) => {
+const GREEN = "#4cffb3";
+
+export const TransparentButton = ({ text, href, className = "" }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    if (href) {
-      router.push(href); // Navigacija na zadati URL
-    }
+    if (href) router.push(href);
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className={`px-4 py-2 bg-white text-black font-panchang font-semibold uppercase rounded-lg border border-black hover:bg-white/10 hover:text-white hover:border-white transition-all duration-300 ${className}`}
-    >
-      {text}
-    </button>
+    <div className="group relative w-max overflow-hidden rounded-lg">
+      {/* subtle green glow */}
+      <div className="pointer-events-none absolute -inset-10 opacity-0 blur-3xl transition duration-300 group-hover:opacity-100 bg-[#4cffb3]/10" />
+
+      {/* Animated Border */}
+      <motion.div
+        className="absolute inset-0 rounded-lg border border-white/15"
+        initial={false}
+        whileHover={{
+          borderColor: "rgba(76, 255, 179, 0.7)",
+        }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+      />
+
+      <button
+        type="button"
+        onClick={handleClick}
+        className={`
+          relative font-panchang
+          px-4 py-2 uppercase
+          rounded-lg
+          border border-white/15 bg-black/25 backdrop-blur
+          text-white
+          shadow-[0_0_30px_-22px_rgba(76,255,179,0.30)]
+          transition-all duration-300
+          hover:bg-black/45 hover:shadow-[0_0_26px_-10px_rgba(76,255,179,0.55)]
+          active:scale-[0.98]
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+          ${className}
+        `}
+      >
+        <span className="text-white/95">{text}</span>
+        <span className="sr-only">Go to {text}</span>
+      </button>
+    </div>
   );
 };
 
@@ -60,7 +89,7 @@ const GsapAnimatedTextButton = ({ className }) => {
       opacity: 1,
       scale: 1,
       transition: {
-        delay: 0.3 + "Hacienda".length * 0.1, // Dugmad se prikazuju 0.2s nakon završetka animacije teksta
+        delay: 0.3 + "Hacienda".length * 0.1,
         duration: 0.6,
         ease: "easeOut",
       },
@@ -104,10 +133,11 @@ const GsapAnimatedTextButton = ({ className }) => {
             className="px-4 py-2 text-sm md:text-lg font-bold"
           />
         </Link>
+
         <TransparentButton
           text="Proizvodi"
           href="/products"
-          className="px-4 py-2 text-sm md:text-lg font-bold font-panchang"
+          className="px-4 py-2 text-sm md:text-lg font-bold"
         />
       </motion.div>
     </div>
