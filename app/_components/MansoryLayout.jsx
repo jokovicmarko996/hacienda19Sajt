@@ -144,14 +144,14 @@ const MansoryLayout = () => {
             <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/10 via-transparent to-transparent" />
 
             {/* green glows */}
-            <div
+            {/* <div
               className="pointer-events-none absolute -top-24 -left-24 z-[1] h-72 w-72 rounded-full blur-3xl opacity-70"
               style={{ backgroundColor: GREEN, opacity: 0.12 }}
             />
             <div
               className="pointer-events-none absolute -bottom-28 -right-28 z-[1] h-80 w-80 rounded-full blur-3xl opacity-60"
               style={{ backgroundColor: GREEN, opacity: 0.1 }}
-            />
+            /> */}
 
             {/* title (add green accent) */}
             <div className="absolute top-2 left-2 z-[3] rounded-md border border-white/10 bg-black/55 px-2 py-1 shadow-md backdrop-blur">
