@@ -11,13 +11,12 @@ const products = [
     title: "Pergola 1",
     description:
       "Ova pergola je savršeno rešenje za vaš vrt ili terasu. Izrađena je od visokokvalitetnih materijala koji pružaju dugotrajnost i otpornost na vremenske uslove. Njen moderan dizajn omogućava savršeno uklapanje u svaki prostor, dok pruža zaštitu od sunca i kiše. Idealna je za opuštanje i uživanje na otvorenom.",
-    price: "1,200$/kv",
+    price: "270$/kv",
     images: [
       "/products/pergola1.png",
       "/products/pergola1.png",
       "/products/pergola2.png",
       "/products/pergola3.png",
-      // dodaj još slika po potrebi...
     ],
   },
   {
@@ -25,13 +24,142 @@ const products = [
     title: "Pergola 2",
     description:
       "Ova pergola kombinuje funkcionalnost i estetiku. Nudi odličnu zaštitu od vremenskih uslova, dok njen elegantan dizajn doprinosi lepoti vašeg prostora. Lako se montira i održava, što je čini idealnim izborom za svaki dom.",
-    price: "1,500$/kv",
+    price: "285$/kv",
     images: [
-      "/products/pergola2.png",
+      "/products/pergola1.png",
       "/products/pergola1.png",
       "/products/pergola2.png",
       "/products/pergola3.png",
-      // dodaj još slika po potrebi...
+    ],
+  },
+  {
+    id: 3,
+    title: "Pergola 3",
+    description:
+      "Pergola modernog dizajna koja pruža odličnu zaštitu od sunca i padavina. Kvalitetna izrada i pažljivo odabrani materijali čine je dugotrajnim rešenjem za terase i dvorišta.",
+    price: "260$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 4,
+    title: "Pergola 4",
+    description:
+      "Funkcionalna i elegantna pergola koja se lako uklapa u različite stilove eksterijera. Dizajnirana je da ponudi komfor i dodatnu vrednost prostoru za boravak na otvorenom.",
+    price: "295$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 5,
+    title: "Pergola 5",
+    description:
+      "Praktično rešenje za zaštitu i ulepšavanje terase ili bašte. Stabilna konstrukcija, moderan izgled i dobra otpornost na vremenske uslove.",
+    price: "255$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 6,
+    title: "Pergola 6",
+    description:
+      "Pergola namenjena za komforan boravak napolju tokom cele sezone. Kombinuje kvalitet, estetiku i dugotrajnost uz minimalno održavanje.",
+    price: "275$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 7,
+    title: "Pergola 7",
+    description:
+      "Savremena pergola koja doprinosi privatnosti i zaštiti od sunca. Idealan izbor za porodična okupljanja, odmor i uživanje na otvorenom.",
+    price: "290$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 8,
+    title: "Pergola 8",
+    description:
+      "Minimalistički dizajn sa naglaskom na funkcionalnost. Pergola je pogodna za različite dimenzije prostora i omogućava prijatan ambijent na terasi.",
+    price: "265$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 9,
+    title: "Pergola 9",
+    description:
+      "Kvalitetna pergola za terase i bašte koja nudi odličan balans između cene i performansi. Dizajnirana da traje i da izgleda premium.",
+    price: "280$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 10,
+    title: "Pergola 10",
+    description:
+      "Robusna i pouzdana pergola koja pruža zaštitu i lep vizuelni efekat. Pogodna za privatne i komercijalne prostore.",
+    price: "300$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 11,
+    title: "Pergola 11",
+    description:
+      "Elegantna pergola sa modernim linijama. Jednostavna za uklapanje uz postojeći objekat, uz osećaj luksuza i komfora na otvorenom.",
+    price: "258$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
+    ],
+  },
+  {
+    id: 12,
+    title: "Pergola 12",
+    description:
+      "Premium izgled i stabilna konstrukcija za maksimalnu udobnost. Idealna za stvaranje senke i zaštićenog prostora za druženje i odmor.",
+    price: "292$/kv",
+    images: [
+      "/products/pergola1.png",
+      "/products/pergola1.png",
+      "/products/pergola2.png",
+      "/products/pergola3.png",
     ],
   },
 ];

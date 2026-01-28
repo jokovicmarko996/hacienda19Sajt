@@ -1,7 +1,8 @@
 import Image from "next/image";
 // import pergolaHero from "../../public/hero/pergola1.png";
 import { Caveat } from "next/font/google";
-import pergolaHero from "../../public/products/pergola1.png";
+// import pergolaHero from "../../public/products/pergola1.png";
+import pergolaHero from "../../public/hero/pergola0.jpg";
 import Features from "./Features";
 import GsapAnimatedText from "./GsapATB";
 import StarryQuote from "./StarryQuote";
