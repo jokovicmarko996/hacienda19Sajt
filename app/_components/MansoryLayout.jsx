@@ -118,9 +118,10 @@ const MansoryLayout = () => {
             variants={itemVariants}
             whileHover={{ y: -2 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60 aspect-[${image.aspectRatio}]`}
+            className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60"
+            style={{ aspectRatio: image.aspectRatio }} // ✅ ensures height
           >
-            {/* ✅ Make the whole card a real link (mobile-safe) */}
+            {/* ✅ Whole card is clickable */}
             <Link
               href={`/products/${image.id}`}
               className="absolute inset-0 z-[2]"
@@ -136,26 +137,22 @@ const MansoryLayout = () => {
               priority={false}
             />
 
-            {/* readability overlay */}
             <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-black/10 via-black/15 to-black/50" />
-
-            {/* subtle top highlight */}
             <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/10 via-transparent to-transparent" />
 
-            {/* title */}
             <div className="absolute top-2 left-2 z-[3] rounded-md border border-white/10 bg-black/55 px-2 py-1 shadow-md backdrop-blur">
               <span
                 className="font-panchang text-xs font-semibold"
                 style={{
                   color: GREEN,
-                  textShadow: "0 0 18px rgba(46,230,166,0.22)",
+                  textShadow: "0 0 18px rgba(46, 230, 166, 0.22)",
                 }}
               >
                 {image.title}
               </span>
             </div>
 
-            {/* ✅ Details should also navigate (button was doing nothing) */}
+            {/* ✅ Details navigates too */}
             <Link
               href={`/products/${image.id}`}
               className="
@@ -163,8 +160,7 @@ const MansoryLayout = () => {
                 inline-flex items-center gap-2 px-3 py-1
                 text-xs font-amagro sm:font-amagro uppercase rounded-full shadow-md
                 transition-all duration-300
-                bg-black/45 text-white
-                border
+                bg-black/45 text-white border
                 hover:bg-black/55
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black
               "
@@ -172,6 +168,7 @@ const MansoryLayout = () => {
                 borderColor: "rgba(46,230,166,0.55)",
                 boxShadow: "0 0 22px -16px rgba(46,230,166,0.7)",
               }}
+              aria-label={`Detalji za ${image.title}`}
             >
               <TiLocationArrow style={{ color: GREEN }} />
               <span>Detalji</span>
@@ -184,12 +181,10 @@ const MansoryLayout = () => {
 
   return (
     <motion.div
-      // ✅ iPhone fix: avoid forcing bg-black + add safe padding; ensure it can render full width
       className="w-full grid grid-cols-2 gap-4 bg-black p-4 md:grid-cols-4"
       variants={gridVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      initial="visible" // debug: don't keep hidden
+      animate="visible" // debug: don't depend on in-view
     >
       {renderColumn(images_col1)}
       {renderColumn(images_col2)}
