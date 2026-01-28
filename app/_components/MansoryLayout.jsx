@@ -120,13 +120,12 @@ const MansoryLayout = () => {
             transition={{ duration: 0.25, ease: "easeOut" }}
             className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60 aspect-[${image.aspectRatio}]`}
           >
-            {/* clickable area */}
+            {/* ✅ Make the whole card a real link (mobile-safe) */}
             <Link
               href={`/products/${image.id}`}
               className="absolute inset-0 z-[2]"
-            >
-              <span className="sr-only">{image.title}</span>
-            </Link>
+              aria-label={`Otvori ${image.title}`}
+            />
 
             <Image
               src={image.src}
@@ -143,17 +142,7 @@ const MansoryLayout = () => {
             {/* subtle top highlight */}
             <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-white/10 via-transparent to-transparent" />
 
-            {/* green glows */}
-            {/* <div
-              className="pointer-events-none absolute -top-24 -left-24 z-[1] h-72 w-72 rounded-full blur-3xl opacity-70"
-              style={{ backgroundColor: GREEN, opacity: 0.12 }}
-            />
-            <div
-              className="pointer-events-none absolute -bottom-28 -right-28 z-[1] h-80 w-80 rounded-full blur-3xl opacity-60"
-              style={{ backgroundColor: GREEN, opacity: 0.1 }}
-            /> */}
-
-            {/* title (add green accent) */}
+            {/* title */}
             <div className="absolute top-2 left-2 z-[3] rounded-md border border-white/10 bg-black/55 px-2 py-1 shadow-md backdrop-blur">
               <span
                 className="font-panchang text-xs font-semibold"
@@ -166,7 +155,7 @@ const MansoryLayout = () => {
               </span>
             </div>
 
-            {/* ✅ Details: make it a Link so it navigates */}
+            {/* ✅ Details should also navigate (button was doing nothing) */}
             <Link
               href={`/products/${image.id}`}
               className="
@@ -183,7 +172,6 @@ const MansoryLayout = () => {
                 borderColor: "rgba(46,230,166,0.55)",
                 boxShadow: "0 0 22px -16px rgba(46,230,166,0.7)",
               }}
-              aria-label={`Detalji za ${image.title}`}
             >
               <TiLocationArrow style={{ color: GREEN }} />
               <span>Detalji</span>
@@ -196,7 +184,8 @@ const MansoryLayout = () => {
 
   return (
     <motion.div
-      className="grid grid-cols-2 gap-4 bg-black p-4 md:grid-cols-4"
+      // ✅ iPhone fix: avoid forcing bg-black + add safe padding; ensure it can render full width
+      className="w-full grid grid-cols-2 gap-4 bg-black p-4 md:grid-cols-4"
       variants={gridVariants}
       initial="hidden"
       whileInView="visible"
