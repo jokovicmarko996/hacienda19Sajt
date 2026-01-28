@@ -81,22 +81,9 @@ const ContactContent = () => {
             <div className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
             <div className="relative z-10">
+              {/* ✅ 1) Telefon */}
               <h3
                 className="mb-4 text-xl font-panchang"
-                style={{ color: GREEN }}
-              >
-                Naša adresa
-              </h3>
-
-              <p className="text-lg leading-relaxed text-white/70">
-                PR Hacienda 2019 <br />
-                Njegoševa 21
-                <br />
-                19320 Kladovo
-              </p>
-
-              <h3
-                className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
               >
                 Telefon
@@ -115,6 +102,7 @@ const ContactContent = () => {
                 </a>
               </p>
 
+              {/* ✅ 2) Email */}
               <h3
                 className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -133,6 +121,21 @@ const ContactContent = () => {
                 >
                   Hacienda.office2019@gmail.com
                 </Link>
+              </p>
+
+              {/* ✅ 3) Naša adresa */}
+              <h3
+                className="mb-4 mt-6 text-xl font-panchang"
+                style={{ color: GREEN }}
+              >
+                Naša adresa
+              </h3>
+
+              <p className="text-lg leading-relaxed text-white/70">
+                PR Hacienda 2019 <br />
+                {/* Njegoševa 21 */}
+                {/* <br /> */}
+                19320 Kladovo
               </p>
             </div>
           </motion.div>

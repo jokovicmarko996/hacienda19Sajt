@@ -147,7 +147,7 @@ function Navigation() {
                 <NavLink key={link.href} href={link.href} label={link.label} />
               ))}
 
-              <Button text="Zatraži ponudu" href="/contact" className="ml-3" />
+              <Button text="Poruči" href="/contact" className="ml-3" />
             </div>
 
             {/* Mobile Menu Button */}
@@ -164,19 +164,23 @@ function Navigation() {
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <span className="relative block h-5 w-6">
+                  {/* top line */}
                   <span
                     className={`absolute left-0 top-0 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
                       isOpen ? "top-2 rotate-45" : ""
                     }`}
                   />
+                  {/* middle line */}
                   <span
                     className={`absolute left-0 top-2 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
-                      isOpen ? "opacity-0" : "opacity-100"
+                      // isOpen ? "opacity-0" : "opacity-100"
+                      isOpen ? "top-2 -rotate-45" : ""
                     }`}
                   />
+                  {/* bottom line */}
                   <span
-                    className={`absolute left-0 top-4 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
-                      isOpen ? "top-2 -rotate-45" : ""
+                    className={`absolute right-0 top-4 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
+                      isOpen ? "opacity-0 " : "opacity-100 w-[65%]"
                     }`}
                   />
                 </span>
@@ -208,7 +212,7 @@ function Navigation() {
 
                     <div className="px-2 pt-2">
                       <Button
-                        text="Zatraži ponudu"
+                        text="Poruči "
                         href="/contact"
                         className="w-full"
                       />
