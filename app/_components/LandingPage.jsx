@@ -1,8 +1,7 @@
 import Image from "next/image";
 
-import heroLandscape from "../../public/hero/pergola3.avif";
+import heroLandscape from "../../public/hero/pergola2.avif";
 import heroPortrait from "../../public/hero/pergola1.avif";
-
 import Features from "./Features";
 import GsapAnimatedText from "./GsapATB";
 import StarryQuote from "./StarryQuote";

@@ -2,6 +2,7 @@
 import bg from "../../public/hero/pergola3.avif"; // slika koja ce da bude hero image
 import HeroPattern from "../_components/HerroPattern";
 import MansoryLayout from "../_components/MansoryLayout";
+import FollowUsSection from "../_components/ui/FollowUsCGPT";
 import ProductsContent from "../_components/ui/ProductsContent";
 
 const GREEN = "#4cffb3";
@@ -23,10 +24,10 @@ const page = () => {
         ]}
       />
 
-      <ProductsContent />
-
       {/* <MansoryLayoutImproved images={images} /> */}
       <MansoryLayout />
+      <ProductsContent />
+      <FollowUsSection />
     </div>
   );
 };
