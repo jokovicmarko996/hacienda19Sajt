@@ -8,158 +8,172 @@ import { AnimatePresence, motion } from "framer-motion";
 const products = [
   {
     id: 1,
-    title: "Pergola 1",
+    title: "Prestige",
     description:
       "Ova pergola je savršeno rešenje za vaš vrt ili terasu. Izrađena je od visokokvalitetnih materijala koji pružaju dugotrajnost i otpornost na vremenske uslove. Njen moderan dizajn omogućava savršeno uklapanje u svaki prostor, dok pruža zaštitu od sunca i kiše. Idealna je za opuštanje i uživanje na otvorenom.",
     price: "270$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/1/1.avif",
+      "/products/1/2.avif",
+      "/products/1/3.avif",
+      "/products/1/4.avif",
+      "/products/1/5.avif",
+      "/products/1/6.avif",
     ],
   },
   {
     id: 2,
-    title: "Pergola 2",
+    title: "Alpina",
     description:
       "Ova pergola kombinuje funkcionalnost i estetiku. Nudi odličnu zaštitu od vremenskih uslova, dok njen elegantan dizajn doprinosi lepoti vašeg prostora. Lako se montira i održava, što je čini idealnim izborom za svaki dom.",
     price: "285$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/2/1.avif",
+      "/products/2/2.avif",
+      "/products/2/3.avif",
+      "/products/2/4.avif",
+      "/products/2/5.avif",
     ],
   },
   {
     id: 3,
-    title: "Pergola 3",
+    title: "Adria",
     description:
       "Pergola modernog dizajna koja pruža odličnu zaštitu od sunca i padavina. Kvalitetna izrada i pažljivo odabrani materijali čine je dugotrajnim rešenjem za terase i dvorišta.",
     price: "260$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/3/1.avif",
+      "/products/3/2.avif",
+      "/products/3/3.avif",
+      "/products/3/4.avif",
+      "/products/3/5.avif",
     ],
   },
   {
     id: 4,
-    title: "Pergola 4",
+    title: "Edge",
     description:
       "Funkcionalna i elegantna pergola koja se lako uklapa u različite stilove eksterijera. Dizajnirana je da ponudi komfor i dodatnu vrednost prostoru za boravak na otvorenom.",
     price: "295$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/4/1.avif",
+      "/products/4/2.avif",
+      "/products/4/3.avif",
+      "/products/4/4.avif",
+      "/products/4/5.avif",
     ],
   },
   {
     id: 5,
-    title: "Pergola 5",
+    title: "Riviera",
     description:
       "Praktično rešenje za zaštitu i ulepšavanje terase ili bašte. Stabilna konstrukcija, moderan izgled i dobra otpornost na vremenske uslove.",
     price: "255$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/5/1.avif",
+      "/products/5/2.avif",
+      "/products/5/3.avif",
+      "/products/5/4.avif",
+      "/products/5/5.avif",
     ],
   },
   {
     id: 6,
-    title: "Pergola 6",
+    title: "Riviera Line",
     description:
       "Pergola namenjena za komforan boravak napolju tokom cele sezone. Kombinuje kvalitet, estetiku i dugotrajnost uz minimalno održavanje.",
     price: "275$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/6/1.avif",
+      "/products/6/2.avif",
+      "/products/6/3.avif",
+      "/products/6/4.avif",
+      "/products/6/5.avif",
     ],
   },
   {
     id: 7,
-    title: "Pergola 7",
+    title: "Riviera Compact",
     description:
       "Savremena pergola koja doprinosi privatnosti i zaštiti od sunca. Idealan izbor za porodična okupljanja, odmor i uživanje na otvorenom.",
     price: "290$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/7/1.avif",
+      "/products/7/2.avif",
+      "/products/7/3.avif",
+      "/products/7/4.avif",
+      "/products/7/5.avif",
     ],
   },
   {
     id: 8,
-    title: "Pergola 8",
+    title: "Elegance",
     description:
       "Minimalistički dizajn sa naglaskom na funkcionalnost. Pergola je pogodna za različite dimenzije prostora i omogućava prijatan ambijent na terasi.",
     price: "265$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/8/1.avif",
+      "/products/8/2.avif",
+      "/products/8/3.avif",
+      "/products/8/4.avif",
+      "/products/8/5.avif",
     ],
   },
   {
     id: 9,
-    title: "Pergola 9",
+    title: "Elegance Oasis",
     description:
       "Kvalitetna pergola za terase i bašte koja nudi odličan balans između cene i performansi. Dizajnirana da traje i da izgleda premium.",
     price: "280$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/9/1.avif",
+      "/products/9/2.avif",
+      "/products/9/3.avif",
+      "/products/9/4.avif",
+      "/products/9/5.avif",
     ],
   },
   {
     id: 10,
-    title: "Pergola 10",
+    title: "Sharp",
     description:
       "Robusna i pouzdana pergola koja pruža zaštitu i lep vizuelni efekat. Pogodna za privatne i komercijalne prostore.",
     price: "300$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/10/1.avif",
+      "/products/10/2.avif",
+      "/products/10/3.avif",
+      "/products/10/4.avif",
+      "/products/10/5.avif",
     ],
   },
   {
     id: 11,
-    title: "Pergola 11",
+    title: "Roofline",
     description:
       "Elegantna pergola sa modernim linijama. Jednostavna za uklapanje uz postojeći objekat, uz osećaj luksuza i komfora na otvorenom.",
     price: "258$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/11/1.avif",
+      "/products/11/2.avif",
+      "/products/11/3.avif",
+      "/products/11/4.avif",
+      "/products/11/5.avif",
     ],
   },
   {
     id: 12,
-    title: "Pergola 12",
+    title: "Prestige",
     description:
       "Premium izgled i stabilna konstrukcija za maksimalnu udobnost. Idealna za stvaranje senke i zaštićenog prostora za druženje i odmor.",
     price: "292$/kv",
     images: [
-      "/products/pergola1.png",
-      "/products/pergola1.png",
-      "/products/pergola2.png",
-      "/products/pergola3.png",
+      "/products/1/1.avif",
+      "/products/1/2.avif",
+      "/products/1/3.avif",
+      "/products/1/4.avif",
+      "/products/1/5.avif",
+      "/products/1/6.avif",
     ],
   },
 ];
@@ -307,7 +321,6 @@ const ProductPage = () => {
                   type="button"
                   onClick={handlePrevImage}
                   aria-label="Prethodna slika"
-                  whileTap={{ scale: 0.97 }}
                   className="
                     absolute left-3 top-1/2 -translate-y-1/2
                     inline-flex h-11 w-11 items-center justify-center rounded-xl
@@ -325,7 +338,6 @@ const ProductPage = () => {
                   type="button"
                   onClick={handleNextImage}
                   aria-label="Sledeća slika"
-                  whileTap={{ scale: 0.97 }}
                   className="
                     absolute right-3 top-1/2 -translate-y-1/2
                     inline-flex h-11 w-11 items-center justify-center rounded-xl
@@ -434,7 +446,7 @@ const ProductPage = () => {
                       bg-[#4cffb3] px-3 py-2 text-sm font-bold text-black
                       transition-all duration-300
                       hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
-                      active:scale-[0.98]
+                      // active:scale-[0.98]
                       focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black
                     "
                   >

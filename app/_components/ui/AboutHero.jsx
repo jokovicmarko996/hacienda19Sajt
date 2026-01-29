@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import bgImage from "../../../public/hero/pergola11.png";
-import GlassButton from "../GlassButton";
 import Link from "next/link";
+import { useRef, useState } from "react";
+import bgImage from "../../../public/hero/pergola2.avif";
+import GlassButton from "../GlassButton";
 import { TransparentButton } from "../GsapATB";
 
 const GREEN = "#4cffb3";

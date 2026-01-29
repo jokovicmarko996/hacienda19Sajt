@@ -1,5 +1,5 @@
 "use client";
-import bg from "../../public/products/pergola5.png"; // slika koja ce da bude hero image
+import bg from "../../public/hero/pergola4.avif"; // slika koja ce da bude hero image
 import FAQAccordion from "../_components/FAQAccordion";
 import HeroPattern from "../_components/HerroPattern";
 import ContactContent from "../_components/ui/ContactContent";
@@ -23,19 +23,11 @@ const page = () => {
         ]}
       />
 
-      {/* <Contact /> */}
       <ContactContent />
       <FAQAccordion />
-      {/* <SocialMediaLinks /> */}
       <FollowUsSection />
     </>
   );
-  // return (
-  //   <div className="relative z-0">
-  //     <Contact />
-  //     <StarsCanvas />
-  //   </div>
-  // );
 };
 
 export default page;

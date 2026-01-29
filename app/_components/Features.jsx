@@ -6,12 +6,6 @@ import { TiLocationArrow } from "react-icons/ti";
 import Image from "next/image";
 import Link from "next/link";
 
-import pergola2 from "../../public/products/pergola6.png";
-import pergola3 from "../../public/products/pergola7.png";
-import pergola1 from "../../public/products/pergola9.png";
-import pergola5 from "../../public/products/pergola10.png";
-import pergola4 from "../../public/products/pergola2.png";
-
 const GREEN = "#4cffb3";
 
 const containerVariants = {
@@ -230,8 +224,8 @@ const Features = () => (
 
       <BentoTilt className="relative mb-7 h-96 w-full overflow-hidden rounded-3xl border border-white/10 md:h-[65vh]">
         <BentoCard
-          src="/products/pergola9.png"
-          title={<>Pergola 1</>}
+          src="/products/1/6.avif"
+          title={<>Prestige</>}
           description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
         />
       </BentoTilt>
@@ -239,24 +233,24 @@ const Features = () => (
       <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 rounded-3xl border border-white/10 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="/products/pergola6.png"
-            title={<>Pergola 2</>}
+            src="/products/2/2.avif"
+            title={<>Alpina</>}
             description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 rounded-3xl border border-white/10 md:col-span-1 md:ms-0">
           <BentoCard
-            src="/products/pergola7.png"
-            title={<>Pergola 3</>}
+            src="/products/5/1.avif"
+            title={<>Riviera</>}
             description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 me-14 rounded-3xl border border-white/10 md:col-span-1 md:me-0">
           <BentoCard
-            src="/products/pergola2.png"
-            title={<>Pergola 4</>}
+            src="/products/9/2.avif"
+            title={<>Elegance Oasis</>}
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
           />
         </BentoTilt>
@@ -309,8 +303,8 @@ const Features = () => (
 
         <BentoTilt className="bento-tilt_2 rounded-3xl border border-white/10">
           <BentoCard
-            src="/products/pergola10.png"
-            title={<>Pergola 5</>}
+            src="/products/3/1.avif"
+            title={<>Adria</>}
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
           />
         </BentoTilt>

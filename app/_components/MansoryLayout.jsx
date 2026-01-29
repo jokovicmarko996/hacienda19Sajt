@@ -1,9 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { TiLocationArrow } from "react-icons/ti";
-import { motion } from "framer-motion";
 
 // a bit softer / more premium green than pure neon
 const GREEN = "#2EE6A6";
@@ -11,84 +11,84 @@ const GREEN = "#2EE6A6";
 const images_col1 = [
   {
     id: 1,
-    src: "/products/pergola1.png",
+    src: "/products/1/1.avif",
     aspectRatio: "0.8",
-    title: "Pergola 1",
+    title: "Prestige",
   },
   {
     id: 2,
-    src: "/products/pergola2.png",
+    src: "/products/2/2.avif",
     aspectRatio: "1.22",
-    title: "Pergola 2",
+    title: "Alpina",
   },
   {
     id: 3,
-    src: "/products/pergola3.png",
+    src: "/products/3/3.avif",
     aspectRatio: "1.08",
-    title: "Pergola 3",
+    title: "Adria",
   },
 ];
 
 const images_col2 = [
   {
     id: 4,
-    src: "/products/pergola4.png",
+    src: "/products/4/2.avif",
     aspectRatio: "1.02",
-    title: "Pergola 4",
+    title: "Edge",
   },
   {
     id: 5,
-    src: "/products/pergola5.png",
+    src: "/products/5/1.avif",
     aspectRatio: "0.71",
-    title: "Pergola 5",
+    title: "Riviera",
   },
   {
     id: 6,
-    src: "/products/pergola6.png",
+    src: "/products/6/1.avif",
     aspectRatio: "1.6",
-    title: "Pergola 6",
+    title: "Riviera Line",
   },
 ];
 
 const images_col3 = [
   {
     id: 7,
-    src: "/products/pergola7.png",
+    src: "/products/7/1.avif",
     aspectRatio: "0.72",
-    title: "Pergola 7",
+    title: "Riviera Compact",
   },
   {
     id: 8,
-    src: "/products/pergola8.png",
+    src: "/products/8/1.avif",
     aspectRatio: "1.31",
-    title: "Pergola 8",
+    title: "Elegance",
   },
   {
     id: 9,
-    src: "/products/pergola9.png",
+    src: "/products/9/5.avif",
     aspectRatio: "1.17",
-    title: "Pergola 9",
+    title: "Elegance Oasis",
   },
 ];
 
 const images_col4 = [
   {
     id: 10,
-    src: "/products/pergola10.png",
+    src: "/products/10/1.avif",
     aspectRatio: "1.17",
-    title: "Pergola 10",
+    title: "Sharp",
   },
   {
     id: 11,
-    src: "/products/pergola11.png",
+    src: "/products/11/1.avif",
     aspectRatio: "0.72",
-    title: "Pergola 11",
+    title: "Roofline",
   },
   {
     id: 12,
-    src: "/products/pergola12.png",
+    src: "/products/1/1.avif",
     aspectRatio: "1.31",
-    title: "Pergola 12",
+    title: "Prestige",
   },
 ];
 
