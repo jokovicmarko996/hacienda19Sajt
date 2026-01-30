@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import heroLandscape from "../../public/hero/pergola2.avif";
-import heroPortrait from "../../public/hero/pergola1.avif";
 import Features from "./Features";
 import GsapAnimatedText from "./GsapATB";
 import StarryQuote from "./StarryQuote";
@@ -15,7 +13,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 w-full h-full">
           {/* Portrait (phones / narrow screens) */}
           <Image
-            src={heroPortrait}
+            src="/hero/pergola1.avif"
             alt="Hero Pergola Image"
             fill
             priority
@@ -25,7 +23,7 @@ export default function LandingPage() {
 
           {/* Landscape (desktop / wide screens) */}
           <Image
-            src={heroLandscape}
+            src="/products/1/2.avif"
             alt="Hero Pergola Image"
             fill
             priority
@@ -35,7 +33,7 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Heading & Button */}
-        <GsapAnimatedText className="text-white font-extralight" />
+        <GsapAnimatedText className="text-black font-extralight" />
       </section>
 
       <StarryQuote />

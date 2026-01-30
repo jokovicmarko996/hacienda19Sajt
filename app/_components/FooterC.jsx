@@ -143,14 +143,14 @@ export default function FooterC() {
                 &copy; {currentYear} Hacienda19. Sva prava su rezervirana.
               </p>
 
-              <p className="mt-1 text-sm text-white/60">
+              <p className="mt-1 text-sm  text-white/60">
                 Sajt izradio{" "}
                 <Link
                   href="https://www.instagram.com/j_marko.26/"
                   target="_blank"
-                  className="text-[#4cffb3] hover:underline"
+                  className="text-[#4cffb3] hover:underline font-panchang"
                 >
-                  MarkoDev
+                  m_dev
                 </Link>
               </p>
             </div>

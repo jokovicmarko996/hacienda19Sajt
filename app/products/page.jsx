@@ -1,5 +1,5 @@
 "use client";
-import bg from "../../public/hero/pergola3.avif"; // slika koja ce da bude hero image
+
 import HeroPattern from "../_components/HerroPattern";
 import MansoryLayout from "../_components/MansoryLayout";
 import FollowUsSection from "../_components/ui/FollowUsCGPT";
@@ -8,12 +8,12 @@ import ProductsContent from "../_components/ui/ProductsContent";
 const GREEN = "#4cffb3";
 
 // bento grid iz tailwinda
-const page = () => {
+const Page = () => {
   return (
     <div className="max-w-full overflow-x-hidden">
       {/* HERO SECTION */}
       <HeroPattern
-        image={bg}
+        image="/hero/pergola3.avif"
         heading={[
           { text: "Ekskluzivni", className: "font-panchang text-white" },
           {
@@ -24,7 +24,6 @@ const page = () => {
         ]}
       />
 
-      {/* <MansoryLayoutImproved images={images} /> */}
       <MansoryLayout />
       <ProductsContent />
       <FollowUsSection />
@@ -32,4 +31,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

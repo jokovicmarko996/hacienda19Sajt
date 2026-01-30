@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
@@ -90,7 +91,7 @@ export const BentoTilt = ({ children, className = "" }) => {
 };
 
 // ✅ Animacija JE SAMO ovde (BentoCard)
-export const BentoCard = ({ src, title, description }) => {
+export const BentoCard = ({ src, title, description, href = "/products" }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [hoverOpacity, setHoverOpacity] = useState(0);
   const hoverButtonRef = useRef(null);
@@ -129,11 +130,13 @@ export const BentoCard = ({ src, title, description }) => {
       whileHover={{ y: -2 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
     >
-      <Link href="/products" className="group block size-full">
+      {/* ✅ per-card link */}
+      <Link href={href} className="group block size-full">
         <Image
           src={src}
           alt={typeof title === "string" ? title : "Product"}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="absolute left-0 top-0 size-full object-cover object-center"
         />
 
@@ -227,6 +230,7 @@ const Features = () => (
           src="/products/1/6.avif"
           title={<>Prestige</>}
           description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          href="/products/1"
         />
       </BentoTilt>
 
@@ -236,6 +240,7 @@ const Features = () => (
             src="/products/2/2.avif"
             title={<>Alpina</>}
             description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            href="/products/2"
           />
         </BentoTilt>
 
@@ -244,6 +249,7 @@ const Features = () => (
             src="/products/5/1.avif"
             title={<>Riviera</>}
             description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            href="/products/5"
           />
         </BentoTilt>
 
@@ -252,6 +258,7 @@ const Features = () => (
             src="/products/9/2.avif"
             title={<>Elegance Oasis</>}
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            href="/products/9"
           />
         </BentoTilt>
 
@@ -306,6 +313,7 @@ const Features = () => (
             src="/products/3/1.avif"
             title={<>Adria</>}
             description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            href="/products/3"
           />
         </BentoTilt>
       </div>

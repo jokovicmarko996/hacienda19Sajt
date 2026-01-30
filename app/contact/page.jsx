@@ -1,5 +1,4 @@
 "use client";
-import bg from "../../public/hero/pergola4.avif"; // slika koja ce da bude hero image
 import FAQAccordion from "../_components/FAQAccordion";
 import HeroPattern from "../_components/HerroPattern";
 import ContactContent from "../_components/ui/ContactContent";
@@ -12,7 +11,7 @@ const page = () => {
     <>
       <HeroPattern
         position="left"
-        image={bg}
+        image="/hero/pergola4.avif"
         heading={[
           { text: "Premium ", className: "font-panchang text-white" },
           {

@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import bgImage from "../../../public/hero/pergola2.avif";
 import GlassButton from "../GlassButton";
 import { TransparentButton } from "../GsapATB";
 
@@ -145,7 +144,7 @@ const AboutHero = () => {
             {/* Background Image */}
             <div className="absolute inset-0 w-full h-full">
               <Image
-                src={bgImage}
+                src="/hero/pergola2.avif"
                 alt="Hero Image"
                 fill
                 className="object-cover"

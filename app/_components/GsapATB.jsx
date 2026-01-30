@@ -101,9 +101,9 @@ const GsapAnimatedTextButton = ({ className }) => {
       {/* Animated Heading */}
       <div
         ref={container}
-        className={`inline-flex font-panchang font-normal m-0 p-0 overflow-hidden ${className}`}
+        className={`inline-flex font-panchang  m-0 p-0 overflow-hidden ${className}`}
       >
-        <h1 className="heading text-center text-[3rem] md:text-[6rem] text-white">
+        <h1 className="heading text-center text-[3rem] md:text-[4rem] text-black md:text-[#4cffb3] font font-semibold">
           {"Hacienda".split("").map((letter, index) => (
             <motion.span
               key={index}

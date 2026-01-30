@@ -92,9 +92,20 @@ const images_col4 = [
   },
 ];
 
+// parent staggers columns
 const gridVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
+// each column staggers its cards
+const columnVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
 };
 
 const itemVariants = {
@@ -111,7 +122,7 @@ const itemVariants = {
 const MansoryLayout = () => {
   const renderColumn = (images) => {
     return (
-      <div className="grid gap-4">
+      <motion.div className="grid gap-4" variants={columnVariants}>
         {images.map((image) => (
           <motion.div
             key={image.id}
@@ -119,9 +130,9 @@ const MansoryLayout = () => {
             whileHover={{ y: -2 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/60"
-            style={{ aspectRatio: image.aspectRatio }} // ✅ ensures height
+            style={{ aspectRatio: image.aspectRatio }} // ensures height
           >
-            {/* ✅ Whole card is clickable */}
+            {/* Whole card is clickable */}
             <Link
               href={`/products/${image.id}`}
               className="absolute inset-0 z-[2]"
@@ -152,7 +163,7 @@ const MansoryLayout = () => {
               </span>
             </div>
 
-            {/* ✅ Details navigates too */}
+            {/* Details navigates too */}
             <Link
               href={`/products/${image.id}`}
               className="
@@ -175,7 +186,7 @@ const MansoryLayout = () => {
             </Link>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     );
   };
 
@@ -183,8 +194,8 @@ const MansoryLayout = () => {
     <motion.div
       className="w-full grid grid-cols-2 gap-4 bg-black p-4 md:grid-cols-4"
       variants={gridVariants}
-      initial="visible" // debug: don't keep hidden
-      animate="visible" // debug: don't depend on in-view
+      initial="hidden"
+      animate="visible"
     >
       {renderColumn(images_col1)}
       {renderColumn(images_col2)}
