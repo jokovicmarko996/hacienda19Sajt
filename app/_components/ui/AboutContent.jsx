@@ -57,7 +57,7 @@ const Testimonials = () => {
 };
 
 import { useEffect, useRef, useState } from "react";
-// ...existing code...
+
 
 const StatNumber = ({ value, duration = 2, className = "" }) => {
   const ref = useRef(null);

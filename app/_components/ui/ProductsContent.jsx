@@ -54,13 +54,16 @@ const ProductsContent = () => {
           <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#4cffb3]/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
+          {/* Premium overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+
           {/* Heading */}
           <motion.h2
             className="relative z-10 mb-14 text-center font-panchang text-3xl sm:text-4xl lg:text-5xl"
             style={{ color: GREEN }}
             variants={fadeUp}
           >
-            Naši proizvodi
+            Zašto naše pergole
           </motion.h2>
 
           {/* Two Columns */}

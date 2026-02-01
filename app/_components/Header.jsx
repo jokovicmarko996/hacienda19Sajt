@@ -3,9 +3,9 @@ import Navigation from "./Navigation";
 
 const HeaderX = () => {
   return (
-    <header className="max-w-full">
+    <nav className="max-w-full">
     <Navigation />
-  </header>
+  </nav>
   )
 }
 

@@ -4,6 +4,32 @@ import HeaderX from "./_components/Header";
 import { Boldonse } from "next/font/google";
 import "./globals.css";
 
+export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
+  title: {
+    default: "Hacienda Premium Pergole",
+    template: "%s | Hacienda Premium Pergole",
+  },
+  description: "Izrada drvenih premium pergola",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Hacienda Premium Pergole",
+    title: "Hacienda Premium Pergole",
+    description: "Izrada drvenih premium pergola",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hacienda Premium Pergole",
+    description: "Izrada drvenih premium pergola",
+  },
+};
+
 const boldonse = Boldonse({
   subsets: ["latin"],
   weight: ["400"], // dodaj ako ima više težina
@@ -26,14 +52,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Hacienda Premium Pergole",
-  description: "Izrada drvenih premium pergola",
-};
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="overflow-x-hidden max-w-full">
+    <html lang="sr" className="overflow-x-hidden max-w-full">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full bg-black`}

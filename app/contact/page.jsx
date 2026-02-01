@@ -1,4 +1,4 @@
-"use client";
+
 import FAQAccordion from "../_components/FAQAccordion";
 import HeroPattern from "../_components/HerroPattern";
 import ContactContent from "../_components/ui/ContactContent";
