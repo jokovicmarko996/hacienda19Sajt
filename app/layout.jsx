@@ -16,6 +16,9 @@ export const metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "bERIiFBYisv6KTiQc_Oo_ptwNnmY450Gj40zg8h0x-U",
+  },
   openGraph: {
     type: "website",
     siteName: "Hacienda Premium Pergole",
