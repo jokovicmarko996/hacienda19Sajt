@@ -13,9 +13,7 @@ export const metadata = {
     template: "%s | Hacienda Premium Pergole",
   },
   description: "Izrada drvenih premium pergola",
-  alternates: {
-    canonical: "/",
-  },
+
   verification: {
     google: "bERIiFBYisv6KTiQc_Oo_ptwNnmY450Gj40zg8h0x-U",
   },
