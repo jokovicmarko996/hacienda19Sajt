@@ -28,6 +28,13 @@ export const metadata = {
     title: "Hacienda Premium Pergole",
     description: "Izrada drvenih premium pergola",
   },
+  keywords: [
+    "premium pergole",
+    "drvene pergole",
+    "pergole za terase",
+    "pergole za dvorišta",
+    "Hacienda Premium Pergole",
+  ],
 };
 
 const boldonse = Boldonse({
@@ -54,13 +61,16 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="sr" className="overflow-x-hidden max-w-full">
+    <html lang="sr-RS" className="overflow-x-hidden max-w-full">
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full bg-black`}
       >
-        <HeaderX />
-        {children}
+        <header role="banner">
+          <HeaderX />
+        </header>
+
+        <main id="main">{children}</main>
         <FooterC />
       </body>
     </html>

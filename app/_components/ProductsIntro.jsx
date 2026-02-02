@@ -1,6 +1,8 @@
+import Link from "next/link";
+
 const ProductsIntro = ({ green = "#4cffb3" }) => {
   return (
-    <section className="relative bg-black px-4 sm:px-6 lg:px-10 pt-10 sm:pt-12 pb-10 sm:pb-14">
+    <section className="relative bg-black px-4 pt-10 pb-10 sm:px-6 sm:pt-12 sm:pb-14 lg:px-10">
       <div className="mx-auto w-full max-w-6xl">
         <div
           className="
@@ -31,7 +33,7 @@ const ProductsIntro = ({ green = "#4cffb3" }) => {
             }}
           />
 
-          {/* FIXED: green glow on hover (uses group-hover) */}
+          {/* green glow on hover (uses group-hover) */}
           <div
             className="
               pointer-events-none absolute inset-0 rounded-3xl
@@ -39,31 +41,57 @@ const ProductsIntro = ({ green = "#4cffb3" }) => {
               group-hover:opacity-100
             "
             style={{
-              boxShadow: `0 0 40px -22px ${green}8c`, // glow
+              boxShadow: `0 0 40px -22px ${green}8c`,
             }}
           />
 
           <div className="relative z-10 text-center">
-            <h1
+            {/* H2 (HeroPattern should be the single H1 on /products page) */}
+            <h2
               className="font-panchang text-2xl sm:text-3xl"
               style={{
                 color: green,
                 textShadow: "0 0 22px rgba(76,255,179,0.22)",
               }}
             >
-              Naši proizvodi
-            </h1>
+              Premium pergole i rešenja za eksterijer
+            </h2>
 
             <div
               className="mx-auto mt-4 h-px w-24 shadow-[0_0_22px_-12px_#4cffb3]"
               style={{ backgroundColor: `${green}99` }}
             />
 
-            <p className="mx-auto mt-4 max-w-3xl text-white/70 font-serif text-base sm:text-lg leading-relaxed">
-              Istraži kolekcije i modele za uređenje eksterijera. Klikni na
-              proizvod za fotografije, opis i cenu, a porudžbinu možeš poslati
-              preko kontakt stranice.
+            <p className="mx-auto mt-4 max-w-3xl font-serif text-base leading-relaxed text-white/70 sm:text-lg">
+              Pregledaj naše modele <strong>drvenih premium pergola</strong> za
+              dvorišta, terase i ugostiteljske objekte. Svaki proizvod ima
+              galeriju fotografija, detaljan opis i ključne specifikacije, kako
+              bi lakše izabrao rešenje koje odgovara prostoru i stilu.
             </p>
+
+            <div className="mt-6 flex justify-center">
+              <Link
+                href="/contact"
+                className="
+                  inline-flex items-center justify-center gap-2
+                  rounded-full px-7 py-3.5
+                  font-panchang text-sm text-black sm:text-base
+                  transition-all duration-200
+                  hover:-translate-y-0.5 hover:brightness-110
+                  active:translate-y-0 active:brightness-95
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                "
+                style={{
+                  backgroundColor: green,
+                  boxShadow: `0 16px 44px -22px ${green}cc`,
+                }}
+                aria-label="Zatraži ponudu za pergolu"
+              >
+                Zatraži ponudu
+              
+              
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import FAQAccordion from "../_components/FAQAccordion";
 import HeroPattern from "../_components/HerroPattern";
 import ContactContent from "../_components/ui/ContactContent";
@@ -6,7 +5,31 @@ import FollowUsSection from "../_components/ui/FollowUsCGPT";
 
 const GREEN = "#4cffb3";
 
-const page = () => {
+export const metadata = {
+  title: "Kontakt | Hacienda Premium Pergole",
+  description:
+    "Kontaktiraj Hacienda Premium Pergole za izradu i montažu drvenih premium pergola. Pošalji upit, zatraži ponudu i saznaj detalje o izradi.",
+  keywords: [
+    "kontakt",
+    "ponuda pergola",
+    "izrada pergola",
+    "montaža pergola",
+    "drvene premium pergole",
+    "Hacienda Premium Pergole",
+  ],
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Kontakt | Hacienda Premium Pergole",
+    description:
+      "Kontaktiraj nas za izradu i montažu drvenih premium pergola i zatraži ponudu.",
+    url: "/contact",
+    type: "website",
+  },
+};
+
+const Page = () => {
   return (
     <>
       <HeroPattern
@@ -29,4 +52,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

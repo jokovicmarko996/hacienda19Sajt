@@ -5,13 +5,12 @@ import { motion } from "framer-motion";
 
 export default function HeroPattern({
   image,
+  imageAlt = "Drvena pergola – Hacienda Premium Pergole",
+  decorativeImage = true,
   heading = "",
   position = "right", // "left" | "right"
   className = "",
 }) {
-  // heading može biti:
-  // 1) string: "Ekskluzivni ambijent"
-  // 2) array: [{ text: "Ekskluzivni", className: "...", style: {...} }, ...]
   const tokens = Array.isArray(heading)
     ? heading
     : String(heading)
@@ -43,24 +42,19 @@ export default function HeroPattern({
     >
       <Image
         src={image}
-        alt="Hero Image"
+        alt={decorativeImage ? "" : imageAlt}
+        aria-hidden={decorativeImage ? true : undefined}
         fill
         priority
         className="object-cover"
         sizes="100vw"
       />
 
-      {/* dark overlay for readability */}
       <div className="pointer-events-none absolute inset-0 bg-black/20" />
-
-      {/* green glows (same vibe as other sections) */}
       <div className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/12 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-56 -right-56 h-[34rem] w-[34rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
-
-      {/* subtle top highlight like other cards */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-transparent" />
 
-      {/* heading */}
       <div
         className={[
           "absolute bottom-40 z-10 md:bottom-12",

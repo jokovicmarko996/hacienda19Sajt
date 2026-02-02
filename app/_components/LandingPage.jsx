@@ -14,7 +14,7 @@ export default function LandingPage() {
           {/* Portrait (phones / narrow screens) */}
           <Image
             src="/hero/pergola1.avif"
-            alt="Hero Pergola Image"
+            alt="Premium drvena pergola na terasi"
             fill
             priority
             className="object-cover md:hidden"
@@ -24,7 +24,7 @@ export default function LandingPage() {
           {/* Landscape (desktop / wide screens) */}
           <Image
             src="/products/1/2.avif"
-            alt="Hero Pergola Image"
+            alt="Premium drvena pergola na terasi"
             fill
             priority
             className="hidden object-cover md:block"
