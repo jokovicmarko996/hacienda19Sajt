@@ -21,7 +21,7 @@ Svi drveni elementi zaštićeni su lazurnim premazima na vodenoj bazi sa dodatko
 Model prikazan na fotografijama izrađen je u dimenziji 5×6 m (30 m²) i realizovan je na području Fruške gore.
 
 Pergola Prestige se izrađuje po meri, uz mogućnost prilagođavanja dimenzija, boje i dekorativnih elemenata u skladu sa projektom i prostorom.`,
-    price: "280 €/m²",
+    price: "350 €/m²",
     images: [
       "/products/1/1.avif",
       "/products/1/2.avif",
@@ -382,7 +382,7 @@ Svi drveni elementi zaštićeni su lazurnim premazima na vodenoj bazi sa dodatko
 Model prikazan na fotografijama izrađen je u dimenziji 5×6 m (30 m²) i realizovan je na području Fruške gore.
 
 Pergola Prestige se izrađuje po meri, uz mogućnost prilagođavanja dimenzija, boje i dekorativnih elemenata u skladu sa projektom i prostorom.`,
-    price: "280 €/m²",
+    price: "350 €/m²",
     images: [
       "/products/1/1.avif",
       "/products/1/2.avif",
