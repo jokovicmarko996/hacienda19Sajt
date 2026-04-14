@@ -107,7 +107,7 @@ export default function FooterC() {
                 </SocialIcon>
 
                 <SocialIcon
-                  href="https://www.instagram.com/hacienda.outdoorfurniture/"
+                  href="https://www.instagram.com/hacienda.outdoor.projects"
                   label="Instagram"
                 >
                   <FaInstagram className="text-xl" />

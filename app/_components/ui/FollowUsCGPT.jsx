@@ -74,7 +74,7 @@ export default function FollowUsSection() {
             variants={iconsWrapVariants}
           >
             <SocialIcon
-              href="https://www.instagram.com/hacienda.outdoorfurniture/"
+              href="https://www.instagram.com/hacienda.outdoor.projects"
               label="Instagram"
               variants={iconVariants}
             >
