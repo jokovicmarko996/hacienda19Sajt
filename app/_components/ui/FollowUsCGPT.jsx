@@ -1,6 +1,7 @@
 "use client";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 const GREEN = "#4cffb3";
 
@@ -76,6 +77,7 @@ export default function FollowUsSection() {
             <SocialIcon
               href="https://www.instagram.com/hacienda.outdoor.projects"
               label="Instagram"
+              network="instagram"
               variants={iconVariants}
             >
               <FaInstagram />
@@ -84,6 +86,7 @@ export default function FollowUsSection() {
             <SocialIcon
               href="https://www.facebook.com/Hacijendanamestajoddrveta/"
               label="Facebook"
+              network="facebook"
               variants={iconVariants}
             >
               <FaFacebook />
@@ -93,6 +96,7 @@ export default function FollowUsSection() {
             <SocialIcon
               href="https://www.kupujemprodajem.com/dvoriste-i-basta/suncobrani-tende-i-paviljoni/pergola-sa-istaknutim-sredisnjim-delom-5x6m-premium-proizvod/oglas/163596190"
               label="KupujemProdajem"
+              network="kupujemprodajem"
               variants={iconVariants}
             >
               <KpIcon />
@@ -101,6 +105,7 @@ export default function FollowUsSection() {
             <SocialIcon
               href="https://www.linkedin.com/in/bojan-jokovic-75a6a4310/"
               label="LinkedIn"
+              network="linkedin"
               variants={iconVariants}
             >
               <FaLinkedin />
@@ -112,7 +117,11 @@ export default function FollowUsSection() {
   );
 }
 
-function SocialIcon({ href, label, children, variants }) {
+function SocialIcon({ href, label, network, children, variants }) {
+  const handleClick = () => {
+    track("social_click", { network, label, href });
+  };
+
   return (
     <motion.a
       href={href}
@@ -122,6 +131,7 @@ function SocialIcon({ href, label, children, variants }) {
       variants={variants}
       whileHover={{ y: -2, scale: 1.04 }}
       whileTap={{ scale: 0.98 }}
+      onClick={handleClick}
       className="
         group relative flex items-center justify-center rounded-full
         border border-white/20 bg-black/35

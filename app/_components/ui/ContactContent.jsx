@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 
 const GREEN = "#4cffb3";
 
@@ -36,6 +37,29 @@ const ContactContent = () => {
       filter: "blur(0px)",
       transition: { duration: 0.6, ease: "easeOut" },
     },
+  };
+
+  const handlePhoneClick = () => {
+    track("contact_click", {
+      type: "phone",
+      value: "+381652670616",
+    });
+  };
+
+  const handleEmailClick = () => {
+    track("contact_click", {
+      type: "email",
+      value: "Hacienda.office2019@gmail.com",
+    });
+  };
+
+  const handleMessageSubmit = (e) => {
+    // If later you implement actual form sending, keep this as "attempt".
+    track("contact_click", { type: "message_submit" });
+
+    // Prevent default for now so the page doesn't reload on submit.
+    // Remove this when you connect a real submit handler (API/email service).
+    e.preventDefault();
   };
 
   return (
@@ -81,7 +105,7 @@ const ContactContent = () => {
             <div className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
             <div className="relative z-10">
-              {/* ✅ 1) Telefon */}
+              {/* 1) Telefon */}
               <h3
                 className="mb-4 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -92,6 +116,7 @@ const ContactContent = () => {
               <p className="text-lg leading-relaxed text-white/70">
                 <a
                   href="tel:+381652670616"
+                  onClick={handlePhoneClick}
                   className="
                     underline-offset-4 transition
                     hover:text-[#4cffb3]
@@ -102,7 +127,7 @@ const ContactContent = () => {
                 </a>
               </p>
 
-              {/* ✅ 2) Email */}
+              {/* 2) Email */}
               <h3
                 className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -113,6 +138,7 @@ const ContactContent = () => {
               <p className="text-lg leading-relaxed text-white/70">
                 <Link
                   href="mailto:Hacienda.office2019@gmail.com"
+                  onClick={handleEmailClick}
                   className="
                     underline-offset-4 transition
                     hover:text-[#4cffb3]
@@ -123,7 +149,7 @@ const ContactContent = () => {
                 </Link>
               </p>
 
-              {/* ✅ 3) Naša adresa */}
+              {/* 3) Naša adresa */}
               <h3
                 className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -162,7 +188,7 @@ const ContactContent = () => {
                 Pošaljite poruku
               </h3>
 
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleMessageSubmit}>
                 {/* Name Field */}
                 <div>
                   <label
