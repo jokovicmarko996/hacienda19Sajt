@@ -2,6 +2,8 @@ import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import FooterC from "./_components/FooterC";
 import HeaderX from "./_components/Header";
 import { Boldonse } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata = {
@@ -73,6 +75,12 @@ export default function RootLayout({ children }) {
 
         <main id="main">{children}</main>
         <FooterC />
+
+        {/* ✅ Vercel Analytics */}
+        <Analytics />
+
+        {/* ✅ Vercel Speed Insights */}
+        <SpeedInsights />
       </body>
     </html>
   );
