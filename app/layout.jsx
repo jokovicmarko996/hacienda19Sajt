@@ -8,17 +8,18 @@ import "./globals.css";
 
 export const metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://pergole-hacienda.rs"
   ),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Hacienda Premium Pergole",
     template: "%s | Hacienda Premium Pergole",
   },
   description: "Izrada drvenih premium pergola",
 
-  verification: {
-    google: "bERIiFBYisv6KTiQc_Oo_ptwNnmY450Gj40zg8h0x-U",
-  },
+  // NOTE: do NOT use metadata.verification.google when you need multiple tokens.
   openGraph: {
     type: "website",
     siteName: "Hacienda Premium Pergole",
@@ -42,7 +43,7 @@ export const metadata = {
 
 const boldonse = Boldonse({
   subsets: ["latin"],
-  weight: ["400"], // dodaj ako ima više težina
+  weight: ["400"],
   variable: "--font-boldonse",
 });
 
@@ -65,6 +66,18 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   return (
     <html lang="sr-RS" className="overflow-x-hidden max-w-full">
+      <head>
+        {/* Google Search Console verification (multiple tokens supported) */}
+        <meta
+          name="google-site-verification"
+          content="bERIiFBYisv6KTiQc_Oo_ptwNnmY450Gj40zg8h0x-U"
+        />
+        <meta
+          name="google-site-verification"
+          content="uekgb_w9lzZzol3zKJxzQc2z7ULbKFsD6e3Dex7Xa-c"
+        />
+      </head>
+
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full bg-black`}
@@ -76,10 +89,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <FooterC />
 
-        {/* ✅ Vercel Analytics */}
         <Analytics />
-
-        {/* ✅ Vercel Speed Insights */}
         <SpeedInsights />
       </body>
     </html>
