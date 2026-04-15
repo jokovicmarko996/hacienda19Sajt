@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import PropTypes from "prop-types";
 import { useEffect, useRef, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
@@ -14,7 +13,7 @@ const links = [
   { href: "/contact", label: "Kontakt" },
 ];
 
-const Button = ({ text, href, onClick, className }) => {
+const Button = ({ text, href = null, onClick = null, className = "" }) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -24,6 +23,7 @@ const Button = ({ text, href, onClick, className }) => {
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       className={`group inline-flex items-center justify-center gap-2 rounded-md
         bg-[#4cffb3] px-3 py-2 text-sm font-bold text-black
@@ -39,17 +39,27 @@ const Button = ({ text, href, onClick, className }) => {
   );
 };
 
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-};
+const NavLink = ({ href, label, mobile = false, pathname, onNavigate }) => {
+  const active = pathname === href;
 
-Button.defaultProps = {
-  href: null,
-  onClick: null,
-  className: "",
+  return (
+    <Link
+      href={href}
+      onClick={onNavigate}
+      className={`relative ${
+        mobile ? "px-3 py-2 text-base" : "px-3 py-2 text-sm"
+      } font-semibold transition-colors
+        ${active ? "text-[#4cffb3]" : "text-white/80 hover:text-white"}
+      `}
+    >
+      {label}
+      <span
+        className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-[#4cffb3] transition-all ${
+          active ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </Link>
+  );
 };
 
 function Navigation() {
@@ -58,13 +68,13 @@ function Navigation() {
   const menuRef = useRef(null);
 
   const controls = useAnimation();
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY && currentScrollY > 40) {
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 40) {
         controls.start({
           y: "-110%",
           transition: { duration: 0.35, ease: "easeInOut" },
@@ -76,12 +86,12 @@ function Navigation() {
         });
       }
 
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, controls]);
+  }, [controls]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -94,32 +104,12 @@ function Navigation() {
     return () => document.removeEventListener("click", handleOutsideClick);
   }, [isOpen]);
 
-  // close menu on route change
+  // keep old behavior: close menu on route change AND when clicking a nav link
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  const NavLink = ({ href, label, mobile = false }) => {
-    const active = pathname === href;
-
-    return (
-      <Link
-        href={href}
-        className={`relative ${
-          mobile ? "px-3 py-2 text-base" : "px-3 py-2 text-sm"
-        } font-semibold transition-colors
-          ${active ? "text-[#4cffb3]" : "text-white/80 hover:text-white"}
-        `}
-      >
-        {label}
-        <span
-          className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full bg-[#4cffb3] transition-all ${
-            active ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      </Link>
-    );
-  };
+  const handleNavigate = () => setIsOpen(false);
 
   return (
     <motion.nav
@@ -135,7 +125,7 @@ function Navigation() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="relative z-10">
+            <Link href="/" className="relative z-10" onClick={handleNavigate}>
               <p className="font-panchang text-lg sm:text-2xl text-[#4cffb3]">
                 Hacienda
               </p>
@@ -144,7 +134,13 @@ function Navigation() {
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center gap-2">
               {links.map((link) => (
-                <NavLink key={link.href} href={link.href} label={link.label} />
+                <NavLink
+                  key={link.href}
+                  href={link.href}
+                  label={link.label}
+                  pathname={pathname}
+                  onNavigate={handleNavigate}
+                />
               ))}
 
               <Button text="Poruči" href="/contact" className="ml-3" />
@@ -173,7 +169,6 @@ function Navigation() {
                   {/* middle line */}
                   <span
                     className={`absolute left-0 top-2 h-[2px] w-6 rounded bg-current transition-all duration-200 ${
-                      // isOpen ? "opacity-0" : "opacity-100"
                       isOpen ? "top-2 -rotate-45" : ""
                     }`}
                   />
@@ -207,12 +202,14 @@ function Navigation() {
                         href={link.href}
                         label={link.label}
                         mobile
+                        pathname={pathname}
+                        onNavigate={handleNavigate}
                       />
                     ))}
 
                     <div className="px-2 pt-2">
                       <Button
-                        text="Poruči "
+                        text="Poruči"
                         href="/contact"
                         className="w-full"
                       />
