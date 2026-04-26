@@ -1,7 +1,8 @@
 import { products } from "./_data/products";
 
 export default function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://pergole-hacienda.com";
   const now = new Date();
 
   // ✅ ovde navodiš prioritetne proizvode (id ili slug)

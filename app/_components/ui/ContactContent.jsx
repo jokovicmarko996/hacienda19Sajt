@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 
@@ -53,22 +53,75 @@ const ContactContent = () => {
     });
   };
 
-  const handleMessageSubmit = (e) => {
-    // If later you implement actual form sending, keep this as "attempt".
+  // Form state
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [error, setError] = useState("");
+
+  const isValid = useMemo(() => {
+    if (!name.trim() || !email.trim() || !message.trim()) return false;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  }, [name, email, message]);
+
+  const handleMessageSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
     track("contact_click", { type: "message_submit" });
 
-    // Prevent default for now so the page doesn't reload on submit.
-    // Remove this when you connect a real submit handler (API/email service).
-    e.preventDefault();
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setStatus("error");
+      setError("Molimo popunite sva polja.");
+      return;
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    if (!emailOk) {
+      setStatus("error");
+      setError("Unesite ispravnu email adresu.");
+      return;
+    }
+
+    try {
+      setStatus("sending");
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+          website: "", // ✅ honeypot stays empty for real users
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Neuspešno slanje poruke.");
+      }
+
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setMessage("");
+
+      track("contact_message_sent");
+    } catch (err) {
+      setStatus("error");
+      setError(err?.message || "Došlo je do greške. Pokušajte ponovo.");
+    }
   };
 
   return (
     <section className="relative w-full overflow-hidden bg-black py-16">
-      {/* background glows (same style as other sections) */}
       <div className="pointer-events-none absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-56 -right-56 h-[34rem] w-[34rem] rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
-      {/* slightly narrower on desktop */}
       <motion.div
         className="container relative mx-auto max-w-6xl px-6 md:px-12"
         variants={sectionVariants}
@@ -76,7 +129,6 @@ const ContactContent = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.25 }}
       >
-        {/* Heading */}
         <motion.h2
           className="mb-10 text-center text-2xl font-panchang md:text-5xl"
           style={{ color: GREEN }}
@@ -85,7 +137,6 @@ const ContactContent = () => {
           Kontaktirajte nas
         </motion.h2>
 
-        {/* Two Columns */}
         <motion.div
           className="grid grid-cols-1 gap-8 md:grid-cols-2"
           variants={colsWrap}
@@ -105,7 +156,6 @@ const ContactContent = () => {
             <div className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-[#4cffb3]/10 blur-3xl" />
 
             <div className="relative z-10">
-              {/* 1) Telefon */}
               <h3
                 className="mb-4 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -127,7 +177,6 @@ const ContactContent = () => {
                 </a>
               </p>
 
-              {/* 2) Email */}
               <h3
                 className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -149,7 +198,6 @@ const ContactContent = () => {
                 </Link>
               </p>
 
-              {/* 3) Naša adresa */}
               <h3
                 className="mb-4 mt-6 text-xl font-panchang"
                 style={{ color: GREEN }}
@@ -159,8 +207,6 @@ const ContactContent = () => {
 
               <p className="text-lg leading-relaxed text-white/70">
                 PR Hacienda 2019 <br />
-                {/* Njegoševa 21 */}
-                {/* <br /> */}
                 19320 Kladovo
               </p>
             </div>
@@ -189,7 +235,19 @@ const ContactContent = () => {
               </h3>
 
               <form className="space-y-4" onSubmit={handleMessageSubmit}>
-                {/* Name Field */}
+                {/* ✅ Honeypot (hidden). Bots may fill it; humans won't. */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    defaultValue=""
+                  />
+                </div>
+
                 <div>
                   <label
                     htmlFor="name"
@@ -200,6 +258,9 @@ const ContactContent = () => {
                   <input
                     type="text"
                     id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                     className="
                       w-full rounded-xl border border-white/10 bg-black/40 p-3
                       text-white/85 placeholder:text-white/35
@@ -211,7 +272,6 @@ const ContactContent = () => {
                   />
                 </div>
 
-                {/* Email Field */}
                 <div>
                   <label
                     htmlFor="email"
@@ -222,6 +282,9 @@ const ContactContent = () => {
                   <input
                     type="email"
                     id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                     className="
                       w-full rounded-xl border border-white/10 bg-black/40 p-3
                       text-white/85 placeholder:text-white/35
@@ -233,7 +296,6 @@ const ContactContent = () => {
                   />
                 </div>
 
-                {/* Message Field */}
                 <div>
                   <label
                     htmlFor="message"
@@ -244,6 +306,9 @@ const ContactContent = () => {
                   <textarea
                     id="message"
                     rows={5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    required
                     className="
                       w-full rounded-xl border border-white/10 bg-black/40 p-3
                       text-white/85 placeholder:text-white/35
@@ -254,18 +319,29 @@ const ContactContent = () => {
                   />
                 </div>
 
-                {/* Submit Button */}
+                {status === "success" ? (
+                  <p className="text-sm text-[#4cffb3]">
+                    Poruka je poslata. Javićemo se uskoro.
+                  </p>
+                ) : null}
+
+                {status === "error" ? (
+                  <p className="text-sm text-red-400">{error}</p>
+                ) : null}
+
                 <button
                   type="submit"
+                  disabled={!isValid || status === "sending"}
                   className="
                     w-full rounded-xl bg-[#4cffb3] py-3 font-bold text-black
                     transition-all duration-300
                     hover:bg-[#4cffb3]/90 hover:shadow-[0_0_26px_-10px_#4cffb3]
                     active:scale-[0.98]
                     focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4cffb3]/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black
+                    disabled:cursor-not-allowed disabled:opacity-60
                   "
                 >
-                  Pošalji
+                  {status === "sending" ? "Slanje..." : "Pošalji"}
                 </button>
               </form>
             </div>

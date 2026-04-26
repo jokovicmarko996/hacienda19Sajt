@@ -77,7 +77,7 @@ export default function RootLayout({ children }) {
           content="uekgb_w9lzZzol3zKJxzQc2z7ULbKFsD6e3Dex7Xa-c"
         />
       </head>
-
+   
       <body
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         className={`${jetbrainsMono.variable}  antialiased overflow-x-hidden max-w-full bg-black`}
