@@ -2,11 +2,13 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const toEmail = process.env.CONTACT_TO_EMAIL || "Hacienda.office2019@gmail.com";
+const fromEmail =
+  process.env.CONTACT_FROM_EMAIL || "Hacienda Website <onboarding@resend.dev>";
 
 // naive in-memory rate limit (works best on single instance; still helps)
 const RATE = {
   windowMs: 60_000, // 1 min
-  max: 5, // 5 requests / min per IP
+  max: 2, // 2 requests / min per IP
 };
 const hits = new Map(); // ip -> { count, resetAt }
 
@@ -101,8 +103,9 @@ export async function POST(req) {
     const safeMessage = escapeHtml(message).replaceAll("\n", "<br/>");
 
     await resend.emails.send({
-      from: "Hacienda Website <onboarding@resend.dev>",
+      from: fromEmail,
       to: [toEmail],
+      // to: "mareska462@gmail.com",
       replyTo: email,
       subject,
       html: `
@@ -115,7 +118,13 @@ export async function POST(req) {
 
     return Response.json({ ok: true });
   } catch (err) {
-    console.error("Contact API error:", err);
+    console.error("Contact API error (raw):", err);
+    console.error("Contact API error (message):", err?.message);
+    console.error("Contact API error (name):", err?.name);
+    console.error("Contact API error (statusCode):", err?.statusCode);
+    console.error("Contact API error (response):", err?.response);
+    console.error("Contact API error (cause):", err?.cause);
+
     return Response.json(
       { ok: false, error: "Greška pri slanju poruke." },
       { status: 500 }
